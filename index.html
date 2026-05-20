@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR PRESTIGE | Location Véhicules de Luxe</title>
+  <meta name="description" content="MR PRESTIGE – Location de véhicules de luxe, transferts VIP, location immobilière et yachts. Service premium sur la Côte d'Azur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="translations.js"></script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">MR <span class="gold">PRESTIGE</span></div>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services" data-i18n="nav_services">Services</a></li>
+      <li><a href="#fleet" data-i18n="nav_fleet">Flotte</a></li>
+      <li><a href="#transfers" data-i18n="nav_transfers">Transferts</a></li>
+      <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Réserver</a></li>
+    </ul>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn" id="langBtn" aria-label="Langue">
+        <span id="langFlag">&#127467;&#127479;</span>
+        <span id="langCode">FR</span>
+        <svg width="10" height="10" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <ul class="lang-dropdown" id="langDropdown">
+        <li data-lang="fr"><span>&#127467;&#127479;</span> Français</li>
+        <li data-lang="en"><span>&#127468;&#127463;</span> English</li>
+        <li data-lang="ar"><span>&#127462;&#127466;</span> العربية</li>
+        <li data-lang="ru"><span>&#127479;&#127482;</span> Русский</li>
+        <li data-lang="zh"><span>&#127464;&#127475;</span> 中文</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-tagline">EXPÉRIENCE EXCLUSIVE</p>
+    <h1 class="hero-title">L'Excellence<br><span class="gold">à Votre Service</span></h1>
+    <p class="hero-sub">Location de véhicules de prestige · Transferts VIP · Mise à disposition avec chauffeur</p>
+    <div class="hero-btns">
+      <a href="#fleet" class="btn-primary">Découvrir la Flotte</a>
+      <a href="#contact" class="btn-secondary">Nous Contacter</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stat-item">
+    <div class="stat-num gold">50<span>+</span></div>
+    <div class="stat-label">Véhicules Premium</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num gold">5</div>
+    <div class="stat-label">Services Exclusifs</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num gold">24<span>/7</span></div>
+    <div class="stat-label">Disponibilité</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num gold">100<span>%</span></div>
+    <div class="stat-label">Satisfaction Client</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <p class="section-tag">NOS SERVICES</p>
+  <h2 class="section-title">Ce que nous proposons</h2>
+  <div class="services-grid">
+    <div class="service-card" data-aos>
+      <div class="service-icon">🚗</div>
+      <h3>Location Véhicule</h3>
+      <p>Accédez à notre flotte exclusive de berlines, SUV, sportives et cabriolets.</p>
+      <a href="#fleet" class="card-link">Voir la flotte →</a>
+    </div>
+    <div class="service-card" data-aos>
+      <div class="service-icon">🏡</div>
+      <h3>Location Immobilière</h3>
+      <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur.</p>
+      <a href="#contact" class="card-link">Demander →</a>
+    </div>
+    <div class="service-card" data-aos>
+      <div class="service-icon">⛵</div>
+      <h3>Location Bateau</h3>
+      <p>Explorez la Méditerranée à bord de nos yachts et bateaux de plaisance.</p>
+      <a href="#contact" class="card-link">Demander →</a>
+    </div>
+    <div class="service-card" data-aos>
+      <div class="service-icon">✈️</div>
+      <h3>Transferts Aéroport</h3>
+      <p>Prise en charge aéroport, gare ou hôtel. Service ponctuel et professionnel.</p>
+      <a href="#transfers" class="card-link">En savoir plus →</a>
+    </div>
+    <div class="service-card" data-aos>
+      <div class="service-icon">🎩</div>
+      <h3>Chauffeur Privé</h3>
+      <p>Mise à disposition de chauffeur professionnel pour tous vos déplacements.</p>
+      <a href="#contact" class="card-link">Réserver →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section id="fleet" class="section section-dark">
+  <p class="section-tag">NOTRE FLOTTE</p>
+  <h2 class="section-title">Véhicules d'Exception</h2>
+  <div class="filter-tabs">
+    <button class="filter-btn active" data-filter="all">Tous</button>
+    <button class="filter-btn" data-filter="berline">Berline</button>
+    <button class="filter-btn" data-filter="suv">SUV</button>
+    <button class="filter-btn" data-filter="sportive">Sportive</button>
+    <button class="filter-btn" data-filter="van">Van</button>
+    <button class="filter-btn" data-filter="citadine">Citadine</button>
+  </div>
+  <div class="fleet-grid" id="fleetGrid"></div>
+</section>
+
+<!-- TRANSFERS -->
+<section id="transfers" class="section">
+  <div class="transfers-layout">
+    <div class="transfers-text">
+      <p class="section-tag">TRANSFERTS VIP</p>
+      <h2 class="section-title left">Voyagez Sans<br><span class="gold">Compromis</span></h2>
+      <p class="transfers-desc">Nos chauffeurs professionnels assurent votre prise en charge depuis et vers tous les aéroports, gares et hôtels de la région.</p>
+      <ul class="transfers-list">
+        <li><span class="gold">✓</span> Aéroports Nice, Cannes, Monaco</li>
+        <li><span class="gold">✓</span> Hôtels 5 étoiles &amp; Palaces</li>
+        <li><span class="gold">✓</span> Événements &amp; galas privés</li>
+        <li><span class="gold">✓</span> Courses à bord &amp; Monaco GP</li>
+        <li><span class="gold">✓</span> Disponibilité 24h/24, 7j/7</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:2rem;">Réserver un Transfert</a>
+    </div>
+    <div class="transfers-img">
+      <div class="transfers-badge">
+        <span class="gold" style="font-size:2rem;">✈</span>
+        <p>Transfert <strong>24/7</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section-dark why-us">
+  <p class="section-tag">POURQUOI NOUS</p>
+  <h2 class="section-title">L'Expérience <span class="gold">MR PRESTIGE</span></h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">👑</div><h4>Service Premium</h4><p>Chaque détail est soigné pour vous offrir une expérience inoubliable.</p></div>
+    <div class="why-card"><div class="why-icon">🔒</div><h4>Confidentialité</h4><p>Discrétion absolue pour nos clients.</p></div>
+    <div class="why-card"><div class="why-icon">⚡</div><h4>Réactivité</h4><p>Réponse garantie en moins de 15 minutes, 24h/24.</p></div>
+    <div class="why-card"><div class="why-icon">🌍</div><h4>Couverture Étendue</h4><p>Présents sur toute la Côte d'Azur : Nice, Cannes, Monaco, Saint-Tropez.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <p class="section-tag">CONTACT &amp; RÉSERVATION</p>
+  <h2 class="section-title">Faites Votre <span class="gold">Demande</span></h2>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div><p class="contact-label">Téléphone / WhatsApp</p><a href="tel:+33651032530" class="contact-value gold">+33 6 51 03 25 30</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div><p class="contact-label">Email</p><a href="mailto:contact@mrprestige.fr" class="contact-value gold">contact@mrprestige.fr</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div><p class="contact-label">Zone de service</p><p class="contact-value">Côte d'Azur · Monaco · PACA</p></div>
+      </div>
+      <a href="https://wa.me/33651032530" class="btn-whatsapp" target="_blank">WhatsApp Immédiat</a>
+    </div>
+    <div class="contact-form-col">
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mykoljqj" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label>Prénom &amp; Nom *</label><input type="text" name="Nom" placeholder="Jean Dupont" required></div>
+          <div class="form-group"><label>Téléphone *</label><input type="tel" name="Téléphone" placeholder="+33 6 XX XX XX XX" required></div>
+        </div>
+        <div class="form-group"><label>Email *</label><input type="email" name="Email" placeholder="votre@email.com" required></div>
+        <div class="form-group">
+          <label>Service souhaité</label>
+          <select name="Service">
+            <option value="">-- Choisir un service --</option>
+            <option>Location Véhicule</option>
+            <option>Location Immobilière</option>
+            <option>Location Bateau</option>
+            <option>Transfert Aéroport</option>
+            <option>Chauffeur Privé</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Date de début</label><input type="date" name="Date de début"></div>
+          <div class="form-group"><label>Date de fin</label><input type="date" name="Date de fin"></div>
+        </div>
+        <div class="form-group"><label>Message</label><textarea name="Message" rows="4" placeholder="Décrivez votre demande..."></textarea></div>
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" class="btn-primary" style="width:100%;">Envoyer la Demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">MR <span class="gold">PRESTIGE</span></div>
+    <p class="footer-tag">Excellence · Discrétion · Prestige</p>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#fleet">Flotte</a>
+      <a href="#transfers">Transferts</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 MR PRESTIGE. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
