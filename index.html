@@ -9,6 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="translations.js"></script>
+  <!-- Formspree Ajax CDN -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contactForm', formId: 'mykoljqj' });
+  </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </head>
 <body>
@@ -26,6 +31,7 @@
       <li><a href="#transfers" data-i18n="nav_transfers">Transferts</a></li>
       <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Réserver</a></li>
     </ul>
+    <!-- LANGUAGE SWITCHER -->
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Langue">
         <span id="langFlag">&#127467;&#127479;</span>
@@ -90,31 +96,31 @@
     <div class="service-card" data-aos>
       <div class="service-icon">🚗</div>
       <h3>Location Véhicule</h3>
-      <p>Accédez à notre flotte exclusive de berlines, SUV, sportives et cabriolets.</p>
+      <p>Accédez à notre flotte exclusive de berlines, SUV, sportives et cabriolets. Location à la journée, à la semaine ou au mois.</p>
       <a href="#fleet" class="card-link">Voir la flotte →</a>
     </div>
     <div class="service-card" data-aos>
       <div class="service-icon">🏡</div>
       <h3>Location Immobilière</h3>
-      <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur.</p>
+      <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur. Séjours d'exception pour une clientèle exigeante.</p>
       <a href="#contact" class="card-link">Demander →</a>
     </div>
     <div class="service-card" data-aos>
       <div class="service-icon">⛵</div>
       <h3>Location Bateau</h3>
-      <p>Explorez la Méditerranée à bord de nos yachts et bateaux de plaisance.</p>
+      <p>Explorez la Méditerranée à bord de nos yachts et bateaux de plaisance. Sorties privées, croisières et journées mer.</p>
       <a href="#contact" class="card-link">Demander →</a>
     </div>
     <div class="service-card" data-aos>
       <div class="service-icon">✈️</div>
       <h3>Transferts Aéroport</h3>
-      <p>Prise en charge aéroport, gare ou hôtel. Service ponctuel et professionnel.</p>
+      <p>Prise en charge aéroport, gare ou hôtel. Service ponctuel, discret et professionnel avec nos chauffeurs VIP.</p>
       <a href="#transfers" class="card-link">En savoir plus →</a>
     </div>
     <div class="service-card" data-aos>
       <div class="service-icon">🎩</div>
       <h3>Chauffeur Privé</h3>
-      <p>Mise à disposition de chauffeur professionnel pour tous vos déplacements.</p>
+      <p>Mise à disposition de chauffeur professionnel pour tous vos déplacements. Événements, affaires ou loisirs.</p>
       <a href="#contact" class="card-link">Réserver →</a>
     </div>
   </div>
@@ -132,7 +138,128 @@
     <button class="filter-btn" data-filter="van">Van</button>
     <button class="filter-btn" data-filter="citadine">Citadine</button>
   </div>
-  <div class="fleet-grid" id="fleetGrid"></div>
+  <div class="fleet-grid" id="fleetGrid">
+    <div class="car-card" data-cat="suv">
+      <div class="car-img-wrap">
+        <img src="../images/Defender.jpg" alt="Range Rover Defender" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">RANGE ROVER</div>
+        <div class="car-model">DEFENDER</div>
+        <div class="car-specs"><span>2024</span><span>•</span><span>SUV</span><span>•</span><span>Automatique</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">1 200 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Range Rover Defender')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="suv">
+      <div class="car-img-wrap">
+        <img src="../images/G63.jpg" alt="Mercedes G63" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">MERCEDES</div>
+        <div class="car-model">G63 AMG</div>
+        <div class="car-specs"><span>2024</span><span>•</span><span>SUV</span><span>•</span><span>Automatique</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">1 500 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mercedes G63 AMG')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="suv">
+      <div class="car-img-wrap">
+        <img src="../images/Vogue.jpg" alt="Range Rover Vogue" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">RANGE ROVER</div>
+        <div class="car-model">VOGUE</div>
+        <div class="car-specs"><span>2024</span><span>•</span><span>SUV</span><span>•</span><span>Automatique</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">1 400 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Range Rover Vogue')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="berline">
+      <div class="car-img-wrap">
+        <img src="../images/berline_classes.jpg" alt="Mercedes Classe S" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">MERCEDES</div>
+        <div class="car-model">CLASSE S</div>
+        <div class="car-specs"><span>2024</span><span>•</span><span>Berline</span><span>•</span><span>Automatique</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">900 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mercedes Classe S')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="van">
+      <div class="car-img-wrap">
+        <img src="../images/Van.jpg" alt="Mercedes V-Class" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">MERCEDES</div>
+        <div class="car-model">V-CLASS</div>
+        <div class="car-specs"><span>2023</span><span>•</span><span>Van</span><span>•</span><span>Automatique</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">600 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mercedes V-Class')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="sportive">
+      <div class="car-img-wrap">
+        <img src="../images/sportive.jpg" alt="Porsche 911 GT3" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">PORSCHE</div>
+        <div class="car-model">911 GT3</div>
+        <div class="car-specs"><span>2024</span><span>•</span><span>Sportive</span><span>•</span><span>PDK</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">1 800 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Porsche 911 GT3')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="citadine">
+      <div class="car-img-wrap">
+        <img src="../images/citadine.jpg" alt="Mini Cooper Cabriolet" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">MINI COOPER</div>
+        <div class="car-model">CABRIOLET</div>
+        <div class="car-specs"><span>2024</span><span>•</span><span>Citadine</span><span>•</span><span>Automatique</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">250 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mini Cooper Cabriolet')">Réserver</a>
+        </div>
+      </div>
+    </div>
+    <div class="car-card" data-cat="sportive">
+      <div class="car-img-wrap">
+        <img src="../images/cabriolet.jpg" alt="Ferrari F8 Tributo" loading="lazy">
+        <span class="car-badge available">Disponible</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">FERRARI</div>
+        <div class="car-model">F8 TRIBUTO</div>
+        <div class="car-specs"><span>2023</span><span>•</span><span>Sportive</span><span>•</span><span>DCT</span></div>
+        <div class="car-footer">
+          <div class="car-price"><span class="gold">2 500 €</span><small>/jour</small></div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Ferrari F8 Tributo')">Réserver</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TRANSFERS -->
@@ -141,17 +268,18 @@
     <div class="transfers-text">
       <p class="section-tag">TRANSFERTS VIP</p>
       <h2 class="section-title left">Voyagez Sans<br><span class="gold">Compromis</span></h2>
-      <p class="transfers-desc">Nos chauffeurs professionnels assurent votre prise en charge depuis et vers tous les aéroports, gares et hôtels de la région.</p>
+      <p class="transfers-desc">Nos chauffeurs professionnels assurent votre prise en charge depuis et vers tous les aéroports, gares et hôtels de la région. Discrétion, ponctualité et confort absolu garantis.</p>
       <ul class="transfers-list">
         <li><span class="gold">✓</span> Aéroports Nice, Cannes, Monaco</li>
-        <li><span class="gold">✓</span> Hôtels 5 étoiles &amp; Palaces</li>
-        <li><span class="gold">✓</span> Événements &amp; galas privés</li>
-        <li><span class="gold">✓</span> Courses à bord &amp; Monaco GP</li>
+        <li><span class="gold">✓</span> Hôtels 5 étoiles & Palaces</li>
+        <li><span class="gold">✓</span> Événements & galas privés</li>
+        <li><span class="gold">✓</span> Courses à bord & Monaco GP</li>
         <li><span class="gold">✓</span> Disponibilité 24h/24, 7j/7</li>
       </ul>
       <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:2rem;">Réserver un Transfert</a>
     </div>
     <div class="transfers-img">
+      <img src="../images/transfer_chauffeur.png" alt="Chauffeur privé MR PRESTIGE">
       <div class="transfers-badge">
         <span class="gold" style="font-size:2rem;">✈</span>
         <p>Transfert <strong>24/7</strong></p>
@@ -165,61 +293,123 @@
   <p class="section-tag">POURQUOI NOUS</p>
   <h2 class="section-title">L'Expérience <span class="gold">MR PRESTIGE</span></h2>
   <div class="why-grid">
-    <div class="why-card"><div class="why-icon">👑</div><h4>Service Premium</h4><p>Chaque détail est soigné pour vous offrir une expérience inoubliable.</p></div>
-    <div class="why-card"><div class="why-icon">🔒</div><h4>Confidentialité</h4><p>Discrétion absolue pour nos clients.</p></div>
-    <div class="why-card"><div class="why-icon">⚡</div><h4>Réactivité</h4><p>Réponse garantie en moins de 15 minutes, 24h/24.</p></div>
-    <div class="why-card"><div class="why-icon">🌍</div><h4>Couverture Étendue</h4><p>Présents sur toute la Côte d'Azur : Nice, Cannes, Monaco, Saint-Tropez.</p></div>
+    <div class="why-card">
+      <div class="why-icon">👑</div>
+      <h4>Service Premium</h4>
+      <p>Chaque détail est soigné pour vous offrir une expérience inoubliable digne des plus grands standards.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h4>Confidentialité</h4>
+      <p>Discrétion absolue pour nos clients. Vos informations et déplacements restent strictement confidentiels.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h4>Réactivité</h4>
+      <p>Réponse garantie en moins de 15 minutes. Nos équipes sont disponibles 24h/24 pour vos demandes urgentes.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌍</div>
+      <h4>Couverture Étendue</h4>
+      <p>Présents sur toute la Côte d'Azur : Nice, Cannes, Monaco, Saint-Tropez, Antibes et au-delà.</p>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="section">
-  <p class="section-tag">CONTACT &amp; RÉSERVATION</p>
+  <p class="section-tag">CONTACT & RÉSERVATION</p>
   <h2 class="section-title">Faites Votre <span class="gold">Demande</span></h2>
+
   <div class="contact-layout">
     <div class="contact-info">
       <div class="contact-item">
         <div class="contact-icon">📞</div>
-        <div><p class="contact-label">Téléphone / WhatsApp</p><a href="tel:+33651032530" class="contact-value gold">+33 6 51 03 25 30</a></div>
+        <div>
+          <p class="contact-label">Téléphone / WhatsApp</p>
+          <a href="tel:+33651032530" class="contact-value gold">+33 6 51 03 25 30</a>
+        </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">✉️</div>
-        <div><p class="contact-label">Email</p><a href="mailto:contact@mrprestige.fr" class="contact-value gold">contact@mrprestige.fr</a></div>
+        <div>
+          <p class="contact-label">Email</p>
+          <a href="mailto:contact@mrprestige.fr" class="contact-value gold">contact@mrprestige.fr</a>
+        </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">📍</div>
-        <div><p class="contact-label">Zone de service</p><p class="contact-value">Côte d'Azur · Monaco · PACA</p></div>
+        <div>
+          <p class="contact-label">Zone de service</p>
+          <p class="contact-value">Côte d'Azur · Monaco · PACA</p>
+        </div>
       </div>
-      <a href="https://wa.me/33651032530" class="btn-whatsapp" target="_blank">WhatsApp Immédiat</a>
+      <a href="https://wa.me/33651032530?text=Bonjour%20MR%20PRESTIGE,%20je%20souhaite%20faire%20une%20réservation." class="btn-whatsapp" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Immédiat
+      </a>
     </div>
+
+    <!-- FORMULAIRE — connecté à contact@mrprestige.fr via Formspree -->
     <div class="contact-form-col">
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mykoljqj" method="POST">
-        <div class="form-row">
-          <div class="form-group"><label>Prénom &amp; Nom *</label><input type="text" name="Nom" placeholder="Jean Dupont" required></div>
-          <div class="form-group"><label>Téléphone *</label><input type="tel" name="Téléphone" placeholder="+33 6 XX XX XX XX" required></div>
-        </div>
-        <div class="form-group"><label>Email *</label><input type="email" name="Email" placeholder="votre@email.com" required></div>
+      <div class="fs-success-msg" data-fs-success>
+        ✅ Demande envoyée ! Nous vous contactons sous 15 minutes.
+      </div>
+      <div class="fs-error-msg" data-fs-error></div>
+      <form class="contact-form" id="contactForm" novalidate>
+      <div class="form-row">
         <div class="form-group">
-          <label>Service souhaité</label>
-          <select name="Service">
-            <option value="">-- Choisir un service --</option>
-            <option>Location Véhicule</option>
-            <option>Location Immobilière</option>
-            <option>Location Bateau</option>
-            <option>Transfert Aéroport</option>
-            <option>Chauffeur Privé</option>
-          </select>
+          <label>Prénom & Nom *</label>
+          <input type="text" id="formName" name="Nom" placeholder="Jean Dupont" required data-fs-field>
+          <span class="fs-field-error" data-fs-error="Nom"></span>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>Date de début</label><input type="date" name="Date de début"></div>
-          <div class="form-group"><label>Date de fin</label><input type="date" name="Date de fin"></div>
+        <div class="form-group">
+          <label>Téléphone *</label>
+          <input type="tel" id="formPhone" name="Téléphone" placeholder="+33 6 XX XX XX XX" required data-fs-field>
+          <span class="fs-field-error" data-fs-error="Téléphone"></span>
         </div>
-        <div class="form-group"><label>Message</label><textarea name="Message" rows="4" placeholder="Décrivez votre demande..."></textarea></div>
-        <input type="text" name="_gotcha" style="display:none">
-        <button type="submit" class="btn-primary" style="width:100%;">Envoyer la Demande</button>
-      </form>
-    </div>
-  </div>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" id="formEmail" name="Email" placeholder="votre@email.com" required data-fs-field>
+        <span class="fs-field-error" data-fs-error="Email"></span>
+      </div>
+      <div class="form-group">
+        <label>Service souhaité</label>
+        <select id="formService" name="Service">
+          <option value="">-- Choisir un service --</option>
+          <option>Location Véhicule</option>
+          <option>Location Immobilière</option>
+          <option>Location Bateau</option>
+          <option>Transfert Aéroport</option>
+          <option>Chauffeur Privé</option>
+        </select>
+      </div>
+      <div class="form-group" id="vehicleGroup" style="display:none;">
+        <label>Véhicule sélectionné</label>
+        <input type="text" id="formVehicle" name="Véhicule" readonly style="background:#111;cursor:default;">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date de début</label>
+          <input type="date" id="formDateStart" name="Date de début">
+        </div>
+        <div class="form-group">
+          <label>Date de fin</label>
+          <input type="date" id="formDateEnd" name="Date de fin">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="formMessage" name="Message" rows="4" placeholder="Décrivez votre demande, vos préférences..."></textarea>
+      </div>
+      <!-- Champ caché anti-spam honeypot -->
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" class="btn-primary" data-fs-submit-btn style="width:100%;">Envoyer la Demande</button>
+    </form>
+    </div><!-- /.contact-form-col -->
+  </div><!-- /.contact-layout -->
 </section>
 
 <!-- FOOTER -->
