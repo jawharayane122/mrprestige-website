@@ -1,9 +1,12 @@
 FROM nginx:alpine
 
-# Copier les fichiers du site
-COPY . /usr/share/nginx/html
+# Copier nginx.conf au bon endroit (config nginx)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copier le script de démarrage qui injecte le PORT Railway dans nginx
+# Copier les fichiers du site dans le dossier web
+COPY index.html style.css script.js translations.js fleet.json /usr/share/nginx/html/
+
+# Copier et rendre le script de démarrage exécutable
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
