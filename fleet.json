@@ -1,0 +1,62 @@
+[
+  {
+    "id": "13",
+    "brand": "MERCEDES",
+    "model": "V CLASS",
+    "year": 2024,
+    "cat": "van",
+    "price": 300,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/Van.jpg",
+    "label": "MERCEDES  V CLASS"
+  },
+  {
+    "id": "16",
+    "brand": "MERCEDES",
+    "model": "G CLASS",
+    "year": 2024,
+    "cat": "suv",
+    "price": 700,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/G63.jpg",
+    "label": "MERCEDES  G CLASS"
+  },
+  {
+    "id": "12",
+    "brand": "PORSCHE",
+    "model": "911",
+    "year": 2024,
+    "cat": "sportive",
+    "price": 900,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/upload_20260309_220143_sportive.jpg",
+    "label": "PORSCHE 911"
+  },
+  {
+    "id": "9",
+    "brand": "RANGE ROVER",
+    "model": "VOGUE",
+    "year": 2024,
+    "cat": "suv",
+    "price": 700,
+    "img": "images/upload_20260309_213713_vukb1qvyzysb98ik619e.jpg",
+    "label": "RANGE ROVER VOGUE"
+  },
+  {
+    "id": "15",
+    "brand": "RANGE ROVER",
+    "model": "DEFENDER",
+    "year": 2025,
+    "cat": "suv",
+    "price": 600,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/Defender.jpg",
+    "label": "RANGE ROVER DEFENDER"
+  },
+  {
+    "id": "11",
+    "brand": "ROLCE ROYCE",
+    "model": "CULLINAN",
+    "year": 2024,
+    "cat": "suv",
+    "price": 2500,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/upload_20260309_220048_luxe.jpg",
+    "label": "ROLCE ROYCE CULLINAN"
+  }
+]
