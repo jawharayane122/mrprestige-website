@@ -56,7 +56,7 @@
     "year": 2024,
     "cat": "suv",
     "price": 700,
-    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/range_rover_vogue_2024.png",
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/range_rover_vogue_2024.png?v=2",
     "label": "RANGE ROVER VOGUE"
   },
   {
