@@ -20,6 +20,16 @@
     "label": "MERCEDES  G CLASS"
   },
   {
+    "id": "8",
+    "brand": "MINI COOPER",
+    "model": "CAB",
+    "year": 2024,
+    "cat": "citadine",
+    "price": 250,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/mini_cab.jpg",
+    "label": "MINI COOPER CAB"
+  },
+  {
     "id": "12",
     "brand": "PORSCHE",
     "model": "911",
@@ -30,16 +40,6 @@
     "label": "PORSCHE 911"
   },
   {
-    "id": "9",
-    "brand": "RANGE ROVER",
-    "model": "VOGUE",
-    "year": 2024,
-    "cat": "suv",
-    "price": 700,
-    "img": "images/upload_20260309_213713_vukb1qvyzysb98ik619e.jpg",
-    "label": "RANGE ROVER VOGUE"
-  },
-  {
     "id": "15",
     "brand": "RANGE ROVER",
     "model": "DEFENDER",
@@ -48,6 +48,16 @@
     "price": 600,
     "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/Defender.jpg",
     "label": "RANGE ROVER DEFENDER"
+  },
+  {
+    "id": "9",
+    "brand": "RANGE ROVER",
+    "model": "VOGUE",
+    "year": 2024,
+    "cat": "suv",
+    "price": 700,
+    "img": "https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/range_rover_vogue_2024.png",
+    "label": "RANGE ROVER VOGUE"
   },
   {
     "id": "11",
