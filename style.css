@@ -579,7 +579,9 @@ footer {
 
 /* ===== RTL SUPPORT (Arabic) ===== */
 [dir="rtl"] .nav-inner  { flex-direction: row-reverse; }
-[dir="rtl"] .nav-links  { flex-direction: row-reverse; }
+@media (min-width: 681px) {
+  [dir="rtl"] .nav-links  { flex-direction: row-reverse; }
+}
 [dir="rtl"] .hero-content { direction: rtl; }
 [dir="rtl"] .transfers-layout { direction: rtl; }
 [dir="rtl"] .contact-layout  { direction: rtl; }
@@ -600,15 +602,17 @@ footer {
 }
 
 @media (max-width: 680px) {
-  .nav-links {
-    display: none; flex-direction: column;
+  .nav-links,
+  [dir="rtl"] .nav-links {
+    display: none; flex-direction: column !important;
     position: fixed; inset: 0; top: 60px;
     background: rgba(5,5,5,0.98);
     backdrop-filter: blur(20px);
     justify-content: center; align-items: center;
     gap: 2.5rem; padding: 2rem;
   }
-  .nav-links.open { display: flex; }
+  .nav-links.open,
+  [dir="rtl"] .nav-links.open { display: flex !important; }
   .nav-links a { font-size: 1.2rem; }
   .burger { display: flex; }
   .form-row { grid-template-columns: 1fr; }
