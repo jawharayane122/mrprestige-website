@@ -7,8 +7,8 @@
   <meta name="description" content="MR PRESTIGE – Location de véhicules de luxe, transferts VIP, location immobilière et yachts. Service premium sur la Côte d'Azur.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
-  <script src="translations.js"></script>
+  <link rel="stylesheet" href="style.css?v=4">
+  <script src="translations.js?v=4"></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -28,6 +28,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#services" data-i18n="nav_services">Services</a></li>
       <li><a href="#fleet" data-i18n="nav_fleet">Flotte</a></li>
+      <li><a href="#yachts" data-i18n="nav_yachts">Yachts</a></li>
       <li><a href="#transfers" data-i18n="nav_transfers">Transferts</a></li>
       <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Réserver</a></li>
     </ul>
@@ -262,6 +263,132 @@
   </div>
 </section>
 
+<!-- YACHTS -->
+<section id="yachts" class="section">
+  <p class="section-tag" data-i18n="yacht_tag">CHARTER PRIVÉ D'EXCEPTION</p>
+  <h2 class="section-title" data-i18n="yacht_title">Nos Bateaux & <span class="gold">Yachts</span></h2>
+  <p class="yacht-intro" data-i18n="yacht_sub">Explorez la Méditerranée à bord d'unités rares et prestigieuses. Équipage dévoué, gastronomie et prestations sur mesure pour des croisières inoubliables.</p>
+
+  <div class="yacht-container">
+    <div class="yacht-card">
+      <div class="yacht-card-header">
+        <div class="yacht-title-group">
+          <span class="badge-charter"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
+          <h3 class="yacht-name">MADSUMMER <span class="yacht-size">95 Mètres / 311'8"</span></h3>
+        </div>
+        <div class="yacht-price-box">
+          <span class="yacht-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
+          <span class="yacht-price-val" data-i18n="price_on_demand">PRIX SUR DEMANDE</span>
+          <span class="yacht-zone" data-i18n="yacht_zone">Côte d'Azur · Monaco · Méditerranée</span>
+        </div>
+      </div>
+
+      <div class="yacht-body">
+        <!-- Gallery -->
+        <div class="yacht-gallery">
+          <div class="yacht-main-img-wrap">
+            <img id="yachtMainImg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy">
+            <div class="yacht-img-caption">
+              <span id="yachtImgCaption">Profil en mer avec héliport avant certifié</span>
+              <span id="yachtImgCounter" class="yacht-counter">1 / 11</span>
+            </div>
+            <button type="button" class="yacht-nav-btn prev" onclick="navigateYachtImg(-1)" aria-label="Précédent">❮</button>
+            <button type="button" class="yacht-nav-btn next" onclick="navigateYachtImg(1)" aria-label="Suivant">❯</button>
+          </div>
+          <div class="yacht-thumbs" id="yachtThumbs">
+            <img onclick="selectYachtImg(0)" src="images/yachts/madsummer_profile.jpg" class="yacht-thumb active" alt="MADSUMMER Profil">
+            <img onclick="selectYachtImg(1)" src="images/yachts/madsummer_stern.jpg" class="yacht-thumb" alt="MADSUMMER Poupe">
+            <img onclick="selectYachtImg(2)" src="images/yachts/madsummer_pool.jpg" class="yacht-thumb" alt="MADSUMMER Piscine">
+            <img onclick="selectYachtImg(3)" src="images/yachts/madsummer_sundeck.jpg" class="yacht-thumb" alt="MADSUMMER Pont supérieur">
+            <img onclick="selectYachtImg(4)" src="images/yachts/madsummer_salon.jpg" class="yacht-thumb" alt="MADSUMMER Salon principal">
+            <img onclick="selectYachtImg(5)" src="images/yachts/madsummer_lounge.jpg" class="yacht-thumb" alt="MADSUMMER Salon lounge">
+            <img onclick="selectYachtImg(6)" src="images/yachts/madsummer_master_bed.jpg" class="yacht-thumb" alt="MADSUMMER Suite Master">
+            <img onclick="selectYachtImg(7)" src="images/yachts/madsummer_twin_cabin.jpg" class="yacht-thumb" alt="MADSUMMER Cabine Invités">
+            <img onclick="selectYachtImg(8)" src="images/yachts/madsummer_bath_ocean.jpg" class="yacht-thumb" alt="MADSUMMER Bain Vue Mer">
+            <img onclick="selectYachtImg(9)" src="images/yachts/madsummer_bath_marble.jpg" class="yacht-thumb" alt="MADSUMMER Bain Marbre">
+            <img onclick="selectYachtImg(10)" src="images/yachts/madsummer_gym.jpg" class="yacht-thumb" alt="MADSUMMER Salle de sport">
+          </div>
+        </div>
+
+        <!-- Specs Column -->
+        <div class="yacht-specs-col">
+          <div>
+            <div class="yacht-key-stats">
+              <div class="stat-box">
+                <span class="stat-lbl" data-i18n="yacht_guests_lbl">LES INVITÉS</span>
+                <div class="stat-val"><span class="stat-ico">👥</span><strong>12</strong></div>
+              </div>
+              <div class="stat-box">
+                <span class="stat-lbl" data-i18n="yacht_cabins_lbl">CABINES</span>
+                <div class="stat-val"><span class="stat-ico">🛏️</span><strong>10</strong></div>
+              </div>
+              <div class="stat-box">
+                <span class="stat-lbl" data-i18n="yacht_crew_lbl">ÉQUIPAGE</span>
+                <div class="stat-val"><span class="stat-ico">👨‍✈️</span><strong>28</strong></div>
+              </div>
+            </div>
+
+            <div class="yacht-specs-heading">
+              <span data-i18n="yacht_specs_title">SPÉCIFICATIONS TECHNIQUES</span>
+              <span class="specs-line"></span>
+            </div>
+
+            <div class="yacht-specs-list">
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_length">Longueur</span>
+                <span class="s-val">95 m (311'8")</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_beam">Largeur (Beam)</span>
+                <span class="s-val">14 m (45'11")</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_draft">Tirant d'eau (Draft)</span>
+                <span class="s-val">3,8 m (12'6")</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_tonnage">Tonnage Brut</span>
+                <span class="s-val">3 250 GT</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_speed">Vitesse de Croisière</span>
+                <span class="s-val">12,5 nœuds</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_builder">Chantier</span>
+                <span class="s-val gold">Lürssen</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_model">Modèle</span>
+                <span class="s-val" data-i18n="spec_custom">Custom (Sur-mesure)</span>
+              </div>
+            </div>
+
+            <div class="yacht-amenities">
+              <span class="amenities-title" data-i18n="yacht_equip_title">Équipements d'exception :</span>
+              <div class="amenities-tags">
+                <span>🏊 Piscine en verre 12m</span>
+                <span>🚁 Héliport certifié</span>
+                <span>🏋️ Gym Panoramique</span>
+                <span>💆 Spa & Beach Club</span>
+                <span>🛥️ Annexes & Toys</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="yacht-actions">
+            <a href="#contact" class="btn-primary yacht-cta-btn" onclick="preselectYacht('Yacht MADSUMMER (Lürssen 95m)')" data-i18n="btn_quote_yacht">Demander un devis pour ce Yacht</a>
+            <a href="https://wa.me/33651032530?text=Bonjour%20MR%20PRESTIGE,%20je%20souhaite%20un%20devis%20pour%20le%20charter%20du%20yacht%20MADSUMMER%20(L%C3%BCrssen%2095m)." target="_blank" class="btn-whatsapp-yacht">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span data-i18n="yacht_wa">Échanger immédiatement sur WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TRANSFERS -->
 <section id="transfers" class="section">
   <div class="transfers-layout">
@@ -419,15 +546,16 @@
     <div class="footer-logo">MR <span class="gold">PRESTIGE</span></div>
     <p class="footer-tag">Excellence · Discrétion · Prestige</p>
     <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#fleet">Flotte</a>
-      <a href="#transfers">Transferts</a>
-      <a href="#contact">Contact</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#fleet" data-i18n="nav_fleet">Flotte</a>
+      <a href="#yachts" data-i18n="nav_yachts">Yachts</a>
+      <a href="#transfers" data-i18n="nav_transfers">Transferts</a>
+      <a href="#contact" data-i18n="nav_book">Contact</a>
     </div>
     <p class="footer-copy">© 2026 MR PRESTIGE. Tous droits réservés.</p>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>

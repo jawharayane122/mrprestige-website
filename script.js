@@ -217,7 +217,7 @@ const I18N_MAP = () => [
 ];
 
 // Keys that use innerHTML (contain HTML tags like <span>, <br>)
-const HTML_KEYS = new Set(['hero_title','tr_title','why_title','ct_title']);
+const HTML_KEYS = new Set(['hero_title','tr_title','why_title','ct_title','yacht_title']);
 
 // Transfer list items need special handling (gold span prefix)
 const TRANSFER_KEYS = { tr1:0, tr2:1, tr3:2, tr4:3, tr5:4 };
@@ -258,6 +258,19 @@ function applyLang(lang) {
         el.textContent = val;
       }
     });
+  });
+
+  // Translate all elements with data-i18n attribute
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    const val = t[k];
+    if (val) {
+      if (HTML_KEYS.has(k)) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    }
   });
 
   // Update form labels (select by position in form-group)
@@ -344,6 +357,70 @@ function preselectVehicle(name) {
   const svc   = document.getElementById('formService');
   if (field && group) { field.value = name; group.style.display = 'block'; }
   if (svc) svc.value = 'Location Véhicule';
+}
+
+// ===== PRESELECT YACHT =====
+function preselectYacht(name) {
+  const field = document.getElementById('formVehicle');
+  const group = document.getElementById('vehicleGroup');
+  const svc   = document.getElementById('formService');
+  if (field && group) {
+    field.value = name;
+    group.style.display = 'block';
+  }
+  if (svc) svc.value = 'Location Bateau';
+}
+
+// ===== YACHT GALLERY =====
+const YACHT_IMAGES = [
+  { src: "images/yachts/madsummer_profile.jpg", caption: "Profil en mer avec héliport avant certifié" },
+  { src: "images/yachts/madsummer_stern.jpg", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
+  { src: "images/yachts/madsummer_pool.jpg", caption: "Piscine transparente de 12 mètres et sunbeds" },
+  { src: "images/yachts/madsummer_sundeck.jpg", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
+  { src: "images/yachts/madsummer_salon.jpg", caption: "Salon principal de réception au design contemporain d'exception" },
+  { src: "images/yachts/madsummer_lounge.jpg", caption: "Salon lounge demi-lune et bar de pont panoramique" },
+  { src: "images/yachts/madsummer_master_bed.jpg", caption: "Suite propriétaire Master avec vue panoramique" },
+  { src: "images/yachts/madsummer_twin_cabin.jpg", caption: "Cabine invités grand luxe avec lits jumeaux" },
+  { src: "images/yachts/madsummer_bath_ocean.jpg", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
+  { src: "images/yachts/madsummer_bath_marble.jpg", caption: "Salle de bain en marbre blanc et boiseries nobles" },
+  { src: "images/yachts/madsummer_gym.jpg", caption: "Salle de sport panoramique équipée face à la mer" }
+];
+
+let currentYachtImgIdx = 0;
+
+function selectYachtImg(index) {
+  if (index < 0 || index >= YACHT_IMAGES.length) return;
+  currentYachtImgIdx = index;
+  const mainImg = document.getElementById('yachtMainImg');
+  const captionEl = document.getElementById('yachtImgCaption');
+  const counterEl = document.getElementById('yachtImgCounter');
+  const thumbs = document.querySelectorAll('.yacht-thumb');
+
+  if (mainImg) {
+    mainImg.style.opacity = '0.3';
+    setTimeout(() => {
+      mainImg.src = YACHT_IMAGES[index].src;
+      if (captionEl) captionEl.textContent = YACHT_IMAGES[index].caption;
+      if (counterEl) counterEl.textContent = `${index + 1} / ${YACHT_IMAGES.length}`;
+      mainImg.style.opacity = '1';
+    }, 150);
+  }
+
+  thumbs.forEach((t, i) => {
+    if (i === index) {
+      t.classList.add('active');
+      t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    } else {
+      t.classList.remove('active');
+    }
+  });
+}
+
+function navigateYachtImg(dir) {
+  let next = currentYachtImgIdx + dir;
+  if (next < 0) next = YACHT_IMAGES.length - 1;
+  if (next >= YACHT_IMAGES.length) next = 0;
+  selectYachtImg(next);
 }
 
 // ===== SMOOTH ACTIVE NAV =====
