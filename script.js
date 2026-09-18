@@ -394,26 +394,29 @@ function selectYachtImg(index) {
   const mainImg = document.getElementById('yachtMainImg');
   const captionEl = document.getElementById('yachtImgCaption');
   const counterEl = document.getElementById('yachtImgCounter');
+  const thumbsContainer = document.getElementById('yachtThumbs');
   const thumbs = document.querySelectorAll('.yacht-thumb');
 
   if (mainImg) {
-    mainImg.style.opacity = '0.3';
-    setTimeout(() => {
-      mainImg.src = YACHT_IMAGES[index].src;
-      if (captionEl) captionEl.textContent = YACHT_IMAGES[index].caption;
-      if (counterEl) counterEl.textContent = `${index + 1} / ${YACHT_IMAGES.length}`;
-      mainImg.style.opacity = '1';
-    }, 150);
+    mainImg.src = YACHT_IMAGES[index].src;
+    if (captionEl) captionEl.textContent = YACHT_IMAGES[index].caption;
+    if (counterEl) counterEl.textContent = `${index + 1} / ${YACHT_IMAGES.length}`;
   }
 
   thumbs.forEach((t, i) => {
-    if (i === index) {
-      t.classList.add('active');
-      t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } else {
-      t.classList.remove('active');
-    }
+    t.classList.toggle('active', i === index);
   });
+
+  // Scroll only the thumbs container — NOT the whole page
+  if (thumbsContainer && thumbs[index]) {
+    const thumb = thumbs[index];
+    const containerLeft  = thumbsContainer.scrollLeft;
+    const containerWidth = thumbsContainer.offsetWidth;
+    const thumbLeft  = thumb.offsetLeft;
+    const thumbWidth = thumb.offsetWidth;
+    const targetScroll = thumbLeft - containerWidth / 2 + thumbWidth / 2;
+    thumbsContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
+  }
 }
 
 function navigateYachtImg(dir) {
