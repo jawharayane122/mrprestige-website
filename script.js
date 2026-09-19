@@ -375,32 +375,32 @@ function preselectYacht(name) {
 const YACHTS = {
   madsummer: {
     images: [
-      { src: "images/yachts/madsummer_profile.jpg", caption: "Profil en mer avec héliport avant certifié" },
-      { src: "images/yachts/madsummer_stern.jpg", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
-      { src: "images/yachts/madsummer_pool.jpg", caption: "Piscine transparente de 12 mètres et sunbeds" },
-      { src: "images/yachts/madsummer_sundeck.jpg", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
-      { src: "images/yachts/madsummer_salon.jpg", caption: "Salon principal de réception au design contemporain d'exception" },
-      { src: "images/yachts/madsummer_lounge.jpg", caption: "Salon lounge demi-lune et bar de pont panoramique" },
-      { src: "images/yachts/madsummer_master_bed.jpg", caption: "Suite propriétaire Master avec vue panoramique" },
-      { src: "images/yachts/madsummer_twin_cabin.jpg", caption: "Cabine invités grand luxe avec lits jumeaux" },
-      { src: "images/yachts/madsummer_bath_ocean.jpg", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
-      { src: "images/yachts/madsummer_bath_marble.jpg", caption: "Salle de bain en marbre blanc et boiseries nobles" },
-      { src: "images/yachts/madsummer_gym.jpg", caption: "Salle de sport panoramique équipée face à la mer" }
+      { src: "images/yachts/madsummer_profile.jpg?v=hd2", caption: "Profil en mer avec héliport avant certifié" },
+      { src: "images/yachts/madsummer_stern.jpg?v=hd2", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
+      { src: "images/yachts/madsummer_pool.jpg?v=hd2", caption: "Piscine transparente de 12 mètres et sunbeds" },
+      { src: "images/yachts/madsummer_sundeck.jpg?v=hd2", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
+      { src: "images/yachts/madsummer_salon.jpg?v=hd2", caption: "Salon principal de réception au design contemporain d'exception" },
+      { src: "images/yachts/madsummer_lounge.jpg?v=hd2", caption: "Salon lounge demi-lune et bar de pont panoramique" },
+      { src: "images/yachts/madsummer_master_bed.jpg?v=hd2", caption: "Suite propriétaire Master avec vue panoramique" },
+      { src: "images/yachts/madsummer_twin_cabin.jpg?v=hd2", caption: "Cabine invités grand luxe avec lits jumeaux" },
+      { src: "images/yachts/madsummer_bath_ocean.jpg?v=hd2", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
+      { src: "images/yachts/madsummer_bath_marble.jpg?v=hd2", caption: "Salle de bain en marbre blanc et boiseries nobles" },
+      { src: "images/yachts/madsummer_gym.jpg?v=hd2", caption: "Salle de sport panoramique équipée face à la mer" }
     ],
     idx: 0
   },
   sophia: {
     images: [
-      { src: "images/yachts/sophia_profile.jpg", caption: "Profil au mouillage, Caraïbes" },
-      { src: "images/yachts/sophia_aft_dining.jpg", caption: "Table de dîner extérieure sur le pont arrière" },
-      { src: "images/yachts/sophia_sundeck_firepit.jpg", caption: "Salon extérieur avec brasero au coucher du soleil" },
-      { src: "images/yachts/sophia_pool_aerial.jpg", caption: "Vue aérienne de la proue et piscine à fond vitré" },
-      { src: "images/yachts/sophia_lounge_bar.jpg", caption: "Bar salon avec vue sur la piscine transparente" },
-      { src: "images/yachts/sophia_main_salon.jpg", caption: "Salon principal et bar" },
-      { src: "images/yachts/sophia_dining_room.jpg", caption: "Salle à manger formelle pour 10 convives" },
-      { src: "images/yachts/sophia_owner_suite.jpg", caption: "Suite propriétaire panoramique avec puits de lumière" },
-      { src: "images/yachts/sophia_guest_cabin.jpg", caption: "Cabine invités avec vue sur la baie" },
-      { src: "images/yachts/sophia_master_bath.jpg", caption: "Salle de bain avec baignoire vue mer" }
+      { src: "images/yachts/sophia_profile.jpg?v=hd2", caption: "Profil au mouillage, Caraïbes" },
+      { src: "images/yachts/sophia_aft_dining.jpg?v=hd2", caption: "Table de dîner extérieure sur le pont arrière" },
+      { src: "images/yachts/sophia_sundeck_firepit.jpg?v=hd2", caption: "Salon extérieur avec brasero au coucher du soleil" },
+      { src: "images/yachts/sophia_pool_aerial.jpg?v=hd2", caption: "Vue aérienne de la proue et piscine à fond vitré" },
+      { src: "images/yachts/sophia_lounge_bar.jpg?v=hd2", caption: "Bar salon avec vue sur la piscine transparente" },
+      { src: "images/yachts/sophia_main_salon.jpg?v=hd2", caption: "Salon principal et bar" },
+      { src: "images/yachts/sophia_dining_room.jpg?v=hd2", caption: "Salle à manger formelle pour 10 convives" },
+      { src: "images/yachts/sophia_owner_suite.jpg?v=hd2", caption: "Suite propriétaire panoramique avec puits de lumière" },
+      { src: "images/yachts/sophia_guest_cabin.jpg?v=hd2", caption: "Cabine invités avec vue sur la baie" },
+      { src: "images/yachts/sophia_master_bath.jpg?v=hd2", caption: "Salle de bain avec baignoire vue mer" }
     ],
     idx: 0
   }
