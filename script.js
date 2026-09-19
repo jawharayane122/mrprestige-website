@@ -408,52 +408,63 @@ const YACHTS = {
 
 let activeLightboxYacht = null;
 
-function selectYachtImg(yachtId, index) {
+function ys_go(yachtId, index) {
   const yacht = YACHTS[yachtId];
   if (!yacht || index < 0 || index >= yacht.images.length) return;
   yacht.idx = index;
-  const mainImg = document.getElementById(`yachtMainImg-${yachtId}`);
-  const bgImg = document.getElementById(`yachtMainImgBg-${yachtId}`);
-  const captionEl = document.getElementById(`yachtImgCaption-${yachtId}`);
-  const counterEl = document.getElementById(`yachtImgCounter-${yachtId}`);
-  const thumbsContainer = document.getElementById(`yachtThumbs-${yachtId}`);
-  const thumbs = thumbsContainer ? thumbsContainer.querySelectorAll('.yacht-thumb') : [];
 
-  if (mainImg) {
-    mainImg.src = yacht.images[index].src;
-    if (captionEl) captionEl.textContent = yacht.images[index].caption;
-    if (counterEl) counterEl.textContent = `${index + 1} / ${yacht.images.length}`;
+  const fg = document.getElementById(`yslide-fg-${yachtId}`);
+  const bg = document.getElementById(`yslide-bg-${yachtId}`);
+  const counter = document.getElementById(`ycounter-${yachtId}`);
+  const dotsContainer = document.getElementById(`ydots-${yachtId}`);
+
+  if (fg) fg.src = yacht.images[index].src;
+  if (bg) bg.src = yacht.images[index].src;
+  if (counter) counter.textContent = `${index + 1} / ${yacht.images.length}`;
+
+  if (dotsContainer) {
+    const dots = dotsContainer.querySelectorAll('.yslide-dot');
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+    });
   }
-  if (bgImg) bgImg.src = yacht.images[index].src;
 
+  // Update lightbox if active
   const lightbox = document.getElementById('yachtLightbox');
   if (lightbox && lightbox.classList.contains('active') && activeLightboxYacht === yachtId) {
     updateYachtLightboxContent();
   }
-
-  thumbs.forEach((t, i) => {
-    t.classList.toggle('active', i === index);
-  });
-
-  // Scroll only the thumbs container — NOT the whole page
-  if (thumbsContainer && thumbs[index]) {
-    const thumb = thumbs[index];
-    const containerWidth = thumbsContainer.offsetWidth;
-    const thumbLeft  = thumb.offsetLeft;
-    const thumbWidth = thumb.offsetWidth;
-    const targetScroll = thumbLeft - containerWidth / 2 + thumbWidth / 2;
-    thumbsContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
-  }
 }
 
-function navigateYachtImg(yachtId, dir) {
+function ys_nav(yachtId, dir) {
   const yacht = YACHTS[yachtId];
   if (!yacht) return;
   let next = yacht.idx + dir;
   if (next < 0) next = yacht.images.length - 1;
   if (next >= yacht.images.length) next = 0;
-  selectYachtImg(yachtId, next);
+  ys_go(yachtId, next);
 }
+
+function selectYachtImg(yachtId, index) { ys_go(yachtId, index); }
+function navigateYachtImg(yachtId, dir) { ys_nav(yachtId, dir); }
+
+// Touch swipe support for yacht cards
+document.addEventListener('DOMContentLoaded', () => {
+  ['madsummer', 'sophia'].forEach(yachtId => {
+    const slider = document.getElementById(`yslider-${yachtId}`);
+    if (!slider) return;
+    let startX = 0;
+    slider.addEventListener('touchstart', (e) => {
+      startX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      const diffX = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diffX) > 45) {
+        ys_nav(yachtId, diffX < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  });
+});
 
 // ===== YACHT LIGHTBOX =====
 function updateYachtLightboxContent() {
@@ -529,3 +540,4 @@ applyLang(currentLang);
 
 // Charger la flotte dynamique (remplace les cartes statiques si Supabase répond)
 loadFleetFromSupabase();
+
