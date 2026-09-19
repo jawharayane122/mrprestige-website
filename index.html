@@ -7,8 +7,8 @@
   <meta name="description" content="MR PRESTIGE – Location de véhicules de luxe, transferts VIP, location immobilière et yachts. Service premium sur la Côte d'Azur.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
-  <script src="translations.js?v=4"></script>
+  <link rel="stylesheet" href="style.css?v=6">
+  <script src="translations.js?v=5"></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -29,6 +29,7 @@
       <li><a href="#services" data-i18n="nav_services">Services</a></li>
       <li><a href="#fleet" data-i18n="nav_fleet">Flotte</a></li>
       <li><a href="#yachts" data-i18n="nav_yachts">Yachts</a></li>
+      <li><a href="#villas" data-i18n="nav_villas">Villas & Chalets</a></li>
       <li><a href="#transfers" data-i18n="nav_transfers">Transferts</a></li>
       <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Réserver</a></li>
     </ul>
@@ -104,7 +105,7 @@
       <div class="service-icon">🏡</div>
       <h3>Location Immobilière</h3>
       <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur. Séjours d'exception pour une clientèle exigeante.</p>
-      <a href="#contact" class="card-link">Demander →</a>
+      <a href="#villas" class="card-link">Voir les biens →</a>
     </div>
     <div class="service-card" data-aos>
       <div class="service-icon">⛵</div>
@@ -286,12 +287,8 @@
       <div class="yacht-body">
         <!-- Gallery -->
         <div class="yacht-gallery">
-          <div class="yacht-main-img-wrap" id="yachtMainImgWrap">
-            <img id="yachtMainImgBg" class="yacht-main-img-bg" src="images/yachts/madsummer_profile.jpg" alt="" aria-hidden="true">
-            <img id="yachtMainImg" class="yacht-main-img-fg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy" onclick="openYachtLightbox()">
-            <button type="button" class="yacht-zoom-btn" onclick="openYachtLightbox()" aria-label="Agrandir la photo">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
-            </button>
+          <div class="yacht-main-img-wrap">
+            <img id="yachtMainImg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy">
             <div class="yacht-img-caption">
               <span id="yachtImgCaption">Profil en mer avec héliport avant certifié</span>
               <span id="yachtImgCounter" class="yacht-counter">1 / 11</span>
@@ -393,17 +390,16 @@
   </div>
 </section>
 
-<!-- YACHT LIGHTBOX -->
-<div class="yacht-lightbox" id="yachtLightbox" onclick="closeYachtLightboxOnBackdrop(event)">
-  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer">✕</button>
-  <button type="button" class="lightbox-nav prev" onclick="navigateYachtImg(-1)" aria-label="Précédent">❮</button>
-  <img id="yachtLightboxImg" src="" alt="Yacht MADSUMMER">
-  <button type="button" class="lightbox-nav next" onclick="navigateYachtImg(1)" aria-label="Suivant">❯</button>
-  <div class="lightbox-caption">
-    <span id="yachtLightboxCaption"></span>
-    <span id="yachtLightboxCounter" class="yacht-counter"></span>
+<!-- VILLAS & CHALETS — COURCHEVEL -->
+<section id="villas" class="section section-dark">
+  <p class="section-tag" data-i18n="villas_tag">LOCATION DE PRESTIGE — COURCHEVEL</p>
+  <h2 class="section-title" data-i18n="villas_title">Nos Villas & <span class="gold">Chalets</span> à Courchevel</h2>
+  <p class="yacht-intro" data-i18n="villas_sub">Séjournez dans nos chalets et villas d'exception au cœur des 3 Vallées. Prestations haut de gamme, conciergerie sur demande et accès aux pistes pour un hiver inoubliable.</p>
+
+  <div class="fleet-grid" id="villasGrid">
+    <!-- Rempli dynamiquement depuis Supabase : biens publiés, type Villa/Chalet, ville Courchevel -->
   </div>
-</div>
+</section>
 
 <!-- TRANSFERS -->
 <section id="transfers" class="section">
@@ -565,6 +561,7 @@
       <a href="#services" data-i18n="nav_services">Services</a>
       <a href="#fleet" data-i18n="nav_fleet">Flotte</a>
       <a href="#yachts" data-i18n="nav_yachts">Yachts</a>
+      <a href="#villas" data-i18n="nav_villas">Villas & Chalets</a>
       <a href="#transfers" data-i18n="nav_transfers">Transferts</a>
       <a href="#contact" data-i18n="nav_book">Contact</a>
     </div>
@@ -572,6 +569,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>
