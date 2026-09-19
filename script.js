@@ -108,82 +108,6 @@ async function loadFleetFromSupabase() {
   if (activeFilter) activeFilter.click();
 }
 
-// ===== CHARGEMENT DES VILLAS & CHALETS (COURCHEVEL) DEPUIS SUPABASE =====
-// Lit la table "properties" (biens publiés depuis l'app FleetRent, page IMMOBILIER)
-// Filtre : published = true, type Villa ou Chalet, ville Courchevel.
-// Pour élargir à d'autres destinations plus tard, il suffit d'ajuster le filtre "city".
-async function loadPropertiesFromSupabase() {
-  const grid = document.getElementById('villasGrid');
-  if (!grid) return;
-
-  const t = T[currentLang] || T['fr'];
-  let properties = null;
-
-  try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/properties?published=eq.true&type=in.(Villa,Chalet)&city=ilike.*courchevel*&select=id,type,name,city,bedrooms,bathrooms,surface,price_season,price_month,img_main&order=id.desc`,
-      {
-        headers: {
-          'apikey':        SUPABASE_ANON,
-          'Authorization': `Bearer ${SUPABASE_ANON}`,
-        }
-      }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data)) properties = data;
-    }
-  } catch (e) {
-    console.log('Supabase (properties) non disponible.');
-  }
-
-  // Aucun bien publié pour l'instant : afficher un état vide engageant plutôt qu'une grille cassée
-  if (!properties || properties.length === 0) {
-    grid.innerHTML = `
-      <div class="villa-empty">
-        <p>${t.villas_empty || 'De nouvelles villas et chalets à Courchevel seront bientôt en ligne.'}</p>
-        <a href="#contact" class="btn-primary" onclick="preselectVilla('')">${t.villas_cta || 'Nous consulter'}</a>
-      </div>`;
-    return;
-  }
-
-  grid.innerHTML = '';
-  properties.forEach(p => {
-    const price = p.price_season || p.price_month || 0;
-    const priceUnit = p.price_season ? '/ semaine' : (p.price_month ? '/ mois' : '');
-    const img = p.img_main || '';
-    const name = p.name || p.type || 'Bien à Courchevel';
-    const specs = [];
-    if (p.bedrooms) specs.push(`<span>${p.bedrooms} ch.</span>`);
-    if (p.bathrooms) specs.push(`<span>${p.bathrooms} sdb</span>`);
-    if (p.surface) specs.push(`<span>${p.surface} m²</span>`);
-    const specsHtml = specs.join('<span>•</span>');
-
-    const card = document.createElement('div');
-    card.className = 'car-card';
-    card.innerHTML = `
-      <div class="car-img-wrap">
-        <img src="${img}" alt="${name}" loading="lazy"
-             onerror="this.style.background='#1a1a1a';this.style.minHeight='200px'">
-        <span class="car-badge available">${p.type || ''}</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">${(p.city || 'COURCHEVEL').toUpperCase()}</div>
-        <div class="car-model">${name}</div>
-        <div class="car-specs">${specsHtml}</div>
-        <div class="car-footer">
-          <div class="car-price">${
-            price
-              ? `<span class="gold">${Number(price).toLocaleString('fr-FR')} €</span><small>${priceUnit}</small>`
-              : `<span class="gold" style="font-size:1rem;">${t.villas_price_demand || 'Sur demande'}</span>`
-          }</div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVilla('${name.replace(/'/g, "\\'")}')">${t.btn_villa_request || 'Demander'}</a>
-        </div>
-      </div>`;
-    grid.appendChild(card);
-  });
-}
-
 // ====================================================
 
 const FLAGS = { fr:'🇫🇷', en:'🇬🇧', ar:'🇸🇦', ru:'🇷🇺', zh:'🇨🇳' };
@@ -293,7 +217,7 @@ const I18N_MAP = () => [
 ];
 
 // Keys that use innerHTML (contain HTML tags like <span>, <br>)
-const HTML_KEYS = new Set(['hero_title','tr_title','why_title','ct_title','yacht_title','villas_title']);
+const HTML_KEYS = new Set(['hero_title','tr_title','why_title','ct_title','yacht_title']);
 
 // Transfer list items need special handling (gold span prefix)
 const TRANSFER_KEYS = { tr1:0, tr2:1, tr3:2, tr4:3, tr5:4 };
@@ -447,48 +371,64 @@ function preselectYacht(name) {
   if (svc) svc.value = 'Location Bateau';
 }
 
-// ===== PRESELECT VILLA / CHALET =====
-function preselectVilla(name) {
-  const field = document.getElementById('formVehicle');
-  const group = document.getElementById('vehicleGroup');
-  const svc   = document.getElementById('formService');
-  if (field && group) {
-    field.value = name || '';
-    group.style.display = name ? 'block' : 'none';
-  }
-  if (svc) svc.value = 'Location Immobilière';
-}
-
 // ===== YACHT GALLERY =====
-const YACHT_IMAGES = [
-  { src: "images/yachts/madsummer_profile.jpg", caption: "Profil en mer avec héliport avant certifié" },
-  { src: "images/yachts/madsummer_stern.jpg", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
-  { src: "images/yachts/madsummer_pool.jpg", caption: "Piscine transparente de 12 mètres et sunbeds" },
-  { src: "images/yachts/madsummer_sundeck.jpg", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
-  { src: "images/yachts/madsummer_salon.jpg", caption: "Salon principal de réception au design contemporain d'exception" },
-  { src: "images/yachts/madsummer_lounge.jpg", caption: "Salon lounge demi-lune et bar de pont panoramique" },
-  { src: "images/yachts/madsummer_master_bed.jpg", caption: "Suite propriétaire Master avec vue panoramique" },
-  { src: "images/yachts/madsummer_twin_cabin.jpg", caption: "Cabine invités grand luxe avec lits jumeaux" },
-  { src: "images/yachts/madsummer_bath_ocean.jpg", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
-  { src: "images/yachts/madsummer_bath_marble.jpg", caption: "Salle de bain en marbre blanc et boiseries nobles" },
-  { src: "images/yachts/madsummer_gym.jpg", caption: "Salle de sport panoramique équipée face à la mer" }
-];
+const YACHTS = {
+  madsummer: {
+    images: [
+      { src: "images/yachts/madsummer_profile.jpg", caption: "Profil en mer avec héliport avant certifié" },
+      { src: "images/yachts/madsummer_stern.jpg", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
+      { src: "images/yachts/madsummer_pool.jpg", caption: "Piscine transparente de 12 mètres et sunbeds" },
+      { src: "images/yachts/madsummer_sundeck.jpg", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
+      { src: "images/yachts/madsummer_salon.jpg", caption: "Salon principal de réception au design contemporain d'exception" },
+      { src: "images/yachts/madsummer_lounge.jpg", caption: "Salon lounge demi-lune et bar de pont panoramique" },
+      { src: "images/yachts/madsummer_master_bed.jpg", caption: "Suite propriétaire Master avec vue panoramique" },
+      { src: "images/yachts/madsummer_twin_cabin.jpg", caption: "Cabine invités grand luxe avec lits jumeaux" },
+      { src: "images/yachts/madsummer_bath_ocean.jpg", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
+      { src: "images/yachts/madsummer_bath_marble.jpg", caption: "Salle de bain en marbre blanc et boiseries nobles" },
+      { src: "images/yachts/madsummer_gym.jpg", caption: "Salle de sport panoramique équipée face à la mer" }
+    ],
+    idx: 0
+  },
+  sophia: {
+    images: [
+      { src: "images/yachts/sophia_profile.jpg", caption: "Profil au mouillage, Caraïbes" },
+      { src: "images/yachts/sophia_aft_dining.jpg", caption: "Table de dîner extérieure sur le pont arrière" },
+      { src: "images/yachts/sophia_sundeck_firepit.jpg", caption: "Salon extérieur avec brasero au coucher du soleil" },
+      { src: "images/yachts/sophia_pool_aerial.jpg", caption: "Vue aérienne de la proue et piscine à fond vitré" },
+      { src: "images/yachts/sophia_lounge_bar.jpg", caption: "Bar salon avec vue sur la piscine transparente" },
+      { src: "images/yachts/sophia_main_salon.jpg", caption: "Salon principal et bar" },
+      { src: "images/yachts/sophia_dining_room.jpg", caption: "Salle à manger formelle pour 10 convives" },
+      { src: "images/yachts/sophia_owner_suite.jpg", caption: "Suite propriétaire panoramique avec puits de lumière" },
+      { src: "images/yachts/sophia_guest_cabin.jpg", caption: "Cabine invités avec vue sur la baie" },
+      { src: "images/yachts/sophia_master_bath.jpg", caption: "Salle de bain avec baignoire vue mer" }
+    ],
+    idx: 0
+  }
+};
 
-let currentYachtImgIdx = 0;
+let activeLightboxYacht = null;
 
-function selectYachtImg(index) {
-  if (index < 0 || index >= YACHT_IMAGES.length) return;
-  currentYachtImgIdx = index;
-  const mainImg = document.getElementById('yachtMainImg');
-  const captionEl = document.getElementById('yachtImgCaption');
-  const counterEl = document.getElementById('yachtImgCounter');
-  const thumbsContainer = document.getElementById('yachtThumbs');
-  const thumbs = document.querySelectorAll('.yacht-thumb');
+function selectYachtImg(yachtId, index) {
+  const yacht = YACHTS[yachtId];
+  if (!yacht || index < 0 || index >= yacht.images.length) return;
+  yacht.idx = index;
+  const mainImg = document.getElementById(`yachtMainImg-${yachtId}`);
+  const bgImg = document.getElementById(`yachtMainImgBg-${yachtId}`);
+  const captionEl = document.getElementById(`yachtImgCaption-${yachtId}`);
+  const counterEl = document.getElementById(`yachtImgCounter-${yachtId}`);
+  const thumbsContainer = document.getElementById(`yachtThumbs-${yachtId}`);
+  const thumbs = thumbsContainer ? thumbsContainer.querySelectorAll('.yacht-thumb') : [];
 
   if (mainImg) {
-    mainImg.src = YACHT_IMAGES[index].src;
-    if (captionEl) captionEl.textContent = YACHT_IMAGES[index].caption;
-    if (counterEl) counterEl.textContent = `${index + 1} / ${YACHT_IMAGES.length}`;
+    mainImg.src = yacht.images[index].src;
+    if (captionEl) captionEl.textContent = yacht.images[index].caption;
+    if (counterEl) counterEl.textContent = `${index + 1} / ${yacht.images.length}`;
+  }
+  if (bgImg) bgImg.src = yacht.images[index].src;
+
+  const lightbox = document.getElementById('yachtLightbox');
+  if (lightbox && lightbox.classList.contains('active') && activeLightboxYacht === yachtId) {
+    updateYachtLightboxContent();
   }
 
   thumbs.forEach((t, i) => {
@@ -498,7 +438,6 @@ function selectYachtImg(index) {
   // Scroll only the thumbs container — NOT the whole page
   if (thumbsContainer && thumbs[index]) {
     const thumb = thumbs[index];
-    const containerLeft  = thumbsContainer.scrollLeft;
     const containerWidth = thumbsContainer.offsetWidth;
     const thumbLeft  = thumb.offsetLeft;
     const thumbWidth = thumb.offsetWidth;
@@ -507,12 +446,61 @@ function selectYachtImg(index) {
   }
 }
 
-function navigateYachtImg(dir) {
-  let next = currentYachtImgIdx + dir;
-  if (next < 0) next = YACHT_IMAGES.length - 1;
-  if (next >= YACHT_IMAGES.length) next = 0;
-  selectYachtImg(next);
+function navigateYachtImg(yachtId, dir) {
+  const yacht = YACHTS[yachtId];
+  if (!yacht) return;
+  let next = yacht.idx + dir;
+  if (next < 0) next = yacht.images.length - 1;
+  if (next >= yacht.images.length) next = 0;
+  selectYachtImg(yachtId, next);
 }
+
+// ===== YACHT LIGHTBOX =====
+function updateYachtLightboxContent() {
+  const img = document.getElementById('yachtLightboxImg');
+  const caption = document.getElementById('yachtLightboxCaption');
+  const counter = document.getElementById('yachtLightboxCounter');
+  const yacht = YACHTS[activeLightboxYacht];
+  if (!yacht) return;
+  const current = yacht.images[yacht.idx];
+  if (!current) return;
+  if (img) img.src = current.src;
+  if (caption) caption.textContent = current.caption;
+  if (counter) counter.textContent = `${yacht.idx + 1} / ${yacht.images.length}`;
+}
+
+function openYachtLightbox(yachtId) {
+  const lightbox = document.getElementById('yachtLightbox');
+  if (!lightbox) return;
+  activeLightboxYacht = yachtId;
+  updateYachtLightboxContent();
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeYachtLightbox() {
+  const lightbox = document.getElementById('yachtLightbox');
+  if (!lightbox) return;
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeYachtLightboxOnBackdrop(event) {
+  if (event.target.id === 'yachtLightbox') closeYachtLightbox();
+}
+
+function navigateLightbox(dir) {
+  if (!activeLightboxYacht) return;
+  navigateYachtImg(activeLightboxYacht, dir);
+}
+
+document.addEventListener('keydown', (e) => {
+  const lightbox = document.getElementById('yachtLightbox');
+  if (!lightbox || !lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeYachtLightbox();
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'ArrowRight') navigateLightbox(1);
+});
 
 // ===== SMOOTH ACTIVE NAV =====
 const sections   = document.querySelectorAll('section[id]');
@@ -541,6 +529,3 @@ applyLang(currentLang);
 
 // Charger la flotte dynamique (remplace les cartes statiques si Supabase répond)
 loadFleetFromSupabase();
-
-// Charger les villas & chalets à Courchevel (biens publiés depuis l'app FleetRent)
-loadPropertiesFromSupabase();
