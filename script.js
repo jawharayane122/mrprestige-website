@@ -108,6 +108,82 @@ async function loadFleetFromSupabase() {
   if (activeFilter) activeFilter.click();
 }
 
+// ===== CHARGEMENT DES VILLAS & CHALETS (COURCHEVEL) DEPUIS SUPABASE =====
+// Lit la table "properties" (biens publiés depuis l'app FleetRent, page IMMOBILIER)
+// Filtre : published = true, type Villa ou Chalet, ville Courchevel.
+// Pour élargir à d'autres destinations plus tard, il suffit d'ajuster le filtre "city".
+async function loadPropertiesFromSupabase() {
+  const grid = document.getElementById('villasGrid');
+  if (!grid) return;
+
+  const t = T[currentLang] || T['fr'];
+  let properties = null;
+
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/properties?published=eq.true&type=in.(Villa,Chalet)&city=ilike.*courchevel*&select=id,type,name,city,bedrooms,bathrooms,surface,price_season,price_month,img_main&order=id.desc`,
+      {
+        headers: {
+          'apikey':        SUPABASE_ANON,
+          'Authorization': `Bearer ${SUPABASE_ANON}`,
+        }
+      }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) properties = data;
+    }
+  } catch (e) {
+    console.log('Supabase (properties) non disponible.');
+  }
+
+  // Aucun bien publié pour l'instant : afficher un état vide engageant plutôt qu'une grille cassée
+  if (!properties || properties.length === 0) {
+    grid.innerHTML = `
+      <div class="villa-empty">
+        <p>${t.villas_empty || 'De nouvelles villas et chalets à Courchevel seront bientôt en ligne.'}</p>
+        <a href="#contact" class="btn-primary" onclick="preselectVilla('')">${t.villas_cta || 'Nous consulter'}</a>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = '';
+  properties.forEach(p => {
+    const price = p.price_season || p.price_month || 0;
+    const priceUnit = p.price_season ? '/ semaine' : (p.price_month ? '/ mois' : '');
+    const img = p.img_main || '';
+    const name = p.name || p.type || 'Bien à Courchevel';
+    const specs = [];
+    if (p.bedrooms) specs.push(`<span>${p.bedrooms} ch.</span>`);
+    if (p.bathrooms) specs.push(`<span>${p.bathrooms} sdb</span>`);
+    if (p.surface) specs.push(`<span>${p.surface} m²</span>`);
+    const specsHtml = specs.join('<span>•</span>');
+
+    const card = document.createElement('div');
+    card.className = 'car-card';
+    card.innerHTML = `
+      <div class="car-img-wrap">
+        <img src="${img}" alt="${name}" loading="lazy"
+             onerror="this.style.background='#1a1a1a';this.style.minHeight='200px'">
+        <span class="car-badge available">${p.type || ''}</span>
+      </div>
+      <div class="car-body">
+        <div class="car-brand">${(p.city || 'COURCHEVEL').toUpperCase()}</div>
+        <div class="car-model">${name}</div>
+        <div class="car-specs">${specsHtml}</div>
+        <div class="car-footer">
+          <div class="car-price">${
+            price
+              ? `<span class="gold">${Number(price).toLocaleString('fr-FR')} €</span><small>${priceUnit}</small>`
+              : `<span class="gold" style="font-size:1rem;">${t.villas_price_demand || 'Sur demande'}</span>`
+          }</div>
+          <a href="#contact" class="btn-reserve" onclick="preselectVilla('${name.replace(/'/g, "\\'")}')">${t.btn_villa_request || 'Demander'}</a>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
 // ====================================================
 
 const FLAGS = { fr:'🇫🇷', en:'🇬🇧', ar:'🇸🇦', ru:'🇷🇺', zh:'🇨🇳' };
@@ -217,7 +293,7 @@ const I18N_MAP = () => [
 ];
 
 // Keys that use innerHTML (contain HTML tags like <span>, <br>)
-const HTML_KEYS = new Set(['hero_title','tr_title','why_title','ct_title','yacht_title']);
+const HTML_KEYS = new Set(['hero_title','tr_title','why_title','ct_title','yacht_title','villas_title']);
 
 // Transfer list items need special handling (gold span prefix)
 const TRANSFER_KEYS = { tr1:0, tr2:1, tr3:2, tr4:3, tr5:4 };
@@ -371,6 +447,18 @@ function preselectYacht(name) {
   if (svc) svc.value = 'Location Bateau';
 }
 
+// ===== PRESELECT VILLA / CHALET =====
+function preselectVilla(name) {
+  const field = document.getElementById('formVehicle');
+  const group = document.getElementById('vehicleGroup');
+  const svc   = document.getElementById('formService');
+  if (field && group) {
+    field.value = name || '';
+    group.style.display = name ? 'block' : 'none';
+  }
+  if (svc) svc.value = 'Location Immobilière';
+}
+
 // ===== YACHT GALLERY =====
 const YACHT_IMAGES = [
   { src: "images/yachts/madsummer_profile.jpg", caption: "Profil en mer avec héliport avant certifié" },
@@ -392,7 +480,6 @@ function selectYachtImg(index) {
   if (index < 0 || index >= YACHT_IMAGES.length) return;
   currentYachtImgIdx = index;
   const mainImg = document.getElementById('yachtMainImg');
-  const bgImg = document.getElementById('yachtMainImgBg');
   const captionEl = document.getElementById('yachtImgCaption');
   const counterEl = document.getElementById('yachtImgCounter');
   const thumbsContainer = document.getElementById('yachtThumbs');
@@ -403,10 +490,6 @@ function selectYachtImg(index) {
     if (captionEl) captionEl.textContent = YACHT_IMAGES[index].caption;
     if (counterEl) counterEl.textContent = `${index + 1} / ${YACHT_IMAGES.length}`;
   }
-  if (bgImg) bgImg.src = YACHT_IMAGES[index].src;
-
-  const lightbox = document.getElementById('yachtLightbox');
-  if (lightbox && lightbox.classList.contains('active')) updateYachtLightboxContent();
 
   thumbs.forEach((t, i) => {
     t.classList.toggle('active', i === index);
@@ -430,45 +513,6 @@ function navigateYachtImg(dir) {
   if (next >= YACHT_IMAGES.length) next = 0;
   selectYachtImg(next);
 }
-
-// ===== YACHT LIGHTBOX =====
-function updateYachtLightboxContent() {
-  const img = document.getElementById('yachtLightboxImg');
-  const caption = document.getElementById('yachtLightboxCaption');
-  const counter = document.getElementById('yachtLightboxCounter');
-  const current = YACHT_IMAGES[currentYachtImgIdx];
-  if (!current) return;
-  if (img) img.src = current.src;
-  if (caption) caption.textContent = current.caption;
-  if (counter) counter.textContent = `${currentYachtImgIdx + 1} / ${YACHT_IMAGES.length}`;
-}
-
-function openYachtLightbox() {
-  const lightbox = document.getElementById('yachtLightbox');
-  if (!lightbox) return;
-  updateYachtLightboxContent();
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeYachtLightbox() {
-  const lightbox = document.getElementById('yachtLightbox');
-  if (!lightbox) return;
-  lightbox.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function closeYachtLightboxOnBackdrop(event) {
-  if (event.target.id === 'yachtLightbox') closeYachtLightbox();
-}
-
-document.addEventListener('keydown', (e) => {
-  const lightbox = document.getElementById('yachtLightbox');
-  if (!lightbox || !lightbox.classList.contains('active')) return;
-  if (e.key === 'Escape') closeYachtLightbox();
-  if (e.key === 'ArrowLeft') navigateYachtImg(-1);
-  if (e.key === 'ArrowRight') navigateYachtImg(1);
-});
 
 // ===== SMOOTH ACTIVE NAV =====
 const sections   = document.querySelectorAll('section[id]');
@@ -497,3 +541,6 @@ applyLang(currentLang);
 
 // Charger la flotte dynamique (remplace les cartes statiques si Supabase répond)
 loadFleetFromSupabase();
+
+// Charger les villas & chalets à Courchevel (biens publiés depuis l'app FleetRent)
+loadPropertiesFromSupabase();
