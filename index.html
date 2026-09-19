@@ -286,8 +286,12 @@
       <div class="yacht-body">
         <!-- Gallery -->
         <div class="yacht-gallery">
-          <div class="yacht-main-img-wrap">
-            <img id="yachtMainImg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy">
+          <div class="yacht-main-img-wrap" id="yachtMainImgWrap">
+            <img id="yachtMainImgBg" class="yacht-main-img-bg" src="images/yachts/madsummer_profile.jpg" alt="" aria-hidden="true">
+            <img id="yachtMainImg" class="yacht-main-img-fg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy" onclick="openYachtLightbox()">
+            <button type="button" class="yacht-zoom-btn" onclick="openYachtLightbox()" aria-label="Agrandir la photo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+            </button>
             <div class="yacht-img-caption">
               <span id="yachtImgCaption">Profil en mer avec héliport avant certifié</span>
               <span id="yachtImgCounter" class="yacht-counter">1 / 11</span>
@@ -388,6 +392,18 @@
     </div>
   </div>
 </section>
+
+<!-- YACHT LIGHTBOX -->
+<div class="yacht-lightbox" id="yachtLightbox" onclick="closeYachtLightboxOnBackdrop(event)">
+  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer">✕</button>
+  <button type="button" class="lightbox-nav prev" onclick="navigateYachtImg(-1)" aria-label="Précédent">❮</button>
+  <img id="yachtLightboxImg" src="" alt="Yacht MADSUMMER">
+  <button type="button" class="lightbox-nav next" onclick="navigateYachtImg(1)" aria-label="Suivant">❯</button>
+  <div class="lightbox-caption">
+    <span id="yachtLightboxCaption"></span>
+    <span id="yachtLightboxCounter" class="yacht-counter"></span>
+  </div>
+</div>
 
 <!-- TRANSFERS -->
 <section id="transfers" class="section">
