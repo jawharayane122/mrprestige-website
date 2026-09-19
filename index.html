@@ -7,8 +7,8 @@
   <meta name="description" content="MR PRESTIGE – Location de véhicules de luxe, transferts VIP, location immobilière et yachts. Service premium sur la Côte d'Azur.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
-  <script src="translations.js?v=5"></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="translations.js?v=4"></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -29,7 +29,6 @@
       <li><a href="#services" data-i18n="nav_services">Services</a></li>
       <li><a href="#fleet" data-i18n="nav_fleet">Flotte</a></li>
       <li><a href="#yachts" data-i18n="nav_yachts">Yachts</a></li>
-      <li><a href="#villas" data-i18n="nav_villas">Villas & Chalets</a></li>
       <li><a href="#transfers" data-i18n="nav_transfers">Transferts</a></li>
       <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Réserver</a></li>
     </ul>
@@ -105,7 +104,7 @@
       <div class="service-icon">🏡</div>
       <h3>Location Immobilière</h3>
       <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur. Séjours d'exception pour une clientèle exigeante.</p>
-      <a href="#villas" class="card-link">Voir les biens →</a>
+      <a href="#contact" class="card-link">Demander →</a>
     </div>
     <div class="service-card" data-aos>
       <div class="service-icon">⛵</div>
@@ -287,27 +286,31 @@
       <div class="yacht-body">
         <!-- Gallery -->
         <div class="yacht-gallery">
-          <div class="yacht-main-img-wrap">
-            <img id="yachtMainImg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy">
+          <div class="yacht-main-img-wrap" id="yachtMainImgWrap-madsummer">
+            <img id="yachtMainImgBg-madsummer" class="yacht-main-img-bg" src="images/yachts/madsummer_profile.jpg" alt="" aria-hidden="true">
+            <img id="yachtMainImg-madsummer" class="yacht-main-img-fg" src="images/yachts/madsummer_profile.jpg" alt="Yacht MADSUMMER" loading="lazy" onclick="openYachtLightbox('madsummer')">
+            <button type="button" class="yacht-zoom-btn" onclick="openYachtLightbox('madsummer')" aria-label="Agrandir la photo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+            </button>
             <div class="yacht-img-caption">
-              <span id="yachtImgCaption">Profil en mer avec héliport avant certifié</span>
-              <span id="yachtImgCounter" class="yacht-counter">1 / 11</span>
+              <span id="yachtImgCaption-madsummer">Profil en mer avec héliport avant certifié</span>
+              <span id="yachtImgCounter-madsummer" class="yacht-counter">1 / 11</span>
             </div>
-            <button type="button" class="yacht-nav-btn prev" onclick="navigateYachtImg(-1)" aria-label="Précédent">❮</button>
-            <button type="button" class="yacht-nav-btn next" onclick="navigateYachtImg(1)" aria-label="Suivant">❯</button>
+            <button type="button" class="yacht-nav-btn prev" onclick="navigateYachtImg('madsummer', -1)" aria-label="Précédent">❮</button>
+            <button type="button" class="yacht-nav-btn next" onclick="navigateYachtImg('madsummer', 1)" aria-label="Suivant">❯</button>
           </div>
-          <div class="yacht-thumbs" id="yachtThumbs">
-            <img onclick="selectYachtImg(0)" src="images/yachts/madsummer_profile.jpg" class="yacht-thumb active" alt="MADSUMMER Profil">
-            <img onclick="selectYachtImg(1)" src="images/yachts/madsummer_stern.jpg" class="yacht-thumb" alt="MADSUMMER Poupe">
-            <img onclick="selectYachtImg(2)" src="images/yachts/madsummer_pool.jpg" class="yacht-thumb" alt="MADSUMMER Piscine">
-            <img onclick="selectYachtImg(3)" src="images/yachts/madsummer_sundeck.jpg" class="yacht-thumb" alt="MADSUMMER Pont supérieur">
-            <img onclick="selectYachtImg(4)" src="images/yachts/madsummer_salon.jpg" class="yacht-thumb" alt="MADSUMMER Salon principal">
-            <img onclick="selectYachtImg(5)" src="images/yachts/madsummer_lounge.jpg" class="yacht-thumb" alt="MADSUMMER Salon lounge">
-            <img onclick="selectYachtImg(6)" src="images/yachts/madsummer_master_bed.jpg" class="yacht-thumb" alt="MADSUMMER Suite Master">
-            <img onclick="selectYachtImg(7)" src="images/yachts/madsummer_twin_cabin.jpg" class="yacht-thumb" alt="MADSUMMER Cabine Invités">
-            <img onclick="selectYachtImg(8)" src="images/yachts/madsummer_bath_ocean.jpg" class="yacht-thumb" alt="MADSUMMER Bain Vue Mer">
-            <img onclick="selectYachtImg(9)" src="images/yachts/madsummer_bath_marble.jpg" class="yacht-thumb" alt="MADSUMMER Bain Marbre">
-            <img onclick="selectYachtImg(10)" src="images/yachts/madsummer_gym.jpg" class="yacht-thumb" alt="MADSUMMER Salle de sport">
+          <div class="yacht-thumbs" id="yachtThumbs-madsummer">
+            <img onclick="selectYachtImg('madsummer', 0)" src="images/yachts/madsummer_profile.jpg" class="yacht-thumb active" alt="MADSUMMER Profil">
+            <img onclick="selectYachtImg('madsummer', 1)" src="images/yachts/madsummer_stern.jpg" class="yacht-thumb" alt="MADSUMMER Poupe">
+            <img onclick="selectYachtImg('madsummer', 2)" src="images/yachts/madsummer_pool.jpg" class="yacht-thumb" alt="MADSUMMER Piscine">
+            <img onclick="selectYachtImg('madsummer', 3)" src="images/yachts/madsummer_sundeck.jpg" class="yacht-thumb" alt="MADSUMMER Pont supérieur">
+            <img onclick="selectYachtImg('madsummer', 4)" src="images/yachts/madsummer_salon.jpg" class="yacht-thumb" alt="MADSUMMER Salon principal">
+            <img onclick="selectYachtImg('madsummer', 5)" src="images/yachts/madsummer_lounge.jpg" class="yacht-thumb" alt="MADSUMMER Salon lounge">
+            <img onclick="selectYachtImg('madsummer', 6)" src="images/yachts/madsummer_master_bed.jpg" class="yacht-thumb" alt="MADSUMMER Suite Master">
+            <img onclick="selectYachtImg('madsummer', 7)" src="images/yachts/madsummer_twin_cabin.jpg" class="yacht-thumb" alt="MADSUMMER Cabine Invités">
+            <img onclick="selectYachtImg('madsummer', 8)" src="images/yachts/madsummer_bath_ocean.jpg" class="yacht-thumb" alt="MADSUMMER Bain Vue Mer">
+            <img onclick="selectYachtImg('madsummer', 9)" src="images/yachts/madsummer_bath_marble.jpg" class="yacht-thumb" alt="MADSUMMER Bain Marbre">
+            <img onclick="selectYachtImg('madsummer', 10)" src="images/yachts/madsummer_gym.jpg" class="yacht-thumb" alt="MADSUMMER Salle de sport">
           </div>
         </div>
 
@@ -372,7 +375,7 @@
                 <span>🚁 Héliport certifié</span>
                 <span>🏋️ Gym Panoramique</span>
                 <span>💆 Spa & Beach Club</span>
-                <span>🛥️ Annexes & Toys</span>
+                <span>🚥 Annexes & Toys</span>
               </div>
             </div>
           </div>
@@ -387,19 +390,139 @@
         </div>
       </div>
     </div>
-  </div>
+      <div class="yacht-card">
+      <div class="yacht-card-header">
+        <div class="yacht-title-group">
+          <span class="badge-charter"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
+          <h3 class="yacht-name">SOPHIA <span class="yacht-size">96,6 Mètres / 316'11"</span></h3>
+        </div>
+        <div class="yacht-price-box">
+          <span class="yacht-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
+          <span class="yacht-price-val">1 800 000 € <small style="font-size:0.5em;font-weight:600;">/ SEM.</small></span>
+          <span class="yacht-zone">Méditerranée · Caraïbes</span>
+        </div>
+      </div>
+
+      <div class="yacht-body">
+        <!-- Gallery -->
+        <div class="yacht-gallery">
+          <div class="yacht-main-img-wrap" id="yachtMainImgWrap-sophia">
+            <img id="yachtMainImgBg-sophia" class="yacht-main-img-bg" src="images/yachts/sophia_profile.jpg" alt="" aria-hidden="true">
+            <img id="yachtMainImg-sophia" class="yacht-main-img-fg" src="images/yachts/sophia_profile.jpg" alt="Yacht SOPHIA" loading="lazy" onclick="openYachtLightbox('sophia')">
+            <button type="button" class="yacht-zoom-btn" onclick="openYachtLightbox('sophia')" aria-label="Agrandir la photo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+            </button>
+            <div class="yacht-img-caption">
+              <span id="yachtImgCaption-sophia">Profil au mouillage, Caraïbes</span>
+              <span id="yachtImgCounter-sophia" class="yacht-counter">1 / 10</span>
+            </div>
+            <button type="button" class="yacht-nav-btn prev" onclick="navigateYachtImg('sophia', -1)" aria-label="Précédent">❮</button>
+            <button type="button" class="yacht-nav-btn next" onclick="navigateYachtImg('sophia', 1)" aria-label="Suivant">❯</button>
+          </div>
+          <div class="yacht-thumbs" id="yachtThumbs-sophia">
+            <img onclick="selectYachtImg('sophia', 0)" src="images/yachts/sophia_profile.jpg" class="yacht-thumb active" alt="SOPHIA Profil">
+            <img onclick="selectYachtImg('sophia', 1)" src="images/yachts/sophia_aft_dining.jpg" class="yacht-thumb" alt="SOPHIA Pont arrière">
+            <img onclick="selectYachtImg('sophia', 2)" src="images/yachts/sophia_sundeck_firepit.jpg" class="yacht-thumb" alt="SOPHIA Salon extérieur">
+            <img onclick="selectYachtImg('sophia', 3)" src="images/yachts/sophia_pool_aerial.jpg" class="yacht-thumb" alt="SOPHIA Piscine">
+            <img onclick="selectYachtImg('sophia', 4)" src="images/yachts/sophia_lounge_bar.jpg" class="yacht-thumb" alt="SOPHIA Bar salon">
+            <img onclick="selectYachtImg('sophia', 5)" src="images/yachts/sophia_main_salon.jpg" class="yacht-thumb" alt="SOPHIA Salon principal">
+            <img onclick="selectYachtImg('sophia', 6)" src="images/yachts/sophia_dining_room.jpg" class="yacht-thumb" alt="SOPHIA Salle à manger">
+            <img onclick="selectYachtImg('sophia', 7)" src="images/yachts/sophia_owner_suite.jpg" class="yacht-thumb" alt="SOPHIA Suite propriétaire">
+            <img onclick="selectYachtImg('sophia', 8)" src="images/yachts/sophia_guest_cabin.jpg" class="yacht-thumb" alt="SOPHIA Cabine invités">
+            <img onclick="selectYachtImg('sophia', 9)" src="images/yachts/sophia_master_bath.jpg" class="yacht-thumb" alt="SOPHIA Salle de bain">
+          </div>
+        </div>
+
+        <!-- Specs Column -->
+        <div class="yacht-specs-col">
+          <div>
+            <div class="yacht-key-stats">
+              <div class="stat-box">
+                <span class="stat-lbl" data-i18n="yacht_guests_lbl">LES INVITÉS</span>
+                <div class="stat-val"><span class="stat-ico">👥</span><strong>12</strong></div>
+              </div>
+              <div class="stat-box">
+                <span class="stat-lbl" data-i18n="yacht_cabins_lbl">CABINES</span>
+                <div class="stat-val"><span class="stat-ico">🛏️</span><strong>7</strong></div>
+              </div>
+              <div class="stat-box">
+                <span class="stat-lbl" data-i18n="yacht_crew_lbl">ÉQUIPAGE</span>
+                <div class="stat-val"><span class="stat-ico">👨‍✈️</span><strong>32</strong></div>
+              </div>
+            </div>
+
+            <div class="yacht-specs-heading">
+              <span data-i18n="yacht_specs_title">SPÉCIFICATIONS TECHNIQUES</span>
+              <span class="specs-line"></span>
+            </div>
+
+            <div class="yacht-specs-list">
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_length">Longueur</span>
+                <span class="s-val">96,6 m (316'11")</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_beam">Largeur (Beam)</span>
+                <span class="s-val">14,5 m (47'7")</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_draft">Tirant d'eau (Draft)</span>
+                <span class="s-val">3,7 m (12'2")</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_tonnage">Tonnage Brut</span>
+                <span class="s-val">2 999 GT</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_speed">Vitesse de Croisière</span>
+                <span class="s-val">14 nœuds</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_builder">Chantier</span>
+                <span class="s-val gold">Feadship</span>
+              </div>
+              <div class="spec-row">
+                <span class="s-label" data-i18n="spec_model">Modèle</span>
+                <span class="s-val" data-i18n="spec_custom">Custom (Sur-mesure)</span>
+              </div>
+            </div>
+
+            <div class="yacht-amenities">
+              <span class="amenities-title" data-i18n="yacht_equip_title">Équipements d'exception :</span>
+              <div class="amenities-tags">
+                <span>🏊 Piscine à fond vitré 9x3,6m</span>
+                <span>🚁 Hangar hélicoptère + héliport</span>
+                <span>🧖 Spa, hammam & snow room</span>
+                <span>🎬 Cinéma privé</span>
+                <span>🛏️ Suite propriétaire pleine largeur</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="yacht-actions">
+            <a href="#contact" class="btn-primary yacht-cta-btn" onclick="preselectYacht('Yacht SOPHIA (Feadship 96,6m)')" data-i18n="btn_quote_yacht">Demander un devis pour ce Yacht</a>
+            <a href="https://wa.me/33651032530?text=Bonjour%20MR%20PRESTIGE,%20je%20souhaite%20un%20devis%20pour%20le%20charter%20du%20yacht%20SOPHIA%20(Feadship%2096.6m)." target="_blank" class="btn-whatsapp-yacht">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span data-i18n="yacht_wa">Échanger immédiatement sur WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 </section>
 
-<!-- VILLAS & CHALETS — COURCHEVEL -->
-<section id="villas" class="section section-dark">
-  <p class="section-tag" data-i18n="villas_tag">LOCATION DE PRESTIGE — COURCHEVEL</p>
-  <h2 class="section-title" data-i18n="villas_title">Nos Villas & <span class="gold">Chalets</span> à Courchevel</h2>
-  <p class="yacht-intro" data-i18n="villas_sub">Séjournez dans nos chalets et villas d'exception au cœur des 3 Vallées. Prestations haut de gamme, conciergerie sur demande et accès aux pistes pour un hiver inoubliable.</p>
-
-  <div class="fleet-grid" id="villasGrid">
-    <!-- Rempli dynamiquement depuis Supabase : biens publiés, type Villa/Chalet, ville Courchevel -->
+<!-- YACHT LIGHTBOX -->
+<div class="yacht-lightbox" id="yachtLightbox" onclick="closeYachtLightboxOnBackdrop(event)">
+  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer">✕</button>
+  <button type="button" class="lightbox-nav prev" onclick="navigateLightbox(-1)" aria-label="Précédent">❮</button>
+  <img id="yachtLightboxImg" src="" alt="Yacht MADSUMMER">
+  <button type="button" class="lightbox-nav next" onclick="navigateLightbox(1)" aria-label="Suivant">❯</button>
+  <div class="lightbox-caption">
+    <span id="yachtLightboxCaption"></span>
+    <span id="yachtLightboxCounter" class="yacht-counter"></span>
   </div>
-</section>
+</div>
 
 <!-- TRANSFERS -->
 <section id="transfers" class="section">
@@ -561,7 +684,6 @@
       <a href="#services" data-i18n="nav_services">Services</a>
       <a href="#fleet" data-i18n="nav_fleet">Flotte</a>
       <a href="#yachts" data-i18n="nav_yachts">Yachts</a>
-      <a href="#villas" data-i18n="nav_villas">Villas & Chalets</a>
       <a href="#transfers" data-i18n="nav_transfers">Transferts</a>
       <a href="#contact" data-i18n="nav_book">Contact</a>
     </div>
@@ -569,6 +691,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>
