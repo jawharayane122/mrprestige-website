@@ -392,6 +392,7 @@ function selectYachtImg(index) {
   if (index < 0 || index >= YACHT_IMAGES.length) return;
   currentYachtImgIdx = index;
   const mainImg = document.getElementById('yachtMainImg');
+  const bgImg = document.getElementById('yachtMainImgBg');
   const captionEl = document.getElementById('yachtImgCaption');
   const counterEl = document.getElementById('yachtImgCounter');
   const thumbsContainer = document.getElementById('yachtThumbs');
@@ -402,6 +403,10 @@ function selectYachtImg(index) {
     if (captionEl) captionEl.textContent = YACHT_IMAGES[index].caption;
     if (counterEl) counterEl.textContent = `${index + 1} / ${YACHT_IMAGES.length}`;
   }
+  if (bgImg) bgImg.src = YACHT_IMAGES[index].src;
+
+  const lightbox = document.getElementById('yachtLightbox');
+  if (lightbox && lightbox.classList.contains('active')) updateYachtLightboxContent();
 
   thumbs.forEach((t, i) => {
     t.classList.toggle('active', i === index);
@@ -425,6 +430,45 @@ function navigateYachtImg(dir) {
   if (next >= YACHT_IMAGES.length) next = 0;
   selectYachtImg(next);
 }
+
+// ===== YACHT LIGHTBOX =====
+function updateYachtLightboxContent() {
+  const img = document.getElementById('yachtLightboxImg');
+  const caption = document.getElementById('yachtLightboxCaption');
+  const counter = document.getElementById('yachtLightboxCounter');
+  const current = YACHT_IMAGES[currentYachtImgIdx];
+  if (!current) return;
+  if (img) img.src = current.src;
+  if (caption) caption.textContent = current.caption;
+  if (counter) counter.textContent = `${currentYachtImgIdx + 1} / ${YACHT_IMAGES.length}`;
+}
+
+function openYachtLightbox() {
+  const lightbox = document.getElementById('yachtLightbox');
+  if (!lightbox) return;
+  updateYachtLightboxContent();
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeYachtLightbox() {
+  const lightbox = document.getElementById('yachtLightbox');
+  if (!lightbox) return;
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeYachtLightboxOnBackdrop(event) {
+  if (event.target.id === 'yachtLightbox') closeYachtLightbox();
+}
+
+document.addEventListener('keydown', (e) => {
+  const lightbox = document.getElementById('yachtLightbox');
+  if (!lightbox || !lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeYachtLightbox();
+  if (e.key === 'ArrowLeft') navigateYachtImg(-1);
+  if (e.key === 'ArrowRight') navigateYachtImg(1);
+});
 
 // ===== SMOOTH ACTIVE NAV =====
 const sections   = document.querySelectorAll('section[id]');
@@ -453,4 +497,3 @@ applyLang(currentLang);
 
 // Charger la flotte dynamique (remplace les cartes statiques si Supabase répond)
 loadFleetFromSupabase();
-
