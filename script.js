@@ -403,6 +403,35 @@ const YACHTS = {
       { src: "images/yachts/sophia_master_bath.jpg?v=hd2", caption: "Salle de bain avec baignoire vue mer" }
     ],
     idx: 0
+  },
+  cometogether: {
+    images: [
+      { src: "images/yachts/cometogether_profile.jpg?v=1", caption: "Profil en mer au coucher du soleil" },
+      { src: "images/yachts/cometogether_aft_dining.jpg?v=1", caption: "Table de dîner sur le pont arrière" },
+      { src: "images/yachts/cometogether_deck_lounge.jpg?v=1", caption: "Salon de pont extérieur face à la mer" },
+      { src: "images/yachts/cometogether_main_salon.jpg?v=1", caption: "Salon principal" },
+      { src: "images/yachts/cometogether_study.jpg?v=1", caption: "Bureau avec bibliothèque rétroéclairée" },
+      { src: "images/yachts/cometogether_master_suite.jpg?v=1", caption: "Suite propriétaire" },
+      { src: "images/yachts/cometogether_guest_cabin.jpg?v=1", caption: "Cabine invités" },
+      { src: "images/yachts/cometogether_bathroom.jpg?v=1", caption: "Salle de bain en marbre et douche à l'italienne" },
+      { src: "images/yachts/cometogether_gym.jpg?v=1", caption: "Salle de sport" },
+      { src: "images/yachts/cometogether_sauna.jpg?v=1", caption: "Sauna" }
+    ],
+    idx: 0
+  },
+  // FICHE EN PREPARATION : remplacer/completer des reception des photos
+  moskito: {
+    images: [
+      { src: "images/yachts/moskito_profile.jpg?v=1", caption: "Profil en mer" },
+      { src: "images/yachts/moskito_aft_deck.jpg?v=1", caption: "Pont arrière et coin repas extérieur" },
+      { src: "images/yachts/moskito_sundeck.jpg?v=1", caption: "Pont soleil et bains de soleil" },
+      { src: "images/yachts/moskito_pool.jpg?v=1", caption: "Piscine / jacuzzi de pont" },
+      { src: "images/yachts/moskito_main_salon.jpg?v=1", caption: "Salon principal" },
+      { src: "images/yachts/moskito_dining.jpg?v=1", caption: "Salle à manger" },
+      { src: "images/yachts/moskito_master_suite.jpg?v=1", caption: "Suite propriétaire" },
+      { src: "images/yachts/moskito_guest_cabin.jpg?v=1", caption: "Cabine invités" }
+    ],
+    idx: 0
   }
 };
 
@@ -448,9 +477,24 @@ function ys_nav(yachtId, dir) {
 function selectYachtImg(yachtId, index) { ys_go(yachtId, index); }
 function navigateYachtImg(yachtId, dir) { ys_nav(yachtId, dir); }
 
+// Genere les pastilles de navigation des fiches qui n'en ont pas en dur
+document.addEventListener('DOMContentLoaded', () => {
+  Object.keys(YACHTS).forEach(yachtId => {
+    const box = document.getElementById(`ydots-${yachtId}`);
+    if (!box || box.children.length) return;
+    YACHTS[yachtId].images.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.className = 'yslide-dot' + (i === 0 ? ' active' : '');
+      b.type = 'button';
+      b.addEventListener('click', () => ys_go(yachtId, i));
+      box.appendChild(b);
+    });
+  });
+});
+
 // Touch swipe support for yacht cards
 document.addEventListener('DOMContentLoaded', () => {
-  ['madsummer', 'sophia'].forEach(yachtId => {
+  Object.keys(YACHTS).forEach(yachtId => {
     const slider = document.getElementById(`yslider-${yachtId}`);
     if (!slider) return;
     let startX = 0;
