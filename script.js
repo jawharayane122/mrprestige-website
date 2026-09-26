@@ -419,17 +419,18 @@ const YACHTS = {
     ],
     idx: 0
   },
-  // FICHE EN PREPARATION : remplacer/completer des reception des photos
   moskito: {
     images: [
-      { src: "images/yachts/moskito_profile.jpg?v=1", caption: "Profil en mer" },
-      { src: "images/yachts/moskito_aft_deck.jpg?v=1", caption: "Pont arrière et coin repas extérieur" },
-      { src: "images/yachts/moskito_sundeck.jpg?v=1", caption: "Pont soleil et bains de soleil" },
-      { src: "images/yachts/moskito_pool.jpg?v=1", caption: "Piscine / jacuzzi de pont" },
-      { src: "images/yachts/moskito_main_salon.jpg?v=1", caption: "Salon principal" },
-      { src: "images/yachts/moskito_dining.jpg?v=1", caption: "Salle à manger" },
+      { src: "images/yachts/moskito_profile.jpg?v=1", caption: "Profil dans le Grand Port de La Valette" },
+      { src: "images/yachts/moskito_main_salon.jpg?v=1", caption: "Salon principal et bar" },
+      { src: "images/yachts/moskito_upper_salon.jpg?v=1", caption: "Salon supérieur avec bar" },
+      { src: "images/yachts/moskito_staircase.jpg?v=1", caption: "Escalier hélicoïdal et œuvre d'art" },
       { src: "images/yachts/moskito_master_suite.jpg?v=1", caption: "Suite propriétaire" },
-      { src: "images/yachts/moskito_guest_cabin.jpg?v=1", caption: "Cabine invités" }
+      { src: "images/yachts/moskito_bathroom.jpg?v=1", caption: "Salle de bain en marbre de la suite propriétaire" },
+      { src: "images/yachts/moskito_guest_cabin.jpg?v=1", caption: "Cabine invités" },
+      { src: "images/yachts/moskito_bathroom_shower.jpg?v=1", caption: "Salle de bain avec douche en marbre" },
+      { src: "images/yachts/moskito_gym.jpg?v=1", caption: "Salle de sport ouverte sur le pont" },
+      { src: "images/yachts/moskito_sauna.jpg?v=1", caption: "Sauna" }
     ],
     idx: 0
   }
@@ -482,6 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.keys(YACHTS).forEach(yachtId => {
     const box = document.getElementById(`ydots-${yachtId}`);
     if (!box || box.children.length) return;
+    const counter = document.getElementById(`ycounter-${yachtId}`);
+    if (counter) counter.textContent = `1 / ${YACHTS[yachtId].images.length}`;
     YACHTS[yachtId].images.forEach((_, i) => {
       const b = document.createElement('button');
       b.className = 'yslide-dot' + (i === 0 ? ' active' : '');
