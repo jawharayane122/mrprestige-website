@@ -260,6 +260,10 @@ function applyLang(lang) {
     });
   });
 
+  // La visionneuse ouverte suit le changement de langue
+  const lb = document.getElementById("yachtLightbox");
+  if (lb && lb.classList.contains("active")) updateYachtLightboxContent();
+
   // Translate all elements with data-i18n attribute
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
@@ -271,6 +275,15 @@ function applyLang(lang) {
         el.textContent = val;
       }
     }
+  });
+
+  // Attributs traduits : accessibilite, champs de formulaire, alternatives d'images
+  const I18N_ATTRS = { 'data-i18n-aria': 'aria-label', 'data-i18n-ph': 'placeholder', 'data-i18n-alt': 'alt' };
+  Object.keys(I18N_ATTRS).forEach(src => {
+    document.querySelectorAll('[' + src + ']').forEach(el => {
+      const v = t[el.getAttribute(src)];
+      if (v) el.setAttribute(I18N_ATTRS[src], v);
+    });
   });
 
   // Update form labels (select by position in form-group)
@@ -375,62 +388,62 @@ function preselectYacht(name) {
 const YACHTS = {
   madsummer: {
     images: [
-      { src: "images/yachts/madsummer_profile.jpg?v=hd2", caption: "Profil en mer avec héliport avant certifié" },
-      { src: "images/yachts/madsummer_stern.jpg?v=hd2", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
-      { src: "images/yachts/madsummer_pool.jpg?v=hd2", caption: "Piscine transparente de 12 mètres et sunbeds" },
-      { src: "images/yachts/madsummer_sundeck.jpg?v=hd2", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
-      { src: "images/yachts/madsummer_salon.jpg?v=hd2", caption: "Salon principal de réception au design contemporain d'exception" },
-      { src: "images/yachts/madsummer_lounge.jpg?v=hd2", caption: "Salon lounge demi-lune et bar de pont panoramique" },
-      { src: "images/yachts/madsummer_master_bed.jpg?v=hd2", caption: "Suite propriétaire Master avec vue panoramique" },
-      { src: "images/yachts/madsummer_twin_cabin.jpg?v=hd2", caption: "Cabine invités grand luxe avec lits jumeaux" },
-      { src: "images/yachts/madsummer_bath_ocean.jpg?v=hd2", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
-      { src: "images/yachts/madsummer_bath_marble.jpg?v=hd2", caption: "Salle de bain en marbre blanc et boiseries nobles" },
-      { src: "images/yachts/madsummer_gym.jpg?v=hd2", caption: "Salle de sport panoramique équipée face à la mer" }
+      { src: "images/yachts/madsummer_profile.jpg?v=hd2", k: "ms_c1", caption: "Profil en mer avec héliport avant certifié" },
+      { src: "images/yachts/madsummer_stern.jpg?v=hd2", k: "ms_c2", caption: "Poupe avec piscine en verre et signature MADSUMMER" },
+      { src: "images/yachts/madsummer_pool.jpg?v=hd2", k: "ms_c3", caption: "Piscine transparente de 12 mètres et sunbeds" },
+      { src: "images/yachts/madsummer_sundeck.jpg?v=hd2", k: "ms_c4", caption: "Pont supérieur avec salon lounge en teck & bains de soleil" },
+      { src: "images/yachts/madsummer_salon.jpg?v=hd2", k: "ms_c5", caption: "Salon principal de réception au design contemporain d'exception" },
+      { src: "images/yachts/madsummer_lounge.jpg?v=hd2", k: "ms_c6", caption: "Salon lounge demi-lune et bar de pont panoramique" },
+      { src: "images/yachts/madsummer_master_bed.jpg?v=hd2", k: "ms_c7", caption: "Suite propriétaire Master avec vue panoramique" },
+      { src: "images/yachts/madsummer_twin_cabin.jpg?v=hd2", k: "ms_c8", caption: "Cabine invités grand luxe avec lits jumeaux" },
+      { src: "images/yachts/madsummer_bath_ocean.jpg?v=hd2", k: "ms_c9", caption: "Salle de bain en marbre avec baignoire face à l'océan" },
+      { src: "images/yachts/madsummer_bath_marble.jpg?v=hd2", k: "ms_c10", caption: "Salle de bain en marbre blanc et boiseries nobles" },
+      { src: "images/yachts/madsummer_gym.jpg?v=hd2", k: "ms_c11", caption: "Salle de sport panoramique équipée face à la mer" }
     ],
     idx: 0
   },
   sophia: {
     images: [
-      { src: "images/yachts/sophia_profile.jpg?v=hd2", caption: "Profil au mouillage, Caraïbes" },
-      { src: "images/yachts/sophia_aft_dining.jpg?v=hd2", caption: "Table de dîner extérieure sur le pont arrière" },
-      { src: "images/yachts/sophia_sundeck_firepit.jpg?v=hd2", caption: "Salon extérieur avec brasero au coucher du soleil" },
-      { src: "images/yachts/sophia_pool_aerial.jpg?v=hd2", caption: "Vue aérienne de la proue et piscine à fond vitré" },
-      { src: "images/yachts/sophia_lounge_bar.jpg?v=hd2", caption: "Bar salon avec vue sur la piscine transparente" },
-      { src: "images/yachts/sophia_main_salon.jpg?v=hd2", caption: "Salon principal et bar" },
-      { src: "images/yachts/sophia_dining_room.jpg?v=hd2", caption: "Salle à manger formelle pour 10 convives" },
-      { src: "images/yachts/sophia_owner_suite.jpg?v=hd2", caption: "Suite propriétaire panoramique avec puits de lumière" },
-      { src: "images/yachts/sophia_guest_cabin.jpg?v=hd2", caption: "Cabine invités avec vue sur la baie" },
-      { src: "images/yachts/sophia_master_bath.jpg?v=hd2", caption: "Salle de bain avec baignoire vue mer" }
+      { src: "images/yachts/sophia_profile.jpg?v=hd2", k: "so_c1", caption: "Profil au mouillage, Caraïbes" },
+      { src: "images/yachts/sophia_aft_dining.jpg?v=hd2", k: "so_c2", caption: "Table de dîner extérieure sur le pont arrière" },
+      { src: "images/yachts/sophia_sundeck_firepit.jpg?v=hd2", k: "so_c3", caption: "Salon extérieur avec brasero au coucher du soleil" },
+      { src: "images/yachts/sophia_pool_aerial.jpg?v=hd2", k: "so_c4", caption: "Vue aérienne de la proue et piscine à fond vitré" },
+      { src: "images/yachts/sophia_lounge_bar.jpg?v=hd2", k: "so_c5", caption: "Bar salon avec vue sur la piscine transparente" },
+      { src: "images/yachts/sophia_main_salon.jpg?v=hd2", k: "so_c6", caption: "Salon principal et bar" },
+      { src: "images/yachts/sophia_dining_room.jpg?v=hd2", k: "so_c7", caption: "Salle à manger formelle pour 10 convives" },
+      { src: "images/yachts/sophia_owner_suite.jpg?v=hd2", k: "so_c8", caption: "Suite propriétaire panoramique avec puits de lumière" },
+      { src: "images/yachts/sophia_guest_cabin.jpg?v=hd2", k: "so_c9", caption: "Cabine invités avec vue sur la baie" },
+      { src: "images/yachts/sophia_master_bath.jpg?v=hd2", k: "so_c10", caption: "Salle de bain avec baignoire vue mer" }
     ],
     idx: 0
   },
   cometogether: {
     images: [
-      { src: "images/yachts/cometogether_profile.jpg?v=1", caption: "Profil en mer au coucher du soleil" },
-      { src: "images/yachts/cometogether_aft_dining.jpg?v=1", caption: "Table de dîner sur le pont arrière" },
-      { src: "images/yachts/cometogether_deck_lounge.jpg?v=1", caption: "Salon de pont extérieur face à la mer" },
-      { src: "images/yachts/cometogether_main_salon.jpg?v=1", caption: "Salon principal" },
-      { src: "images/yachts/cometogether_study.jpg?v=1", caption: "Bureau avec bibliothèque rétroéclairée" },
-      { src: "images/yachts/cometogether_master_suite.jpg?v=1", caption: "Suite propriétaire" },
-      { src: "images/yachts/cometogether_guest_cabin.jpg?v=1", caption: "Cabine invités" },
-      { src: "images/yachts/cometogether_bathroom.jpg?v=1", caption: "Salle de bain en marbre et douche à l'italienne" },
-      { src: "images/yachts/cometogether_gym.jpg?v=1", caption: "Salle de sport" },
-      { src: "images/yachts/cometogether_sauna.jpg?v=1", caption: "Sauna" }
+      { src: "images/yachts/cometogether_profile.jpg?v=1", k: "ct_c1", caption: "Profil en mer au coucher du soleil" },
+      { src: "images/yachts/cometogether_aft_dining.jpg?v=1", k: "ct_c2", caption: "Table de dîner sur le pont arrière" },
+      { src: "images/yachts/cometogether_deck_lounge.jpg?v=1", k: "ct_c3", caption: "Salon de pont extérieur face à la mer" },
+      { src: "images/yachts/cometogether_main_salon.jpg?v=1", k: "ct_c4", caption: "Salon principal" },
+      { src: "images/yachts/cometogether_study.jpg?v=1", k: "ct_c5", caption: "Bureau avec bibliothèque rétroéclairée" },
+      { src: "images/yachts/cometogether_master_suite.jpg?v=1", k: "ct_c6", caption: "Suite propriétaire" },
+      { src: "images/yachts/cometogether_guest_cabin.jpg?v=1", k: "ct_c7", caption: "Cabine invités" },
+      { src: "images/yachts/cometogether_bathroom.jpg?v=1", k: "ct_c8", caption: "Salle de bain en marbre et douche à l'italienne" },
+      { src: "images/yachts/cometogether_gym.jpg?v=1", k: "ct_c9", caption: "Salle de sport" },
+      { src: "images/yachts/cometogether_sauna.jpg?v=1", k: "ct_c10", caption: "Sauna" }
     ],
     idx: 0
   },
   moskito: {
     images: [
-      { src: "images/yachts/moskito_profile.jpg?v=1", caption: "Profil dans le Grand Port de La Valette" },
-      { src: "images/yachts/moskito_main_salon.jpg?v=1", caption: "Salon principal et bar" },
-      { src: "images/yachts/moskito_upper_salon.jpg?v=1", caption: "Salon supérieur avec bar" },
-      { src: "images/yachts/moskito_staircase.jpg?v=1", caption: "Escalier hélicoïdal et œuvre d'art" },
-      { src: "images/yachts/moskito_master_suite.jpg?v=1", caption: "Suite propriétaire" },
-      { src: "images/yachts/moskito_bathroom.jpg?v=1", caption: "Salle de bain en marbre de la suite propriétaire" },
-      { src: "images/yachts/moskito_guest_cabin.jpg?v=1", caption: "Cabine invités" },
-      { src: "images/yachts/moskito_bathroom_shower.jpg?v=1", caption: "Salle de bain avec douche en marbre" },
-      { src: "images/yachts/moskito_gym.jpg?v=1", caption: "Salle de sport ouverte sur le pont" },
-      { src: "images/yachts/moskito_sauna.jpg?v=1", caption: "Sauna" }
+      { src: "images/yachts/moskito_profile.jpg?v=1", k: "mk_c1", caption: "Profil dans le Grand Port de La Valette" },
+      { src: "images/yachts/moskito_main_salon.jpg?v=1", k: "mk_c2", caption: "Salon principal et bar" },
+      { src: "images/yachts/moskito_upper_salon.jpg?v=1", k: "mk_c3", caption: "Salon supérieur avec bar" },
+      { src: "images/yachts/moskito_staircase.jpg?v=1", k: "mk_c4", caption: "Escalier hélicoïdal et œuvre d'art" },
+      { src: "images/yachts/moskito_master_suite.jpg?v=1", k: "mk_c5", caption: "Suite propriétaire" },
+      { src: "images/yachts/moskito_bathroom.jpg?v=1", k: "mk_c6", caption: "Salle de bain en marbre de la suite propriétaire" },
+      { src: "images/yachts/moskito_guest_cabin.jpg?v=1", k: "mk_c7", caption: "Cabine invités" },
+      { src: "images/yachts/moskito_bathroom_shower.jpg?v=1", k: "mk_c8", caption: "Salle de bain avec douche en marbre" },
+      { src: "images/yachts/moskito_gym.jpg?v=1", k: "mk_c9", caption: "Salle de sport ouverte sur le pont" },
+      { src: "images/yachts/moskito_sauna.jpg?v=1", k: "mk_c10", caption: "Sauna" }
     ],
     idx: 0
   }
@@ -523,7 +536,11 @@ function updateYachtLightboxContent() {
   const current = yacht.images[yacht.idx];
   if (!current) return;
   if (img) img.src = current.src;
-  if (caption) caption.textContent = current.caption;
+  // legende traduite si une cle existe, sinon repli sur le francais
+  if (caption) {
+    const tr = (typeof T !== "undefined" && current.k && T[currentLang] && T[currentLang][current.k]) || current.caption;
+    caption.textContent = tr;
+  }
   if (counter) counter.textContent = `${yacht.idx + 1} / ${yacht.images.length}`;
 }
 

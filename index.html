@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=0919-c0730b14">
-  <script src="translations.js?v=0919-a755fb12"></script>
+  <script src="translations.js?v=i18n-3b592d9d"></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -22,7 +22,7 @@
 <nav id="navbar">
   <div class="nav-inner">
     <div class="nav-logo">MR <span class="gold">PRESTIGE</span></div>
-    <button class="burger" id="burger" aria-label="Menu">
+    <button class="burger" id="burger" aria-label="Menu" data-i18n-aria="a_menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -34,7 +34,7 @@
     </ul>
     <!-- LANGUAGE SWITCHER -->
     <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-btn" id="langBtn" aria-label="Langue">
+      <button class="lang-btn" id="langBtn" aria-label="Langue" data-i18n-aria="a_lang">
         <span id="langFlag">&#127467;&#127479;</span>
         <span id="langCode">FR</span>
         <svg width="10" height="10" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
@@ -277,9 +277,9 @@
         <img class="yslide-bg" id="yslide-bg-madsummer" src="images/yachts/madsummer_profile.jpg?v=hd2" alt="" aria-hidden="true">
         <img class="yslide-fg" id="yslide-fg-madsummer" src="images/yachts/madsummer_profile.jpg?v=hd2" alt="Yacht MADSUMMER" onclick="openYachtLightbox('madsummer')">
         <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('madsummer',-1)" aria-label="Précédent">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('madsummer',1)" aria-label="Suivant">❯</button>
-        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('madsummer')" aria-label="Agrandir">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('madsummer',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('madsummer',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('madsummer')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
         <div class="yslide-dots" id="ydots-madsummer">
@@ -295,14 +295,14 @@
           <button class="yslide-dot" onclick="ys_go('madsummer',9)"></button>
           <button class="yslide-dot" onclick="ys_go('madsummer',10)"></button>
         </div>
-        <span class="yslide-counter" id="ycounter-madsummer">1 / 11</span>
+        <span class="yslide-counter" dir="ltr" id="ycounter-madsummer">1 / 11</span>
       </div>
 
       <div class="ycard-body">
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">MADSUMMER</h3>
-            <div class="ycard-size">95 Mètres / 311'8" &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Lürssen</strong></div>
+            <div class="ycard-size"><bdi>95</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>311'8"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Lürssen</strong></div>
           </div>
           <div class="ycard-price-block">
             <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
@@ -330,11 +330,11 @@
         </div>
 
         <div class="ycard-amenities">
-          <span>🏊 Piscine en verre 12m</span>
-          <span>🚁 Héliport certifié</span>
-          <span>🏋️ Gym panoramique</span>
-          <span>💆 Spa &amp; Beach Club</span>
-          <span>🛥️ Annexes &amp; Toys</span>
+          <span data-i18n="ms_am1">🏊 Piscine en verre 12m</span>
+          <span data-i18n="ms_am2">🚁 Héliport certifié</span>
+          <span data-i18n="ms_am3">🏋️ Gym panoramique</span>
+          <span data-i18n="ms_am4">💆 Spa &amp; Beach Club</span>
+          <span data-i18n="ms_am5">🛥️ Annexes &amp; Toys</span>
         </div>
 
         <div class="ycard-actions">
@@ -353,9 +353,9 @@
         <img class="yslide-bg" id="yslide-bg-sophia" src="images/yachts/sophia_profile.jpg?v=hd2" alt="" aria-hidden="true">
         <img class="yslide-fg" id="yslide-fg-sophia" src="images/yachts/sophia_profile.jpg?v=hd2" alt="Yacht SOPHIA" onclick="openYachtLightbox('sophia')">
         <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('sophia',-1)" aria-label="Précédent">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('sophia',1)" aria-label="Suivant">❯</button>
-        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('sophia')" aria-label="Agrandir">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('sophia',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('sophia',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('sophia')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
         <div class="yslide-dots" id="ydots-sophia">
@@ -370,19 +370,19 @@
           <button class="yslide-dot" onclick="ys_go('sophia',8)"></button>
           <button class="yslide-dot" onclick="ys_go('sophia',9)"></button>
         </div>
-        <span class="yslide-counter" id="ycounter-sophia">1 / 10</span>
+        <span class="yslide-counter" dir="ltr" id="ycounter-sophia">1 / 10</span>
       </div>
 
       <div class="ycard-body">
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">SOPHIA</h3>
-            <div class="ycard-size">96,6 Mètres / 316'11" &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Feadship</strong></div>
+            <div class="ycard-size"><bdi>96,6</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>316'11"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Feadship</strong></div>
           </div>
           <div class="ycard-price-block">
             <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
-            <span class="ycard-price-val">1 980 000 € <small style="font-size:0.5em;font-weight:600;">/ SEM.</small></span>
-            <span class="ycard-zone">Méditerranée · Caraïbes</span>
+            <span class="ycard-price-val"><bdi>1 980 000 €</bdi> <small style="font-size:0.5em;font-weight:600;"><span data-i18n="per_week">/ SEM.</span></small></span>
+            <span class="ycard-zone" data-i18n="zone_med_car">Méditerranée · Caraïbes</span>
           </div>
         </div>
 
@@ -405,11 +405,11 @@
         </div>
 
         <div class="ycard-amenities">
-          <span>🏊 Piscine à fond vitré 9x3,6m</span>
-          <span>🚁 Hangar hélicoptère</span>
-          <span>🧖 Spa, hammam &amp; snow room</span>
-          <span>🎬 Cinéma privé</span>
-          <span>🛏️ Suite pleine largeur</span>
+          <span data-i18n="so_am1">🏊 Piscine à fond vitré 9x3,6m</span>
+          <span data-i18n="so_am2">🚁 Hangar hélicoptère</span>
+          <span data-i18n="so_am3">🧖 Spa, hammam &amp; snow room</span>
+          <span data-i18n="so_am4">🎬 Cinéma privé</span>
+          <span data-i18n="so_am5">🛏️ Suite pleine largeur</span>
         </div>
 
         <div class="ycard-actions">
@@ -428,25 +428,25 @@
         <img class="yslide-bg" id="yslide-bg-cometogether" src="images/yachts/cometogether_profile.jpg?v=1" alt="" aria-hidden="true">
         <img class="yslide-fg" id="yslide-fg-cometogether" src="images/yachts/cometogether_profile.jpg?v=1" alt="Yacht COME TOGETHER" onclick="openYachtLightbox('cometogether')">
         <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('cometogether',-1)" aria-label="Précédent">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('cometogether',1)" aria-label="Suivant">❯</button>
-        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('cometogether')" aria-label="Agrandir">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('cometogether',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('cometogether',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('cometogether')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
         <div class="yslide-dots" id="ydots-cometogether"></div>
-        <span class="yslide-counter" id="ycounter-cometogether">1 / 10</span>
+        <span class="yslide-counter" dir="ltr" id="ycounter-cometogether">1 / 10</span>
       </div>
 
       <div class="ycard-body">
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">COME TOGETHER</h3>
-            <div class="ycard-size">60 Mètres / 196'10" &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Amels</strong></div>
+            <div class="ycard-size"><bdi>60</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>196'10"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Amels</strong></div>
           </div>
           <div class="ycard-price-block">
             <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
-            <span class="ycard-price-val">DÈS 539 000 € <small style="font-size:0.5em;font-weight:600;">/ SEM.</small></span>
-            <span class="ycard-zone">Méditerranée · Caraïbes · hors frais</span>
+            <span class="ycard-price-val"><span data-i18n="price_from">DÈS</span> <bdi>539 000 €</bdi> <small style="font-size:0.5em;font-weight:600;"><span data-i18n="per_week">/ SEM.</span></small></span>
+            <span class="ycard-zone" data-i18n="zone_med_car_excl">Méditerranée · Caraïbes · hors frais</span>
           </div>
         </div>
 
@@ -469,11 +469,11 @@
         </div>
 
         <div class="ycard-amenities">
-          <span>🧖 Sauna</span>
-          <span>🏋️ Salle de sport</span>
-          <span>💼 Bureau privé</span>
-          <span>🍽️ Dîner en plein air</span>
-          <span>🎨 Intérieur Winch Design</span>
+          <span data-i18n="ct_am1">🧖 Sauna</span>
+          <span data-i18n="ct_am2">🏋️ Salle de sport</span>
+          <span data-i18n="ct_am3">💼 Bureau privé</span>
+          <span data-i18n="ct_am4">🍽️ Dîner en plein air</span>
+          <span data-i18n="ct_am5">🎨 Intérieur Winch Design</span>
         </div>
 
         <div class="ycard-actions">
@@ -492,25 +492,25 @@
         <img class="yslide-bg" id="yslide-bg-moskito" src="images/yachts/moskito_profile.jpg?v=1" alt="" aria-hidden="true">
         <img class="yslide-fg" id="yslide-fg-moskito" src="images/yachts/moskito_profile.jpg?v=1" alt="Yacht MOSKITO" onclick="openYachtLightbox('moskito')">
         <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('moskito',-1)" aria-label="Précédent">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('moskito',1)" aria-label="Suivant">❯</button>
-        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('moskito')" aria-label="Agrandir">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('moskito',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('moskito',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <button type="button" class="yslide-zoom" onclick="openYachtLightbox('moskito')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
         <div class="yslide-dots" id="ydots-moskito"></div>
-        <span class="yslide-counter" id="ycounter-moskito">1 / 8</span>
+        <span class="yslide-counter" dir="ltr" id="ycounter-moskito">1 / 8</span>
       </div>
 
       <div class="ycard-body">
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">MOSKITO</h3>
-            <div class="ycard-size">55 Mètres / 180'5" &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Heesen</strong></div>
+            <div class="ycard-size"><bdi>55</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>180'5"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Heesen</strong></div>
           </div>
           <div class="ycard-price-block">
             <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
-            <span class="ycard-price-val">DÈS 385 000 € <small style="font-size:0.5em;font-weight:600;">/ SEM.</small></span>
-            <span class="ycard-zone">Méditerranée · Caraïbes · hors frais</span>
+            <span class="ycard-price-val"><span data-i18n="price_from">DÈS</span> <bdi>385 000 €</bdi> <small style="font-size:0.5em;font-weight:600;"><span data-i18n="per_week">/ SEM.</span></small></span>
+            <span class="ycard-zone" data-i18n="zone_med_car_excl">Méditerranée · Caraïbes · hors frais</span>
           </div>
         </div>
 
@@ -533,11 +533,11 @@
         </div>
 
         <div class="ycard-amenities">
-          <span>🛁 Jacuzzi de pont</span>
-          <span>🏖️ Beach club &amp; plateforme de bain</span>
-          <span>🧖 Sauna &amp; salle de sport</span>
-          <span>🍸 Bar extérieur &amp; sun deck</span>
-          <span>🛥️ Jet-skis, Seabobs &amp; toys</span>
+          <span data-i18n="mk_am1">🛁 Jacuzzi de pont</span>
+          <span data-i18n="mk_am2">🏖️ Beach club &amp; plateforme de bain</span>
+          <span data-i18n="mk_am3">🧖 Sauna &amp; salle de sport</span>
+          <span data-i18n="mk_am4">🍸 Bar extérieur &amp; sun deck</span>
+          <span data-i18n="mk_am5">🛥️ Jet-skis, Seabobs &amp; toys</span>
         </div>
 
         <div class="ycard-actions">
@@ -555,13 +555,13 @@
 
 <!-- YACHT LIGHTBOX -->
 <div class="yacht-lightbox" id="yachtLightbox" onclick="closeYachtLightboxOnBackdrop(event)">
-  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer">✕</button>
-  <button type="button" class="lightbox-nav prev" onclick="navigateLightbox(-1)" aria-label="Précédent">❮</button>
+  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer" data-i18n-aria="a_close">✕</button>
+  <button type="button" class="lightbox-nav prev" onclick="navigateLightbox(-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
   <img id="yachtLightboxImg" src="" alt="Yacht MADSUMMER">
-  <button type="button" class="lightbox-nav next" onclick="navigateLightbox(1)" aria-label="Suivant">❯</button>
+  <button type="button" class="lightbox-nav next" onclick="navigateLightbox(1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
   <div class="lightbox-caption">
     <span id="yachtLightboxCaption"></span>
-    <span id="yachtLightboxCounter" class="yacht-counter"></span>
+    <span id="yachtLightboxCounter" class="yacht-counter" dir="ltr"></span>
   </div>
 </div>
 
@@ -582,7 +582,7 @@
       <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:2rem;">Réserver un Transfert</a>
     </div>
     <div class="transfers-img">
-      <img src="images/transfer_chauffeur.png" alt="Chauffeur privé MR PRESTIGE">
+      <img src="images/transfer_chauffeur.png" alt="Chauffeur privé MR PRESTIGE" data-i18n-alt="alt_chauffeur">
       <div class="transfers-badge">
         <span class="gold" style="font-size:2rem;">✈</span>
         <p>Transfert <strong>24/7</strong></p>
@@ -664,7 +664,7 @@
       <div class="form-row">
         <div class="form-group">
           <label>Prénom & Nom *</label>
-          <input type="text" id="formName" name="Nom" placeholder="Jean Dupont" required data-fs-field>
+          <input type="text" id="formName" name="Nom" placeholder="Jean Dupont" data-i18n-ph="ph_name" required data-fs-field>
           <span class="fs-field-error" data-fs-error="Nom"></span>
         </div>
         <div class="form-group">
@@ -675,7 +675,7 @@
       </div>
       <div class="form-group">
         <label>Email *</label>
-        <input type="email" id="formEmail" name="Email" placeholder="votre@email.com" required data-fs-field>
+        <input type="email" id="formEmail" name="Email" placeholder="votre@email.com" data-i18n-ph="ph_email" required data-fs-field>
         <span class="fs-field-error" data-fs-error="Email"></span>
       </div>
       <div class="form-group">
@@ -705,7 +705,7 @@
       </div>
       <div class="form-group">
         <label>Message</label>
-        <textarea id="formMessage" name="Message" rows="4" placeholder="Décrivez votre demande, vos préférences..."></textarea>
+        <textarea id="formMessage" name="Message" rows="4" placeholder="Décrivez votre demande, vos préférences..." data-i18n-ph="ph_msg"></textarea>
       </div>
       <!-- Champ caché anti-spam honeypot -->
       <input type="text" name="_gotcha" style="display:none">
@@ -732,6 +732,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=mk-ffb2aadc"></script>
+<script src="script.js?v=i18n-727bcdb8"></script>
 </body>
 </html>
