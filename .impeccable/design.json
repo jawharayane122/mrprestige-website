@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T00:00:00Z",
+  "title": "Design System: MR PRESTIGE",
+  "extensions": {
+    "colorMeta": {
+      "champagne": {
+        "role": "primary",
+        "displayName": "Champagne",
+        "canonical": "#c9a55a",
+        "source": "--gold",
+        "tonalRamp": [
+          "#312a1b",
+          "#564829",
+          "#7e6634",
+          "#a9863c",
+          "#c5a563",
+          "#d0bd95",
+          "#dfd6c3",
+          "#f5f3ef"
+        ]
+      },
+      "champagne-lit": {
+        "role": "primary",
+        "displayName": "Champagne éclairé",
+        "canonical": "#d6b46a",
+        "source": "survol du bouton (#d6b46a)",
+        "tonalRamp": [
+          "#332b1a",
+          "#594926",
+          "#836930",
+          "#b08935",
+          "#cba85d",
+          "#d4bf91",
+          "#e1d7c1",
+          "#f6f3ef"
+        ]
+      },
+      "champagne-deep": {
+        "role": "primary",
+        "displayName": "Champagne profond",
+        "canonical": "#a8863f",
+        "source": "--gold-dark",
+        "tonalRamp": [
+          "#302a1c",
+          "#54472b",
+          "#7b6538",
+          "#a48442",
+          "#c0a368",
+          "#cdbc98",
+          "#ded6c4",
+          "#f5f3f0"
+        ]
+      },
+      "lacquer": {
+        "role": "neutral",
+        "displayName": "Laque",
+        "canonical": "#07080a",
+        "source": "--black",
+        "tonalRamp": [
+          "#22252a",
+          "#383d48",
+          "#4c5566",
+          "#606c86",
+          "#838ea5",
+          "#a8afbd",
+          "#cccfd6",
+          "#f1f2f3"
+        ]
+      },
+      "lacquer-raised": {
+        "role": "neutral",
+        "displayName": "Laque relevée",
+        "canonical": "#0c0d10",
+        "source": "--dark",
+        "tonalRamp": [
+          "#232529",
+          "#393d46",
+          "#4f5464",
+          "#636b82",
+          "#868da2",
+          "#aaaebb",
+          "#cdcfd5",
+          "#f1f2f3"
+        ]
+      },
+      "stage": {
+        "role": "neutral",
+        "displayName": "Scène",
+        "canonical": "#111317",
+        "source": "--card",
+        "tonalRamp": [
+          "#23252a",
+          "#393e46",
+          "#4e5664",
+          "#636d83",
+          "#858fa2",
+          "#aab0bb",
+          "#cdd0d5",
+          "#f1f2f3"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Champ",
+        "canonical": "#181a1f",
+        "source": "--card2",
+        "tonalRamp": [
+          "#232529",
+          "#3a3d45",
+          "#505563",
+          "#656d80",
+          "#888fa0",
+          "#abafba",
+          "#ced0d5",
+          "#f2f2f3"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Filet",
+        "canonical": "#25282e",
+        "source": "--border",
+        "tonalRamp": [
+          "#242529",
+          "#3b3e45",
+          "#515761",
+          "#676f7e",
+          "#89909e",
+          "#acb0b9",
+          "#ced0d4",
+          "#f2f2f3"
+        ]
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Ivoire",
+        "canonical": "#ece7dd",
+        "source": "--text",
+        "tonalRamp": [
+          "#2d2820",
+          "#4c4433",
+          "#6e6045",
+          "#917d54",
+          "#af9d78",
+          "#c3b8a2",
+          "#d9d4c9",
+          "#f4f3f1"
+        ]
+      },
+      "ivory-muted": {
+        "role": "neutral",
+        "displayName": "Ivoire voilé",
+        "canonical": "#a39e94",
+        "source": "--muted",
+        "tonalRamp": [
+          "#282725",
+          "#43413c",
+          "#5f5b54",
+          "#7b756b",
+          "#9b968d",
+          "#b7b4ae",
+          "#d3d2cf",
+          "#f3f2f2"
+        ]
+      },
+      "error-coral": {
+        "role": "error",
+        "displayName": "Corail d'erreur",
+        "canonical": "#f0a08a",
+        "source": "valeur littérale dans .rn-ask-err",
+        "tonalRamp": [
+          "#371d15",
+          "#622c1d",
+          "#923921",
+          "#c6431f",
+          "#df6949",
+          "#df9986",
+          "#e7c5bb",
+          "#f7f0ee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titre du premier écran seulement."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titre de section du monde (showroom)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nom du modèle sur la scène."
+      },
+      "title-sm": {
+        "displayName": "Title small",
+        "purpose": "Intitulé d'une ligne de services."
+      },
+      "price": {
+        "displayName": "Price",
+        "purpose": "Prix à la journée, en champagne, chiffres alignés."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Phrase sous le titre du premier écran, ivoire à 82 %."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Introductions et descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Libellés des champs."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Boutons et liens d'action."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ask-float",
+        "value": "0 24px 60px -24px rgba(0,0,0,.8)",
+        "purpose": "Barre de demande posée sur la photo."
+      },
+      {
+        "name": "button-lift",
+        "value": "0 12px 26px -12px rgba(0,0,0,.85)",
+        "purpose": "Survol du bouton champagne, avec translateY(-1px)."
+      }
+    ],
+    "hairlines": [
+      {
+        "name": "champagne-22",
+        "value": "1px solid rgba(201,165,90,.22)",
+        "purpose": "Ligne des lieux du premier écran."
+      },
+      {
+        "name": "champagne-28",
+        "value": "1px solid rgba(201,165,90,.28)",
+        "purpose": "Cadre intérieur de la photo de scène."
+      },
+      {
+        "name": "champagne-32",
+        "value": "1px solid rgba(201,165,90,.32)",
+        "purpose": "Contour de la barre de demande."
+      },
+      {
+        "name": "champagne-35",
+        "value": "1px solid rgba(201,165,90,.35)",
+        "purpose": "Filet supérieur de la liste de services."
+      },
+      {
+        "name": "champagne-50",
+        "value": "1px solid rgba(201,165,90,.5)",
+        "purpose": "Soulignement du lien filet."
+      },
+      {
+        "name": "hairline",
+        "value": "1px solid #25282e",
+        "purpose": "Séparateurs de listes, bordure des champs et filtres."
+      }
+    ],
+    "focus": {
+      "value": "outline: 2px solid #c9a55a; outline-offset: 3px",
+      "purpose": "Anneau :focus-visible global ; les champs passent leur bordure au champagne."
+    },
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Courbe unique des gestes du monde."
+      },
+      {
+        "name": "hero-settle",
+        "value": "2.4s ease-out, scale(1.06) + brightness(.6) vers l'état neutre",
+        "purpose": "Photo du premier écran qui se pose."
+      },
+      {
+        "name": "hero-rise",
+        "value": "1.1s ease-out, translateY(18px), décalages .15s / .3s / .45s",
+        "purpose": "Titre, phrase et barre de demande en cascade."
+      },
+      {
+        "name": "stage-wipe",
+        "value": "clip-path inset(0 100% 0 0) vers inset(0), .85s ease-out, repli 900ms",
+        "purpose": "Changement de photo de scène ; inversé en RTL ; remplacement direct sous reduced-motion."
+      },
+      {
+        "name": "row-underline",
+        "value": "scaleX(0→1), .5s ease-out",
+        "purpose": "Filet champagne sous la ligne choisie."
+      },
+      {
+        "name": "row-indent",
+        "value": "padding-inline-start .6rem en .35s (index), .8rem en .4s (services)",
+        "purpose": "Retrait de ligne au survol."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "ask-stack",
+        "value": "1100px"
+      },
+      {
+        "name": "showroom-stack",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "680px"
+      }
+    ],
+    "layout": {
+      "gutter": "max(1.25rem, 6vw)",
+      "maxWidth": "1440px",
+      "heroHeight": "min(84svh, 820px)",
+      "showroomColumns": "minmax(0, 1.65fr) minmax(17rem, 1fr)",
+      "stageStickyTop": "6rem",
+      "servicesColumns": "18rem minmax(0, 1fr) 9rem",
+      "minTarget": "2.75rem"
+    }
+  },
+  "components": [
+    {
+      "name": "Bouton champagne",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Le seul aplat champagne de l'écran : l'action de demande.",
+      "html": "<button class=\"ds-btn-gold\">Demander une disponibilité</button>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-btn-gold{display:inline-flex;align-items:center;justify-content:center;min-height:2.9rem;padding:.75rem 1.6rem;border-radius:999px;font:600 .95rem var(--body);letter-spacing:.02em;background:var(--gold);color:var(--black);border:1px solid var(--gold);cursor:pointer;white-space:nowrap;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out),background .2s;}.ds-btn-gold:hover{transform:translateY(-1px);box-shadow:0 12px 26px -12px rgba(0,0,0,.85);background:#d6b46a;}.ds-btn-gold:active{transform:none;box-shadow:none;}.ds-btn-gold:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}"
+    },
+    {
+      "name": "Lien filet",
+      "kind": "custom",
+      "refersTo": "link-hairline",
+      "description": "Lien secondaire ivoire souligné d'un filet champagne.",
+      "html": "<a class=\"ds-link\" href=\"#\">Parcourir le showroom</a>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-link{display:inline-flex;align-items:flex-end;min-height:2.75rem;color:var(--text);text-decoration:none;font:400 .95rem var(--body);border-bottom:1px solid rgba(201,165,90,.5);padding-bottom:.15rem;transition:color .2s,border-color .2s;}.ds-link:hover{color:var(--gold);border-color:var(--gold);}.ds-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}"
+    },
+    {
+      "name": "Champ pilule",
+      "kind": "input",
+      "refersTo": "input-pill",
+      "description": "Sélecteur ou date de la barre de demande, chevron en trait champagne.",
+      "html": "<label class=\"ds-field\"><span>Service</span><select><option>Location de voiture</option><option>Yacht</option></select></label>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-field{display:grid;gap:.35rem;font-family:var(--body);}.ds-field span{font-size:.8rem;color:var(--muted);letter-spacing:.02em;}.ds-field select{min-height:2.9rem;padding:.55rem 2.6rem .55rem 1.1rem;font:500 1rem var(--body);color:var(--text);background:var(--card2) url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23c9a55a' stroke-width='1.4'%3E%3Cpath d='M3 5.5l4 4 4-4'/%3E%3C/svg%3E\") no-repeat right 1rem center/14px 14px;border:1px solid var(--border);border-radius:999px;appearance:none;-webkit-appearance:none;color-scheme:dark;transition:border-color .2s;}.ds-field select:focus{outline:none;border-color:var(--gold);}"
+    },
+    {
+      "name": "Barre de demande",
+      "kind": "custom",
+      "refersTo": "ask-bar",
+      "description": "Panneau translucide posé sur la photo : service, du, au, bouton.",
+      "html": "<form class=\"ds-ask\"><label class=\"ds-ask-f\"><span>Du</span><input type=\"date\"></label><label class=\"ds-ask-f\"><span>Au</span><input type=\"date\"></label><button type=\"button\" class=\"ds-ask-btn\">Demander une disponibilité</button></form>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-ask{display:grid;grid-template-columns:1fr 1fr auto;align-items:end;gap:.9rem;padding:1rem 1rem 1rem 1.25rem;background:rgba(12,13,16,.86);border:1px solid rgba(201,165,90,.32);border-radius:1.4rem;box-shadow:0 24px 60px -24px rgba(0,0,0,.8);font-family:var(--body);}.ds-ask-f{display:grid;gap:.35rem;min-width:0;}.ds-ask-f span{font-size:.8rem;color:var(--muted);letter-spacing:.02em;}.ds-ask-f input{min-height:2.9rem;padding:.55rem 1.1rem;font:500 1rem var(--body);color:var(--text);background:var(--card2);border:1px solid var(--border);border-radius:999px;color-scheme:dark;}.ds-ask-f input:focus{outline:none;border-color:var(--gold);}.ds-ask-btn{min-height:2.9rem;padding:.75rem 1.6rem;border-radius:999px;font:600 .95rem var(--body);letter-spacing:.02em;background:var(--gold);color:var(--black);border:1px solid var(--gold);cursor:pointer;white-space:nowrap;}.ds-ask-btn:hover{background:#d6b46a;}.ds-ask-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}"
+    },
+    {
+      "name": "Filtre pilule",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Filtre de catégorie ; la sélection passe en aplat ivoire.",
+      "html": "<div class=\"ds-filters\"><button class=\"ds-chip\" aria-pressed=\"true\">Tous</button><button class=\"ds-chip\" aria-pressed=\"false\">SUV</button><button class=\"ds-chip\" aria-pressed=\"false\">Sportive</button></div>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-filters{display:flex;flex-wrap:wrap;gap:.5rem;}.ds-chip{min-height:2.75rem;padding:.5rem 1rem;border-radius:999px;background:transparent;border:1px solid var(--border);color:var(--muted);font:500 .95rem var(--body);cursor:pointer;transition:color .2s,border-color .2s,background .2s;}.ds-chip:hover{color:var(--text);border-color:rgba(236,231,221,.35);}.ds-chip[aria-pressed=\"true\"]{color:var(--black);background:var(--text);border-color:var(--text);}.ds-chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}"
+    },
+    {
+      "name": "Ligne d'index",
+      "kind": "custom",
+      "refersTo": "index-row",
+      "description": "Ligne de l'index du showroom : nom, modèle en italique, prix ; filet champagne sous la ligne choisie.",
+      "html": "<ol class=\"ds-list\"><li><button class=\"ds-row\" aria-pressed=\"true\"><span>Mercedes <em>G Class</em></span><span class=\"ds-row-price\">700 €</span></button></li><li><button class=\"ds-row\" aria-pressed=\"false\"><span>Porsche <em>911</em></span><span class=\"ds-row-price\">900 €</span></button></li></ol>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--border);}.ds-row{width:100%;display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.05rem .25rem;min-height:3.5rem;background:none;border:0;border-bottom:1px solid var(--border);color:var(--muted);font:400 1.05rem var(--body);text-align:start;cursor:pointer;position:relative;transition:color .25s,padding .35s var(--ease-out);}.ds-row::after{content:\"\";position:absolute;inset-inline:0;bottom:-1px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-out);}.ds-row:hover{color:var(--text);padding-inline-start:.6rem;}.ds-row[aria-pressed=\"true\"]{color:var(--text);}.ds-row[aria-pressed=\"true\"]::after{transform:scaleX(1);}.ds-row em{font-family:var(--display);font-size:1.3rem;font-style:italic;}.ds-row[aria-pressed=\"true\"] em{color:var(--gold);}.ds-row-price{font-family:var(--display);font-size:1.2rem;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;}.ds-row:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}"
+    },
+    {
+      "name": "Scène du showroom",
+      "kind": "card",
+      "refersTo": "stage-photo",
+      "description": "Photo de scène encadrée, nom en Bodoni, prix champagne ; la photo change en volet clip-path.",
+      "html": "<figure class=\"ds-stage\"><div class=\"ds-photo\"></div><figcaption class=\"ds-cap\"><h3>Mercedes <em>G Class</em></h3><p class=\"ds-specs\">2024 · SUV · Automatique</p><p class=\"ds-price\"><strong>700 €</strong><span>/ jour</span></p></figcaption></figure>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-stage{margin:0;display:grid;gap:1.5rem;font-family:var(--body);}.ds-photo{position:relative;aspect-ratio:16/10;border-radius:1.2rem;overflow:hidden;background:linear-gradient(0deg,rgba(7,8,10,.45),transparent 22%),var(--card);border:1px solid rgba(201,165,90,.28);animation:ds-wipe .85s var(--ease-out) both;}@keyframes ds-wipe{from{clip-path:inset(0 100% 0 0);}to{clip-path:inset(0 0 0 0);}}.ds-cap{display:grid;grid-template-columns:1fr auto;gap:.35rem 1.5rem;align-items:end;}.ds-cap h3{margin:0;font-family:var(--display);font-weight:500;font-size:2.4rem;line-height:1.05;color:var(--text);}.ds-cap em{font-style:italic;color:var(--gold);}.ds-specs{margin:0;color:var(--muted);}.ds-price{margin:0;grid-column:2;grid-row:1/span 2;text-align:end;color:var(--text);font-variant-numeric:lining-nums tabular-nums;}.ds-price strong{font-family:var(--display);font-weight:500;font-size:2.1rem;color:var(--gold);}.ds-price span{display:block;color:var(--muted);font-size:.95rem;}@media (prefers-reduced-motion:reduce){.ds-photo{animation:none;}}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Logotype Bodoni en capitales espacées, liens ivoire voilé, action en pilule à contour champagne.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-logo\">MR PRESTIGE</div><ul><li><a href=\"#\" class=\"is-current\">Flotte</a></li><li><a href=\"#\">Services</a></li><li><a href=\"#\" class=\"ds-nav-cta\">Demander</a></li></ul></nav>",
+      "css": ":host{--gold:#c9a55a;--gold-dark:#a8863f;--black:#07080a;--dark:#0c0d10;--card:#111317;--card2:#181a1f;--border:#25282e;--text:#ece7dd;--muted:#a39e94;--display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);} .ds-nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 2rem;background:rgba(7,8,10,.72);backdrop-filter:blur(22px) saturate(140%);border-bottom:1px solid var(--border);}.ds-logo{font-family:var(--display);font-size:1.35rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text);}.ds-nav ul{display:flex;align-items:center;gap:2.5rem;list-style:none;margin:0;padding:0;}.ds-nav a{color:var(--muted);text-decoration:none;font:500 .95rem var(--body);letter-spacing:.02em;transition:color .2s;}.ds-nav a:hover,.ds-nav a.is-current{color:var(--text);}.ds-nav a.ds-nav-cta{border:1px solid var(--gold);color:var(--gold);padding:.55rem 1.3rem;border-radius:999px;transition:background .2s,color .2s;}.ds-nav a.ds-nav-cta:hover{background:var(--gold);color:var(--black);}.ds-nav a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Riviera Nuit",
+    "overview": "Le site est un showroom de nuit sur la Riviera. Le fond est une laque noire, le champagne y joue le rôle d'une lumière (filets d'un pixel, un seul aplat par écran, l'italique des noms), et le texte est ivoire. La voiture et la demande passent avant tout discours : une photo plein cadre, un titre en Bodoni, puis une barre de demande qui est l'action principale.\n\nLa densité est éditoriale et calme : de grandes marges latérales proportionnelles, des listes séparées par des filets plutôt que des grilles de cartes, des prix composés en chiffres alignés. Le mouvement est lent et décéléré, comme un rideau de vitrine qui s'ouvre ; il disparaît entièrement quand l'utilisateur demande moins d'animations.\n\nLe monde refuse, d'après le contrat de direction : le slogan centré au-dessus de deux boutons, la grille de cartes identiques à badges, les émojis, les sur-titres.",
+    "keyCharacteristics": [
+      "Laque noire, champagne comme lumière, ivoire pour le texte.",
+      "Bodoni Moda en titrage, l'italique champagne pour l'accent ; Hanken Grotesk pour tout le reste.",
+      "Contrôles en pilule, filets d'un pixel, aucune carte répétée.",
+      "Listes éditoriales plutôt que grilles.",
+      "Interaction signature : le volet clip-path sur la photo de scène du showroom.",
+      "Bidirectionnel : chaque direction (volet, retrait des lignes, chevrons) se retourne en arabe."
+    ],
+    "rules": [
+      {
+        "name": "The Single Light Rule",
+        "body": "Un seul aplat champagne visible par écran : le bouton de demande. Partout ailleurs, le champagne n'est qu'un filet, une italique ou un chiffre.",
+        "section": "colors"
+      },
+      {
+        "name": "The Italic Accent Rule",
+        "body": "L'accent d'un titre passe par l'italique Bodoni en champagne, jamais par la seule couleur sur un mot droit. Dans l'index du showroom, l'italique reste ivoire tant que la ligne n'est pas choisie.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lining Figures Rule",
+        "body": "Tout prix et tout compteur se compose en chiffres alignés (`lining-nums`, plus `tabular-nums` pour les prix), pour que les colonnes de prix tombent juste.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Bodoni porte les titres, les noms et les prix ; Hanken porte tout le reste. Pas de capitales espacées en dehors du logotype.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit-Not-Lifted Rule",
+        "body": "On signale un état par la lumière (filet champagne, passage à l'ivoire), pas par l'élévation. Seul le bouton principal se soulève.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** réserver l'aplat champagne au seul bouton de demande de l'écran ; le reste du champagne est filet, italique ou prix.",
+      "**Do** composer les listes de choix (modèles, services) en lignes séparées par des filets d'un pixel, avec un retrait au survol.",
+      "**Do** donner à chaque contrôle la forme pilule (999px) et une hauteur d'au moins 2.75rem.",
+      "**Do** marquer l'accent d'un titre par l'italique Bodoni en champagne.",
+      "**Do** composer prix et compteurs en chiffres alignés.",
+      "**Do** retourner chaque geste directionnel en arabe (volet, retrait, chevrons, padding des champs).",
+      "**Do** passer chaque animation sur `--ease-out` et la couper sous `prefers-reduced-motion`."
+    ],
+    "donts": [
+      "**Don't** aligner des cartes identiques en grille ni poser des badges sur les offres.",
+      "**Don't** utiliser d'émojis ni de glyphes en guise d'icônes ; les icônes sont des traits SVG fins.",
+      "**Don't** placer de sur-titre au-dessus d'un titre.",
+      "**Don't** centrer un slogan au-dessus de deux boutons dans le premier écran.",
+      "**Don't** marquer un mot d'accent par la seule couleur sur un caractère droit.",
+      "**Don't** introduire de vert ni d'autre couleur d'accent ; l'unique accent est le champagne.",
+      "**Don't** écrire « disponible » : l'état d'un modèle est « sur demande », en texte simple."
+    ]
+  }
+}

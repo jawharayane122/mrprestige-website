@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "italic-serif-display",
+        "value": "*",
+        "files": [
+          "website/index.html"
+        ],
+        "createdAt": "2026-10-31T19:58:21.806Z",
+        "reason": "user confirmed: direction Riviera Nuit choisie dans le dossier de refonte (titre Bodoni italique)"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "website/index.html"
+        ],
+        "createdAt": "2026-10-31T20:45:07.765Z",
+        "reason": "assistant: les carrousels yacht-photo-slider affichent des photos bord à bord dans leur cadre, sans texte à protéger"
+      }
+    ]
+  }
+}

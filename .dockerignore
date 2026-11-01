@@ -3,3 +3,9 @@
 *.md
 railway.json
 .dockerignore
+tests
+docs
+.impeccable
+.superpowers
+.gitignore
+Dockerfile

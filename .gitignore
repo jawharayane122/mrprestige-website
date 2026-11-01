@@ -1,0 +1,6 @@
+.DS_Store
+# Outils de revue (captures locales)
+.impeccable/review/
+.impeccable/hook.cache.json
+.impeccable/questions/
+.playwright-mcp/
