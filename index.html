@@ -3,12 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MR PRESTIGE | Location Véhicules de Luxe</title>
-  <meta name="description" content="MR PRESTIGE – Location de véhicules de luxe, transferts VIP, location immobilière et yachts. Service premium sur la Côte d'Azur.">
+  <title>MR PRESTIGE | Location de voitures de luxe, yachts et chauffeurs · Côte d'Azur</title>
+  <meta name="description" content="Range Rover, G-Class, Porsche 911, Rolls-Royce Cullinan. Charter de yachts, transferts VIP et chauffeurs privés à Nice, Cannes et Monaco. Demande de disponibilité sur WhatsApp.">
+  <link rel="canonical" href="https://www.mrprestige.fr/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="theme-color" content="#07080a">
+  <!-- Aperçu de partage (WhatsApp, Instagram, Facebook, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MR PRESTIGE">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://www.mrprestige.fr/">
+  <meta property="og:title" content="MR PRESTIGE · Côte d'Azur">
+  <meta property="og:description" content="Voitures d'exception, yachts et chauffeurs privés à Nice, Cannes et Monaco.">
+  <meta property="og:image" content="https://www.mrprestige.fr/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Range Rover Vogue noir de la flotte MR PRESTIGE">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRental",
+    "name": "MR PRESTIGE",
+    "url": "https://www.mrprestige.fr/",
+    "image": "https://www.mrprestige.fr/images/og-cover.jpg",
+    "logo": "https://www.mrprestige.fr/images/apple-touch-icon.png",
+    "telephone": "+33651032530",
+    "email": "contact@mrprestige.fr",
+    "areaServed": ["Nice", "Cannes", "Monaco", "Saint-Tropez", "Côte d'Azur"],
+    "description": "Location de voitures de luxe, charter de yachts, transferts VIP et chauffeurs privés sur la Côte d'Azur."
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=0919-c0730b14">
-  <script src="translations.js?v=i18n-3b592d9d"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://hrjgaundrgiukdjlpgxy.supabase.co" crossorigin>
+  <link rel="preload" as="image" href="images/image_voiture.jpg" media="(min-width: 681px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/G63.jpg" media="(max-width: 680px)" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=riviera-3">
+  <script src="translations.js?v=riviera-3" defer></script>
+  <script src="concierge.js?v=riviera-3" defer></script>
+  <script src="showroom.js?v=riviera-3" defer></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -26,11 +62,11 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#services" data-i18n="nav_services">Services</a></li>
       <li><a href="#fleet" data-i18n="nav_fleet">Flotte</a></li>
+      <li><a href="#services" data-i18n="nav_services">Services</a></li>
       <li><a href="#yachts" data-i18n="nav_yachts">Yachts</a></li>
       <li><a href="#transfers" data-i18n="nav_transfers">Transferts</a></li>
-      <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Réserver</a></li>
+      <li><a href="#contact" class="btn-nav" data-i18n="nav_book">Demander</a></li>
     </ul>
     <!-- LANGUAGE SWITCHER -->
     <div class="lang-switcher" id="langSwitcher">
@@ -51,222 +87,113 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-tagline">EXPÉRIENCE EXCLUSIVE</p>
-    <h1 class="hero-title">L'Excellence<br><span class="gold">à Votre Service</span></h1>
-    <p class="hero-sub">Location de véhicules de prestige · Transferts VIP · Mise à disposition avec chauffeur</p>
-    <div class="hero-btns">
-      <a href="#fleet" class="btn-primary">Découvrir la Flotte</a>
-      <a href="#contact" class="btn-secondary">Nous Contacter</a>
-    </div>
+<section id="hero" class="rn-hero">
+  <picture>
+    <source media="(max-width: 680px)" srcset="images/G63.jpg">
+    <img class="rn-hero-photo" src="images/image_voiture.jpg" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="rn-hero-inner">
+    <h1 class="rn-hero-title" data-i18n="hero_title">La Côte d'Azur,<br><em>à votre rythme.</em></h1>
+    <p class="rn-hero-sub" data-i18n="hero_sub">Voitures d'exception, yachts et chauffeurs privés. Une demande, une réponse personnelle sur WhatsApp.</p>
+    <form class="rn-ask" id="heroAsk" novalidate>
+      <div class="rn-ask-field rn-ask-service">
+        <label for="askService" data-i18n="ask_service">Je souhaite</label>
+        <select id="askService">
+          <option value="vehicle" data-i18n="ask_vehicle">Une voiture</option>
+          <option value="yacht" data-i18n="ask_yacht">Un yacht</option>
+          <option value="transfer" data-i18n="ask_transfer">Un transfert</option>
+          <option value="driver" data-i18n="ask_driver">Un chauffeur privé</option>
+          <option value="property" data-i18n="ask_property">Une villa</option>
+        </select>
+      </div>
+      <div class="rn-ask-field">
+        <label for="askStart" data-i18n="cc_start">Du</label>
+        <input type="date" id="askStart">
+      </div>
+      <div class="rn-ask-field">
+        <label for="askEnd" data-i18n="cc_end">Au</label>
+        <input type="date" id="askEnd">
+      </div>
+      <button type="submit" class="rn-btn rn-btn-gold" data-i18n="ask_btn">Demander une disponibilité</button>
+    </form>
+    <p class="rn-ask-err" id="askErr" role="alert" hidden></p>
+    <a class="rn-hero-link" href="#fleet" data-i18n="ask_fleet">Parcourir le showroom</a>
   </div>
-  <div class="hero-scroll"><span></span></div>
-</section>
-
-<!-- STATS BAND -->
-<div class="stats-band">
-  <div class="stat-item">
-    <div class="stat-num gold">50<span>+</span></div>
-    <div class="stat-label">Véhicules Premium</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-num gold">5</div>
-    <div class="stat-label">Services Exclusifs</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-num gold">24<span>/7</span></div>
-    <div class="stat-label">Disponibilité</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-num gold">100<span>%</span></div>
-    <div class="stat-label">Satisfaction Client</div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section id="services" class="section">
-  <p class="section-tag">NOS SERVICES</p>
-  <h2 class="section-title">Ce que nous proposons</h2>
-  <div class="services-grid">
-    <div class="service-card" data-aos>
-      <div class="service-icon">🚗</div>
-      <h3>Location Véhicule</h3>
-      <p>Accédez à notre flotte exclusive de berlines, SUV, sportives et cabriolets. Location à la journée, à la semaine ou au mois.</p>
-      <a href="#fleet" class="card-link">Voir la flotte →</a>
-    </div>
-    <div class="service-card" data-aos>
-      <div class="service-icon">🏡</div>
-      <h3>Location Immobilière</h3>
-      <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur. Séjours d'exception pour une clientèle exigeante.</p>
-      <a href="#contact" class="card-link">Demander →</a>
-    </div>
-    <div class="service-card" data-aos>
-      <div class="service-icon">⛵</div>
-      <h3>Location Bateau</h3>
-      <p>Explorez la Méditerranée à bord de nos yachts et bateaux de plaisance. Sorties privées, croisières et journées mer.</p>
-      <a href="#contact" class="card-link">Demander →</a>
-    </div>
-    <div class="service-card" data-aos>
-      <div class="service-icon">✈️</div>
-      <h3>Transferts Aéroport</h3>
-      <p>Prise en charge aéroport, gare ou hôtel. Service ponctuel, discret et professionnel avec nos chauffeurs VIP.</p>
-      <a href="#transfers" class="card-link">En savoir plus →</a>
-    </div>
-    <div class="service-card" data-aos>
-      <div class="service-icon">🎩</div>
-      <h3>Chauffeur Privé</h3>
-      <p>Mise à disposition de chauffeur professionnel pour tous vos déplacements. Événements, affaires ou loisirs.</p>
-      <a href="#contact" class="card-link">Réserver →</a>
-    </div>
+  <div class="rn-hero-foot">
+    <p data-i18n="hero_places">Nice · Cannes · Monaco · Saint-Tropez</p>
+    <p id="heroCount">7 voitures · 4 yachts</p>
   </div>
 </section>
 
 <!-- FLEET -->
-<section id="fleet" class="section section-dark">
-  <p class="section-tag">NOTRE FLOTTE</p>
-  <h2 class="section-title">Véhicules d'Exception</h2>
-  <div class="filter-tabs">
-    <button class="filter-btn active" data-filter="all">Tous</button>
-    <button class="filter-btn" data-filter="berline">Berline</button>
-    <button class="filter-btn" data-filter="suv">SUV</button>
-    <button class="filter-btn" data-filter="sportive">Sportive</button>
-    <button class="filter-btn" data-filter="van">Van</button>
-    <button class="filter-btn" data-filter="citadine">Citadine</button>
+<section id="fleet" class="rn-showroom" aria-labelledby="fleetTitle">
+  <header class="rn-sr-head">
+    <h2 class="rn-h2" id="fleetTitle" data-i18n="fleet_title">Le showroom</h2>
+    <p class="rn-sr-intro" data-i18n="fleet_sub">Choisissez un modèle pour le voir en grand. Prix à la journée ; la disponibilité vous est confirmée sur WhatsApp.</p>
+  </header>
+  <div class="rn-sr" id="showroom">
+    <figure class="rn-sr-stage" id="srStage">
+      <div class="rn-sr-photo" id="srPhoto"><img src="https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/G63.jpg" alt="Mercedes G Class" decoding="async"></div>
+      <figcaption class="rn-sr-caption" aria-live="polite">
+        <h3 class="rn-sr-name" id="srName">Mercedes <em>G Class</em></h3>
+        <p class="rn-sr-specs" id="srSpecs">2024 · SUV · Automatique</p>
+        <p class="rn-sr-price"><strong id="srPrice">700 €</strong> <span id="srPer">/ jour</span></p>
+        <div class="rn-sr-actions">
+          <button type="button" class="rn-btn rn-btn-gold" id="srRequest" data-i18n="sr_request">Demander ce modèle</button>
+          <span class="rn-sr-note" data-i18n="badge_avail">Sur demande</span>
+        </div>
+      </figcaption>
+    </figure>
+    <div class="rn-sr-index">
+      <div class="rn-sr-filters" id="srFilters" role="group" aria-label="Catégories" data-i18n-aria="a_categories"></div>
+      <ol class="rn-sr-list" id="srList">
+        <li data-car='{&quot;brand&quot;: &quot;MERCEDES&quot;, &quot;model&quot;: &quot;G CLASS&quot;, &quot;year&quot;: 2024, &quot;cat&quot;: &quot;suv&quot;, &quot;price&quot;: 700, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/G63.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Mercedes <em>G Class</em></span><span class="rn-sr-row-price">700 €</span></button></li>
+        <li data-car='{&quot;brand&quot;: &quot;MERCEDES&quot;, &quot;model&quot;: &quot;V CLASS&quot;, &quot;year&quot;: 2024, &quot;cat&quot;: &quot;van&quot;, &quot;price&quot;: 300, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/Van.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Mercedes <em>V Class</em></span><span class="rn-sr-row-price">300 €</span></button></li>
+        <li data-car='{&quot;brand&quot;: &quot;MINI COOPER&quot;, &quot;model&quot;: &quot;CAB&quot;, &quot;year&quot;: 2024, &quot;cat&quot;: &quot;citadine&quot;, &quot;price&quot;: 250, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/mini_cab.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Mini Cooper <em>Cab</em></span><span class="rn-sr-row-price">250 €</span></button></li>
+        <li data-car='{&quot;brand&quot;: &quot;PORSCHE&quot;, &quot;model&quot;: &quot;911&quot;, &quot;year&quot;: 2024, &quot;cat&quot;: &quot;sportive&quot;, &quot;price&quot;: 900, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/upload_20260309_220143_sportive.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Porsche <em>911</em></span><span class="rn-sr-row-price">900 €</span></button></li>
+        <li data-car='{&quot;brand&quot;: &quot;RANGE ROVER&quot;, &quot;model&quot;: &quot;VOGUE&quot;, &quot;year&quot;: 2024, &quot;cat&quot;: &quot;suv&quot;, &quot;price&quot;: 700, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/upload_20260309_213713_vukb1qvyzysb98ik619e.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Range Rover <em>Vogue</em></span><span class="rn-sr-row-price">700 €</span></button></li>
+        <li data-car='{&quot;brand&quot;: &quot;LAND ROVER&quot;, &quot;model&quot;: &quot;DEFENDER&quot;, &quot;year&quot;: 2025, &quot;cat&quot;: &quot;suv&quot;, &quot;price&quot;: 600, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/Defender.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Land Rover <em>Defender</em></span><span class="rn-sr-row-price">600 €</span></button></li>
+        <li data-car='{&quot;brand&quot;: &quot;ROLLS-ROYCE&quot;, &quot;model&quot;: &quot;CULLINAN&quot;, &quot;year&quot;: 2024, &quot;cat&quot;: &quot;suv&quot;, &quot;price&quot;: 2500, &quot;img&quot;: &quot;https://hrjgaundrgiukdjlpgxy.supabase.co/storage/v1/object/public/vehicles-images/upload_20260309_220048_luxe.jpg&quot;}'><button type="button" class="rn-sr-row" aria-pressed="false"><span class="rn-sr-row-name">Rolls-Royce <em>Cullinan</em></span><span class="rn-sr-row-price">2 500 €</span></button></li>
+      </ol>
+    </div>
   </div>
-  <div class="fleet-grid" id="fleetGrid">
-    <div class="car-card" data-cat="suv">
-      <div class="car-img-wrap">
-        <img src="images/Defender.jpg" alt="Range Rover Defender" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">RANGE ROVER</div>
-        <div class="car-model">DEFENDER</div>
-        <div class="car-specs"><span>2024</span><span>•</span><span>SUV</span><span>•</span><span>Automatique</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">1 200 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Range Rover Defender')">Réserver</a>
-        </div>
-      </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <h2 class="section-title">Ce que nous proposons</h2>
+  <div class="services-grid">
+    <div class="service-card" data-aos>
+      <h3>Location Véhicule</h3>
+      <p>Accédez à notre flotte exclusive de berlines, SUV, sportives et cabriolets. Location à la journée, à la semaine ou au mois.</p>
+      <a href="#fleet" class="card-link">Voir la flotte</a>
     </div>
-    <div class="car-card" data-cat="suv">
-      <div class="car-img-wrap">
-        <img src="images/G63.jpg" alt="Mercedes G63" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">MERCEDES</div>
-        <div class="car-model">G63 AMG</div>
-        <div class="car-specs"><span>2024</span><span>•</span><span>SUV</span><span>•</span><span>Automatique</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">1 500 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mercedes G63 AMG')">Réserver</a>
-        </div>
-      </div>
+    <div class="service-card" data-aos>
+      <h3>Location Immobilière</h3>
+      <p>Villas luxueuses, appartements de prestige sur la Côte d'Azur. Séjours d'exception pour une clientèle exigeante.</p>
+      <a href="#contact" class="card-link">Demander</a>
     </div>
-    <div class="car-card" data-cat="suv">
-      <div class="car-img-wrap">
-        <img src="images/vogue.jpg" alt="Range Rover Vogue" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">RANGE ROVER</div>
-        <div class="car-model">VOGUE</div>
-        <div class="car-specs"><span>2024</span><span>•</span><span>SUV</span><span>•</span><span>Automatique</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">1 400 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Range Rover Vogue')">Réserver</a>
-        </div>
-      </div>
+    <div class="service-card" data-aos>
+      <h3>Location Bateau</h3>
+      <p>Explorez la Méditerranée à bord de nos yachts et bateaux de plaisance. Sorties privées, croisières et journées mer.</p>
+      <a href="#contact" class="card-link">Demander</a>
     </div>
-    <div class="car-card" data-cat="berline">
-      <div class="car-img-wrap">
-        <img src="images/berline_classes.jpg" alt="Mercedes Classe S" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">MERCEDES</div>
-        <div class="car-model">CLASSE S</div>
-        <div class="car-specs"><span>2024</span><span>•</span><span>Berline</span><span>•</span><span>Automatique</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">900 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mercedes Classe S')">Réserver</a>
-        </div>
-      </div>
+    <div class="service-card" data-aos>
+      <h3>Transferts Aéroport</h3>
+      <p>Prise en charge aéroport, gare ou hôtel. Service ponctuel, discret et professionnel avec nos chauffeurs VIP.</p>
+      <a href="#transfers" class="card-link">En savoir plus</a>
     </div>
-    <div class="car-card" data-cat="van">
-      <div class="car-img-wrap">
-        <img src="images/Van.jpg" alt="Mercedes V-Class" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">MERCEDES</div>
-        <div class="car-model">V-CLASS</div>
-        <div class="car-specs"><span>2023</span><span>•</span><span>Van</span><span>•</span><span>Automatique</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">600 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mercedes V-Class')">Réserver</a>
-        </div>
-      </div>
-    </div>
-    <div class="car-card" data-cat="sportive">
-      <div class="car-img-wrap">
-        <img src="images/sportive.jpg" alt="Porsche 911 GT3" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">PORSCHE</div>
-        <div class="car-model">911 GT3</div>
-        <div class="car-specs"><span>2024</span><span>•</span><span>Sportive</span><span>•</span><span>PDK</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">1 800 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Porsche 911 GT3')">Réserver</a>
-        </div>
-      </div>
-    </div>
-    <div class="car-card" data-cat="citadine">
-      <div class="car-img-wrap">
-        <img src="images/citadine.jpg" alt="Mini Cooper Cabriolet" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">MINI COOPER</div>
-        <div class="car-model">CABRIOLET</div>
-        <div class="car-specs"><span>2024</span><span>•</span><span>Citadine</span><span>•</span><span>Automatique</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">250 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Mini Cooper Cabriolet')">Réserver</a>
-        </div>
-      </div>
-    </div>
-    <div class="car-card" data-cat="sportive">
-      <div class="car-img-wrap">
-        <img src="images/cabriolet.jpg" alt="Ferrari F8 Tributo" loading="lazy">
-        <span class="car-badge available">Disponible</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">FERRARI</div>
-        <div class="car-model">F8 TRIBUTO</div>
-        <div class="car-specs"><span>2023</span><span>•</span><span>Sportive</span><span>•</span><span>DCT</span></div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">2 500 €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve" onclick="preselectVehicle('Ferrari F8 Tributo')">Réserver</a>
-        </div>
-      </div>
+    <div class="service-card" data-aos>
+      <h3>Chauffeur Privé</h3>
+      <p>Mise à disposition de chauffeur professionnel pour tous vos déplacements. Événements, affaires ou loisirs.</p>
+      <a href="#contact" class="card-link">Réserver</a>
     </div>
   </div>
 </section>
 
 <!-- YACHTS -->
 <section id="yachts" class="section">
-  <p class="section-tag" data-i18n="yacht_tag">CHARTER PRIVÉ D'EXCEPTION</p>
-  <h2 class="section-title" data-i18n="yacht_title">Nos Bateaux &amp; <span class="gold">Yachts</span></h2>
+  <h2 class="section-title" data-i18n="yacht_title">Nos Bateaux &amp; <em>Yachts</em></h2>
   <p class="yacht-intro" data-i18n="yacht_sub">Explorez la Méditerranée à bord d'unités rares et prestigieuses. Équipage dévoué, gastronomie et prestations sur mesure pour des croisières inoubliables.</p>
 
   <div class="yacht-container">
@@ -274,11 +201,10 @@
     <!-- ══ MADSUMMER ══ -->
     <div class="yacht-card">
       <div class="yacht-photo-slider" id="yslider-madsummer">
-        <img class="yslide-bg" id="yslide-bg-madsummer" src="images/yachts/madsummer_profile.jpg?v=hd2" alt="" aria-hidden="true">
-        <img class="yslide-fg" id="yslide-fg-madsummer" src="images/yachts/madsummer_profile.jpg?v=hd2" alt="Yacht MADSUMMER" onclick="openYachtLightbox('madsummer')">
-        <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('madsummer',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('madsummer',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <img class="yslide-bg" id="yslide-bg-madsummer" src="images/yachts/madsummer_profile.jpg?v=hd2" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="yslide-fg" id="yslide-fg-madsummer" src="images/yachts/madsummer_profile.jpg?v=hd2" alt="Yacht MADSUMMER" onclick="openYachtLightbox('madsummer')" loading="lazy" decoding="async">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('madsummer',-1)" aria-label="Précédent" data-i18n-aria="a_prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('madsummer',1)" aria-label="Suivant" data-i18n-aria="a_next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
         <button type="button" class="yslide-zoom" onclick="openYachtLightbox('madsummer')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
@@ -302,10 +228,9 @@
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">MADSUMMER</h3>
-            <div class="ycard-size"><bdi>95</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>311'8"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Lürssen</strong></div>
+            <div class="ycard-size"><bdi>95</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>311'8"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:var(--display);font-style:italic;letter-spacing:0;">Lürssen</strong></div>
           </div>
           <div class="ycard-price-block">
-            <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
             <span class="ycard-price-val" data-i18n="price_on_demand">PRIX SUR DEMANDE</span>
             <span class="ycard-zone" data-i18n="yacht_zone">Côte d'Azur · Monaco · Méditerranée</span>
           </div>
@@ -313,28 +238,25 @@
 
         <div class="ycard-stats">
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👥</span>
             <span class="ycard-stat-val">12</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_guests_lbl">Invités</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">🛏️</span>
             <span class="ycard-stat-val">10</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_cabins_lbl">Cabines</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👨‍✈️</span>
             <span class="ycard-stat-val">28</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_crew_lbl">Équipage</span>
           </div>
         </div>
 
         <div class="ycard-amenities">
-          <span data-i18n="ms_am1">🏊 Piscine en verre 12m</span>
-          <span data-i18n="ms_am2">🚁 Héliport certifié</span>
-          <span data-i18n="ms_am3">🏋️ Gym panoramique</span>
-          <span data-i18n="ms_am4">💆 Spa &amp; Beach Club</span>
-          <span data-i18n="ms_am5">🛥️ Annexes &amp; Toys</span>
+          <span data-i18n="ms_am1">Piscine en verre 12m</span>
+          <span data-i18n="ms_am2">Héliport certifié</span>
+          <span data-i18n="ms_am3">Gym panoramique</span>
+          <span data-i18n="ms_am4">Spa &amp; Beach Club</span>
+          <span data-i18n="ms_am5">Annexes &amp; Toys</span>
         </div>
 
         <div class="ycard-actions">
@@ -350,11 +272,10 @@
     <!-- ══ SOPHIA ══ -->
     <div class="yacht-card">
       <div class="yacht-photo-slider" id="yslider-sophia">
-        <img class="yslide-bg" id="yslide-bg-sophia" src="images/yachts/sophia_profile.jpg?v=hd2" alt="" aria-hidden="true">
-        <img class="yslide-fg" id="yslide-fg-sophia" src="images/yachts/sophia_profile.jpg?v=hd2" alt="Yacht SOPHIA" onclick="openYachtLightbox('sophia')">
-        <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('sophia',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('sophia',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <img class="yslide-bg" id="yslide-bg-sophia" src="images/yachts/sophia_profile.jpg?v=hd2" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="yslide-fg" id="yslide-fg-sophia" src="images/yachts/sophia_profile.jpg?v=hd2" alt="Yacht SOPHIA" onclick="openYachtLightbox('sophia')" loading="lazy" decoding="async">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('sophia',-1)" aria-label="Précédent" data-i18n-aria="a_prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('sophia',1)" aria-label="Suivant" data-i18n-aria="a_next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
         <button type="button" class="yslide-zoom" onclick="openYachtLightbox('sophia')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
@@ -377,39 +298,35 @@
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">SOPHIA</h3>
-            <div class="ycard-size"><bdi>96,6</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>316'11"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Feadship</strong></div>
+            <div class="ycard-size"><bdi>96,6</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>316'11"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:var(--display);font-style:italic;letter-spacing:0;">Feadship</strong></div>
           </div>
           <div class="ycard-price-block">
-            <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
-            <span class="ycard-price-val"><bdi>1 980 000 €</bdi> <small style="font-size:0.5em;font-weight:600;"><span data-i18n="per_week">/ SEM.</span></small></span>
+            <span class="ycard-price-val" data-i18n="price_on_demand">PRIX SUR DEMANDE</span>
             <span class="ycard-zone" data-i18n="zone_med_car">Méditerranée · Caraïbes</span>
           </div>
         </div>
 
         <div class="ycard-stats">
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👥</span>
             <span class="ycard-stat-val">12</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_guests_lbl">Invités</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">🛏️</span>
             <span class="ycard-stat-val">7</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_cabins_lbl">Cabines</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👨‍✈️</span>
             <span class="ycard-stat-val">32</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_crew_lbl">Équipage</span>
           </div>
         </div>
 
         <div class="ycard-amenities">
-          <span data-i18n="so_am1">🏊 Piscine à fond vitré 9x3,6m</span>
-          <span data-i18n="so_am2">🚁 Hangar hélicoptère</span>
-          <span data-i18n="so_am3">🧖 Spa, hammam &amp; snow room</span>
-          <span data-i18n="so_am4">🎬 Cinéma privé</span>
-          <span data-i18n="so_am5">🛏️ Suite pleine largeur</span>
+          <span data-i18n="so_am1">Piscine à fond vitré 9x3,6m</span>
+          <span data-i18n="so_am2">Hangar hélicoptère</span>
+          <span data-i18n="so_am3">Spa, hammam &amp; snow room</span>
+          <span data-i18n="so_am4">Cinéma privé</span>
+          <span data-i18n="so_am5">Suite pleine largeur</span>
         </div>
 
         <div class="ycard-actions">
@@ -425,11 +342,10 @@
     <!-- ══ COME TOGETHER ══ FICHE EN PREPARATION : contenu a completer, carte masquee tant que les donnees et photos ne sont pas fournies -->
     <div class="yacht-card">
       <div class="yacht-photo-slider" id="yslider-cometogether">
-        <img class="yslide-bg" id="yslide-bg-cometogether" src="images/yachts/cometogether_profile.jpg?v=1" alt="" aria-hidden="true">
-        <img class="yslide-fg" id="yslide-fg-cometogether" src="images/yachts/cometogether_profile.jpg?v=1" alt="Yacht COME TOGETHER" onclick="openYachtLightbox('cometogether')">
-        <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('cometogether',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('cometogether',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <img class="yslide-bg" id="yslide-bg-cometogether" src="images/yachts/cometogether_profile.jpg?v=1" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="yslide-fg" id="yslide-fg-cometogether" src="images/yachts/cometogether_profile.jpg?v=1" alt="Yacht COME TOGETHER" onclick="openYachtLightbox('cometogether')" loading="lazy" decoding="async">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('cometogether',-1)" aria-label="Précédent" data-i18n-aria="a_prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('cometogether',1)" aria-label="Suivant" data-i18n-aria="a_next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
         <button type="button" class="yslide-zoom" onclick="openYachtLightbox('cometogether')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
@@ -441,39 +357,35 @@
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">COME TOGETHER</h3>
-            <div class="ycard-size"><bdi>60</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>196'10"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Amels</strong></div>
+            <div class="ycard-size"><bdi>60</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>196'10"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:var(--display);font-style:italic;letter-spacing:0;">Amels</strong></div>
           </div>
           <div class="ycard-price-block">
-            <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
-            <span class="ycard-price-val"><span data-i18n="price_from">DÈS</span> <bdi>539 000 €</bdi> <small style="font-size:0.5em;font-weight:600;"><span data-i18n="per_week">/ SEM.</span></small></span>
+            <span class="ycard-price-val" data-i18n="price_on_demand">PRIX SUR DEMANDE</span>
             <span class="ycard-zone" data-i18n="zone_med_car_excl">Méditerranée · Caraïbes · hors frais</span>
           </div>
         </div>
 
         <div class="ycard-stats">
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👥</span>
             <span class="ycard-stat-val">12</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_guests_lbl">Invités</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">🛏️</span>
             <span class="ycard-stat-val">6</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_cabins_lbl">Cabines</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👨‍✈️</span>
             <span class="ycard-stat-val">14</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_crew_lbl">Équipage</span>
           </div>
         </div>
 
         <div class="ycard-amenities">
-          <span data-i18n="ct_am1">🧖 Sauna</span>
-          <span data-i18n="ct_am2">🏋️ Salle de sport</span>
-          <span data-i18n="ct_am3">💼 Bureau privé</span>
-          <span data-i18n="ct_am4">🍽️ Dîner en plein air</span>
-          <span data-i18n="ct_am5">🎨 Intérieur Winch Design</span>
+          <span data-i18n="ct_am1">Sauna</span>
+          <span data-i18n="ct_am2">Salle de sport</span>
+          <span data-i18n="ct_am3">Bureau privé</span>
+          <span data-i18n="ct_am4">Dîner en plein air</span>
+          <span data-i18n="ct_am5">Intérieur Winch Design</span>
         </div>
 
         <div class="ycard-actions">
@@ -489,11 +401,10 @@
     <!-- ══ MOSKITO ══ -->
     <div class="yacht-card" >
       <div class="yacht-photo-slider" id="yslider-moskito">
-        <img class="yslide-bg" id="yslide-bg-moskito" src="images/yachts/moskito_profile.jpg?v=1" alt="" aria-hidden="true">
-        <img class="yslide-fg" id="yslide-fg-moskito" src="images/yachts/moskito_profile.jpg?v=1" alt="Yacht MOSKITO" onclick="openYachtLightbox('moskito')">
-        <span class="yslide-badge"><span class="pulse-dot"></span> <span data-i18n="badge_charter">Disponible en Charter</span></span>
-        <button type="button" class="yslide-btn prev" onclick="ys_nav('moskito',-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
-        <button type="button" class="yslide-btn next" onclick="ys_nav('moskito',1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+        <img class="yslide-bg" id="yslide-bg-moskito" src="images/yachts/moskito_profile.jpg?v=1" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="yslide-fg" id="yslide-fg-moskito" src="images/yachts/moskito_profile.jpg?v=1" alt="Yacht MOSKITO" onclick="openYachtLightbox('moskito')" loading="lazy" decoding="async">
+        <button type="button" class="yslide-btn prev" onclick="ys_nav('moskito',-1)" aria-label="Précédent" data-i18n-aria="a_prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button type="button" class="yslide-btn next" onclick="ys_nav('moskito',1)" aria-label="Suivant" data-i18n-aria="a_next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
         <button type="button" class="yslide-zoom" onclick="openYachtLightbox('moskito')" aria-label="Agrandir" data-i18n-aria="a_zoom">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
         </button>
@@ -505,39 +416,35 @@
         <div class="ycard-name-row">
           <div>
             <h3 class="ycard-name">MOSKITO</h3>
-            <div class="ycard-size"><bdi>55</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>180'5"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:1px;">Heesen</strong></div>
+            <div class="ycard-size"><bdi>55</bdi> <span data-i18n="unit_m">Mètres</span> / <bdi>180'5"</bdi> &nbsp;·&nbsp; <strong style="color:var(--gold);font-family:var(--display);font-style:italic;letter-spacing:0;">Heesen</strong></div>
           </div>
           <div class="ycard-price-block">
-            <span class="ycard-price-lbl" data-i18n="yacht_price_lbl">Tarif de charter</span>
-            <span class="ycard-price-val"><span data-i18n="price_from">DÈS</span> <bdi>385 000 €</bdi> <small style="font-size:0.5em;font-weight:600;"><span data-i18n="per_week">/ SEM.</span></small></span>
+            <span class="ycard-price-val" data-i18n="price_on_demand">PRIX SUR DEMANDE</span>
             <span class="ycard-zone" data-i18n="zone_med_car_excl">Méditerranée · Caraïbes · hors frais</span>
           </div>
         </div>
 
         <div class="ycard-stats">
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👥</span>
             <span class="ycard-stat-val">12</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_guests_lbl">Invités</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">🛏️</span>
             <span class="ycard-stat-val">6</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_cabins_lbl">Cabines</span>
           </div>
           <div class="ycard-stat">
-            <span class="ycard-stat-ico">👨‍✈️</span>
             <span class="ycard-stat-val">13</span>
             <span class="ycard-stat-lbl" data-i18n="yacht_crew_lbl">Équipage</span>
           </div>
         </div>
 
         <div class="ycard-amenities">
-          <span data-i18n="mk_am1">🛁 Jacuzzi de pont</span>
-          <span data-i18n="mk_am2">🏖️ Beach club &amp; plateforme de bain</span>
-          <span data-i18n="mk_am3">🧖 Sauna &amp; salle de sport</span>
-          <span data-i18n="mk_am4">🍸 Bar extérieur &amp; sun deck</span>
-          <span data-i18n="mk_am5">🛥️ Jet-skis, Seabobs &amp; toys</span>
+          <span data-i18n="mk_am1">Jacuzzi de pont</span>
+          <span data-i18n="mk_am2">Beach club &amp; plateforme de bain</span>
+          <span data-i18n="mk_am3">Sauna &amp; salle de sport</span>
+          <span data-i18n="mk_am4">Bar extérieur &amp; sun deck</span>
+          <span data-i18n="mk_am5">Jet-skis, Seabobs &amp; toys</span>
         </div>
 
         <div class="ycard-actions">
@@ -555,10 +462,10 @@
 
 <!-- YACHT LIGHTBOX -->
 <div class="yacht-lightbox" id="yachtLightbox" onclick="closeYachtLightboxOnBackdrop(event)">
-  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer" data-i18n-aria="a_close">✕</button>
-  <button type="button" class="lightbox-nav prev" onclick="navigateLightbox(-1)" aria-label="Précédent" data-i18n-aria="a_prev">❮</button>
-  <img id="yachtLightboxImg" src="" alt="Yacht MADSUMMER">
-  <button type="button" class="lightbox-nav next" onclick="navigateLightbox(1)" aria-label="Suivant" data-i18n-aria="a_next">❯</button>
+  <button type="button" class="lightbox-close" onclick="closeYachtLightbox()" aria-label="Fermer" data-i18n-aria="a_close"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14"/></svg></button>
+  <button type="button" class="lightbox-nav prev" onclick="navigateLightbox(-1)" aria-label="Précédent" data-i18n-aria="a_prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+  <img id="yachtLightboxImg" alt="Yacht" decoding="async" loading="lazy" src="images/yachts/madsummer_profile.jpg?v=hd2">
+  <button type="button" class="lightbox-nav next" onclick="navigateLightbox(1)" aria-label="Suivant" data-i18n-aria="a_next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
   <div class="lightbox-caption">
     <span id="yachtLightboxCaption"></span>
     <span id="yachtLightboxCounter" class="yacht-counter" dir="ltr"></span>
@@ -569,22 +476,20 @@
 <section id="transfers" class="section">
   <div class="transfers-layout">
     <div class="transfers-text">
-      <p class="section-tag">TRANSFERTS VIP</p>
-      <h2 class="section-title left">Voyagez Sans<br><span class="gold">Compromis</span></h2>
+      <h2 class="section-title left">Voyagez Sans<br><em>Compromis</em></h2>
       <p class="transfers-desc">Nos chauffeurs professionnels assurent votre prise en charge depuis et vers tous les aéroports, gares et hôtels de la région. Discrétion, ponctualité et confort absolu garantis.</p>
       <ul class="transfers-list">
-        <li><span class="gold">✓</span> Aéroports Nice, Cannes, Monaco</li>
-        <li><span class="gold">✓</span> Hôtels 5 étoiles & Palaces</li>
-        <li><span class="gold">✓</span> Événements & galas privés</li>
-        <li><span class="gold">✓</span> Courses à bord & Monaco GP</li>
-        <li><span class="gold">✓</span> Disponibilité 24h/24, 7j/7</li>
+        <li>Aéroports Nice, Cannes, Monaco</li>
+        <li>Hôtels 5 étoiles & Palaces</li>
+        <li>Événements & galas privés</li>
+        <li>Courses à bord & Monaco GP</li>
+        <li>Disponibilité 24h/24, 7j/7</li>
       </ul>
       <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:2rem;">Réserver un Transfert</a>
     </div>
     <div class="transfers-img">
       <img src="images/transfer_chauffeur.png" alt="Chauffeur privé MR PRESTIGE" data-i18n-alt="alt_chauffeur">
       <div class="transfers-badge">
-        <span class="gold" style="font-size:2rem;">✈</span>
         <p>Transfert <strong>24/7</strong></p>
       </div>
     </div>
@@ -593,27 +498,22 @@
 
 <!-- WHY US -->
 <section class="section section-dark why-us">
-  <p class="section-tag">POURQUOI NOUS</p>
-  <h2 class="section-title">L'Expérience <span class="gold">MR PRESTIGE</span></h2>
+  <h2 class="section-title">L'Expérience <em>MR PRESTIGE</em></h2>
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-icon">👑</div>
-      <h4>Service Premium</h4>
+      <h3>Service Premium</h3>
       <p>Chaque détail est soigné pour vous offrir une expérience inoubliable digne des plus grands standards.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">🔒</div>
-      <h4>Confidentialité</h4>
+      <h3>Confidentialité</h3>
       <p>Discrétion absolue pour nos clients. Vos informations et déplacements restent strictement confidentiels.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">⚡</div>
-      <h4>Réactivité</h4>
-      <p>Réponse garantie en moins de 15 minutes. Nos équipes sont disponibles 24h/24 pour vos demandes urgentes.</p>
+      <h3>Réactivité</h3>
+      <p>Réponse rapide sur WhatsApp. Nos équipes vous répondent dès que possible pour vos demandes urgentes.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">🌍</div>
-      <h4>Couverture Étendue</h4>
+      <h3>Couverture Étendue</h3>
       <p>Présents sur toute la Côte d'Azur : Nice, Cannes, Monaco, Saint-Tropez, Antibes et au-delà.</p>
     </div>
   </div>
@@ -621,13 +521,11 @@
 
 <!-- CONTACT -->
 <section id="contact" class="section">
-  <p class="section-tag">CONTACT & RÉSERVATION</p>
-  <h2 class="section-title">Faites Votre <span class="gold">Demande</span></h2>
+  <h2 class="section-title">Faites Votre <em>Demande</em></h2>
 
   <div class="contact-layout">
     <div class="contact-info">
       <div class="contact-item">
-        <div class="contact-icon">📞</div>
         <div>
           <p class="contact-label">Téléphone / WhatsApp</p>
           <a href="tel:+33651032530" class="contact-value gold">+33 6 51 03 25 30</a>
@@ -635,14 +533,12 @@
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon">✉️</div>
         <div>
           <p class="contact-label">Email</p>
           <a href="mailto:contact@mrprestige.fr" class="contact-value gold">contact@mrprestige.fr</a>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon">📍</div>
         <div>
           <p class="contact-label">Zone de service</p>
           <p class="contact-value">Côte d'Azur · Monaco · PACA</p>
@@ -657,7 +553,7 @@
     <!-- FORMULAIRE — connecté à contact@mrprestige.fr via Formspree -->
     <div class="contact-form-col">
       <div class="fs-success-msg" data-fs-success>
-        ✅ Demande envoyée ! Nous vous contactons sous 15 minutes.
+        Demande envoyée ! Nous vous contactons très prochainement.
       </div>
       <div class="fs-error-msg" data-fs-error></div>
       <form class="contact-form" id="contactForm" novalidate>
@@ -732,6 +628,50 @@
   </div>
 </footer>
 
-<script src="script.js?v=i18n-727bcdb8"></script>
+<!-- ===== CONCIERGE : demande de disponibilité ===== -->
+<div class="cc-overlay" id="conciergeModal" hidden>
+  <div class="cc-dialog" role="dialog" aria-modal="true" aria-labelledby="ccTitle">
+    <button type="button" class="cc-close" id="ccClose" data-i18n-aria="cc_close" aria-label="Fermer">&times;</button>
+    <p class="cc-kicker" id="ccTitle" data-i18n="cc_title">Demande de disponibilité</p>
+    <div class="cc-progress" aria-hidden="true"><i></i><i></i><i></i></div>
+
+    <section class="cc-step" data-step="1">
+      <h3 data-i18n="cc_step1">Que souhaitez-vous ?</h3>
+      <div class="cc-services">
+        <button type="button" data-svc="vehicle" data-i18n="cc_svc_vehicle">Véhicule</button>
+        <button type="button" data-svc="yacht" data-i18n="cc_svc_yacht">Yacht</button>
+        <button type="button" data-svc="transfer" data-i18n="cc_svc_transfer">Transfert</button>
+        <button type="button" data-svc="driver" data-i18n="cc_svc_driver">Chauffeur privé</button>
+        <button type="button" data-svc="property" data-i18n="cc_svc_property">Immobilier</button>
+      </div>
+    </section>
+
+    <section class="cc-step" data-step="2" hidden>
+      <h3 data-i18n="cc_step2">Vos dates et détails</h3>
+      <label><span data-i18n="cc_model">Modèle ou préférence</span><input type="text" id="ccModel" maxlength="120"></label>
+      <div class="cc-row">
+        <label><span data-i18n="cc_start">Du</span><input type="date" id="ccStart"></label>
+        <label><span data-i18n="cc_end">Au</span><input type="date" id="ccEnd"></label>
+        <label><span data-i18n="cc_guests">Personnes</span><input type="number" id="ccGuests" min="1" max="99" value="2"></label>
+      </div>
+      <label><span data-i18n="cc_note">Remarque (facultatif)</span><textarea id="ccNote" rows="2" maxlength="300"></textarea></label>
+      <p class="cc-error" id="ccError" role="alert" hidden></p>
+    </section>
+
+    <section class="cc-step" data-step="3" hidden>
+      <h3 data-i18n="cc_step3">Récapitulatif</h3>
+      <ul class="cc-summary" id="ccSummary"></ul>
+      <p class="cc-disclaimer" data-i18n="cc_disclaimer">Il s'agit d'une demande, pas d'une réservation. Nous vous confirmons la disponibilité sous peu.</p>
+      <a class="btn-whatsapp cc-send" id="ccSend" target="_blank" rel="noopener" data-i18n="cc_send">Envoyer sur WhatsApp</a>
+    </section>
+
+    <div class="cc-nav">
+      <button type="button" class="cc-back" id="ccBack" data-i18n="cc_back" hidden>Retour</button>
+      <button type="button" class="btn-primary cc-next" id="ccNext" data-i18n="cc_next" hidden>Continuer</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js?v=riviera-3" defer></script>
 </body>
 </html>

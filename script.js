@@ -5,14 +5,13 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 // ===== CHARGEMENT DE LA FLOTTE DYNAMIQUE =====
 // Lit fleet.json (généré par le Fleet Manager) et remplace les cartes HTML statiques
 async function loadFleetFromSupabase() {
-  const grid = document.getElementById('fleetGrid');
-  if (!grid) return;
+  if (!document.getElementById('showroom')) return;
 
   let vehicles = null;
 
   // 1. Essayer fleet.json en priorité (généré par l'app FleetRent)
   try {
-    const res = await fetch('fleet.json?t=' + Date.now());
+    const res = await fetch('fleet.json', { cache: 'no-cache' });
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {
@@ -57,55 +56,19 @@ async function loadFleetFromSupabase() {
     }
   }
 
-  // 3. Si aucune donnée dynamique, garder les cartes HTML statiques
-  if (!vehicles || vehicles.length === 0) {
-    console.log('Aucune donnée dynamique — utilisation des cartes statiques HTML.');
-    return;
-  }
+  // 3. Sans données dynamiques, la vitrine écrite dans le HTML reste affichée
+  if (!vehicles || vehicles.length === 0) return;
+  if (window.Showroom) Showroom.mount(vehicles);
+  updateHeroCount(vehicles.length);
+}
 
-  // 4. Construire les cartes dynamiques
-  const t = T[currentLang] || T['fr'];
-  grid.innerHTML = '';
-
-  vehicles.forEach(v => {
-    const cat   = (v.cat || 'berline').toLowerCase();
-    const price = v.price || 0;
-    const label = v.label || `${v.brand} ${v.model} ${v.year}`;
-    const img   = v.img || '';
-    const parts = label.split(' ');
-    const brand = parts[0] || v.brand || '';
-    const modelPart = parts.slice(1).join(' ');
-
-    const card = document.createElement('div');
-    card.className = 'car-card';
-    card.dataset.cat = cat;
-    card.innerHTML = `
-      <div class="car-img-wrap">
-        <img src="${img}" alt="${label}" loading="lazy"
-             onerror="this.style.background='#1a1a1a';this.style.minHeight='200px'">
-        <span class="car-badge available">${t.badge_avail || 'Disponible'}</span>
-      </div>
-      <div class="car-body">
-        <div class="car-brand">${brand}</div>
-        <div class="car-model">${modelPart}</div>
-        <div class="car-specs">
-          <span>${v.year || ''}</span><span>•</span>
-          <span>${cat.charAt(0).toUpperCase() + cat.slice(1)}</span><span>•</span>
-          <span>${t.car_auto || 'Automatique'}</span>
-        </div>
-        <div class="car-footer">
-          <div class="car-price"><span class="gold">${Number(price).toLocaleString('fr-FR')} €</span><small>/jour</small></div>
-          <a href="#contact" class="btn-reserve"
-             onclick="preselectVehicle('${label.replace(/'/g, "\\'")}')"
-          >${t.btn_reserve || 'Réserver'}</a>
-        </div>
-      </div>`;
-    grid.appendChild(card);
-  });
-
-  // Ré-appliquer le filtre actif
-  const activeFilter = document.querySelector('.filter-btn.active');
-  if (activeFilter) activeFilter.click();
+// « 7 voitures · 4 yachts » sous l'accueil, à partir de la flotte publiée
+function updateHeroCount(n) {
+  const el = document.getElementById('heroCount');
+  const t = T[currentLang] || T.fr;
+  if (!el || !t.hero_count) return;
+  if (n) el.dataset.n = n;
+  el.textContent = t.hero_count.replace('{n}', el.dataset.n || 7);
 }
 
 // ====================================================
@@ -121,17 +84,8 @@ const I18N_MAP = () => [
   ['nav_fleet',    ...document.querySelectorAll('[data-i18n="nav_fleet"]')],
   ['nav_transfers',...document.querySelectorAll('[data-i18n="nav_transfers"]')],
   ['nav_book',     ...document.querySelectorAll('[data-i18n="nav_book"]')],
-  // Hero
-  ['hero_tagline', document.querySelector('.hero-tagline')],
-  ['hero_title',   document.querySelector('.hero-title')],        // innerHTML
-  ['hero_sub',     document.querySelector('.hero-sub')],
-  ['hero_btn1',    document.querySelector('.hero-btns .btn-primary')],
-  ['hero_btn2',    document.querySelector('.hero-btns .btn-secondary')],
+  // Hero        // innerHTML
   // Stats
-  ['stat_vehicles', document.querySelector('.stat-item:nth-child(1) .stat-label')],
-  ['stat_services', document.querySelector('.stat-item:nth-child(3) .stat-label')],
-  ['stat_avail',    document.querySelector('.stat-item:nth-child(5) .stat-label')],
-  ['stat_sat',      document.querySelector('.stat-item:nth-child(7) .stat-label')],
   // Services section
   ['sec_services_tag',   document.querySelector('#services .section-tag')],
   ['sec_services_title', document.querySelector('#services .section-title')],
@@ -152,18 +106,8 @@ const I18N_MAP = () => [
   ['svc5_desc',  document.querySelector('.service-card:nth-child(5) p')],
   ['svc5_link',  document.querySelector('.service-card:nth-child(5) .card-link')],
   // Fleet
-  ['fleet_tag',   document.querySelector('#fleet .section-tag')],
-  ['fleet_title', document.querySelector('#fleet .section-title')],
-  ['f_all',     document.querySelector('[data-filter="all"]')],
-  ['f_berline', document.querySelector('[data-filter="berline"]')],
-  ['f_suv',     document.querySelector('[data-filter="suv"]')],
-  ['f_sport',   document.querySelector('[data-filter="sportive"]')],
-  ['f_van',     document.querySelector('[data-filter="van"]')],
-  ['f_city',    document.querySelector('[data-filter="citadine"]')],
   // Fleet reserve buttons
-  ['btn_reserve', ...document.querySelectorAll('.btn-reserve')],
   // Fleet badges
-  ['badge_avail', ...document.querySelectorAll('.car-badge.available')],
   // Transfers
   ['tr_tag',   document.querySelector('#transfers .section-tag')],
   ['tr_title', document.querySelector('#transfers .section-title')],  // innerHTML
@@ -251,7 +195,7 @@ function applyLang(lang) {
       if (!el) return;
       // Transfer list items: preserve gold checkmark span
       if (key in TRANSFER_KEYS) {
-        el.innerHTML = `<span class="gold">✓</span> ${val}`;
+        el.textContent = val;
       } else if (HTML_KEYS.has(key)) {
         el.innerHTML = val;
       } else {
@@ -295,13 +239,46 @@ function applyLang(lang) {
 
   // Font for Chinese / Arabic
   if (lang === 'zh') {
-    document.body.style.fontFamily = "'Noto Sans SC', 'Montserrat', sans-serif";
+    document.body.style.fontFamily = "'Noto Sans SC', var(--body)";
   } else if (lang === 'ar') {
-    document.body.style.fontFamily = "'Noto Sans Arabic', 'Montserrat', sans-serif";
+    document.body.style.fontFamily = "'Noto Sans Arabic', var(--body)";
   } else {
-    document.body.style.fontFamily = "'Montserrat', sans-serif";
+    document.body.style.fontFamily = '';
   }
+
+  // Vitrine et compteur de l'accueil suivent la langue
+  if (window.Showroom && Showroom.relabel) Showroom.relabel();
+  updateHeroCount();
 }
+
+// ===== BARRE DE DEMANDE DE L'ACCUEIL =====
+(function () {
+  const form = document.getElementById('heroAsk');
+  if (!form) return;
+  const start = document.getElementById('askStart');
+  const end = document.getElementById('askEnd');
+  const err = document.getElementById('askErr');
+  const today = () => (window.Concierge ? Concierge.todayISO() : '');
+  start.min = end.min = today();
+  start.addEventListener('change', () => { if (start.value) end.min = start.value; });
+  // Teinte ivoire une fois la date choisie (le gabarit jj/mm/aaaa reste discret)
+  [start, end].forEach(el => el.addEventListener('input', () => el.classList.toggle('has-value', !!el.value)));
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const t = T[currentLang] || T.fr;
+    // Dates facultatives ici ; si les deux sont remplies, elles doivent être valides
+    if (start.value || end.value) {
+      const v = Concierge.validateDates(start.value, end.value);
+      if (!v.ok && v.reason !== 'missing') {
+        err.textContent = t['cc_err_' + v.reason] || '';
+        err.hidden = false;
+        return;
+      }
+    }
+    err.hidden = true;
+    Concierge.open({ service: document.getElementById('askService').value, start: start.value, end: end.value });
+  });
+})();
 
 // ===== LANGUAGE SWITCHER =====
 const langBtn      = document.getElementById('langBtn');
@@ -321,9 +298,6 @@ langDropdown.querySelectorAll('li').forEach(li => {
 
 // ===== NAVBAR SCROLL =====
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
 
 // ===== BURGER MENU =====
 const burger   = document.getElementById('burger');
@@ -339,29 +313,18 @@ navLinks.querySelectorAll('a').forEach(a => {
   });
 });
 
-// ===== SCROLL ANIMATIONS =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 100);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
-
-// ===== FLEET FILTER =====
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.car-card').forEach(card => {
-      const match = filter === 'all' || card.dataset.cat === filter;
-      card.classList.toggle('hidden', !match);
-      if (match) card.style.animation = 'fadeIn 0.4s ease forwards';
+// Apparition douce des autres blocs (désactivée si l'utilisateur réduit les animations)
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('in'); revealObs.unobserve(entry.target); }
     });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.section-title, .ycard-stats, .transfer-img, .contact-layout').forEach(el => {
+    el.classList.add('reveal');
+    revealObs.observe(el);
   });
-});
+}
 
 // ===== PRESELECT VEHICLE =====
 function preselectVehicle(name) {
@@ -370,6 +333,7 @@ function preselectVehicle(name) {
   const svc   = document.getElementById('formService');
   if (field && group) { field.value = name; group.style.display = 'block'; }
   if (svc) svc.value = 'Location Véhicule';
+  if (window.Concierge && Concierge.open) Concierge.open({ service: 'vehicle', model: name });
 }
 
 // ===== PRESELECT YACHT =====
@@ -382,6 +346,7 @@ function preselectYacht(name) {
     group.style.display = 'block';
   }
   if (svc) svc.value = 'Location Bateau';
+  if (window.Concierge && Concierge.open) Concierge.open({ service: 'yacht', model: name });
 }
 
 // ===== YACHT GALLERY =====
@@ -494,14 +459,15 @@ function navigateYachtImg(yachtId, dir) { ys_nav(yachtId, dir); }
 // Genere les pastilles de navigation des fiches qui n'en ont pas en dur
 document.addEventListener('DOMContentLoaded', () => {
   Object.keys(YACHTS).forEach(yachtId => {
-    const box = document.getElementById(`ydots-${yachtId}`);
-    if (!box || box.children.length) return;
     const counter = document.getElementById(`ycounter-${yachtId}`);
     if (counter) counter.textContent = `1 / ${YACHTS[yachtId].images.length}`;
+    const box = document.getElementById(`ydots-${yachtId}`);
+    if (!box || box.children.length) return;
     YACHTS[yachtId].images.forEach((_, i) => {
       const b = document.createElement('button');
       b.className = 'yslide-dot' + (i === 0 ? ' active' : '');
       b.type = 'button';
+      b.setAttribute('aria-label', `${i + 1} / ${YACHTS[yachtId].images.length}`);
       b.addEventListener('click', () => ys_go(yachtId, i));
       box.appendChild(b);
     });
@@ -577,22 +543,36 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') navigateLightbox(1);
 });
 
-// ===== SMOOTH ACTIVE NAV =====
+// ===== SCROLL (navbar + lien actif) — un seul écouteur passif, 1 fois par frame =====
 const sections   = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-  navAnchors.forEach(a => {
-    a.style.color = a.getAttribute('href') === `#${current}` ? '#D4AF37' : '';
-  });
-});
+let sectionTops = [];
+let scrollTicking = false;
 
-// ===== PARALLAX HERO =====
+function measureSections() {
+  sectionTops = Array.from(sections, s => [s.id, s.offsetTop]);
+}
+
+function onScrollFrame() {
+  scrollTicking = false;
+  const y = window.scrollY;
+  navbar.classList.toggle('scrolled', y > 50);
+  let current = '';
+  for (const [id, top] of sectionTops) { if (y >= top - 120) current = id; }
+  navAnchors.forEach(a => {
+    a.classList.toggle('is-current', a.getAttribute('href') === `#${current}`);
+  });
+}
+
 window.addEventListener('scroll', () => {
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-});
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(onScrollFrame);
+}, { passive: true });
+window.addEventListener('resize', () => { measureSections(); onScrollFrame(); });
+window.addEventListener('load', () => { measureSections(); onScrollFrame(); });
+measureSections();
+onScrollFrame();
 
 // Keyframe fadeIn
 const style = document.createElement('style');
@@ -605,3 +585,8 @@ applyLang(currentLang);
 // Charger la flotte dynamique (remplace les cartes statiques si Supabase répond)
 loadFleetFromSupabase();
 
+// Points des carrousels : nom lisible par les lecteurs d'écran (« 3 / 11 »)
+document.querySelectorAll('.yslide-dots').forEach(box => {
+  const dots = box.querySelectorAll('.yslide-dot');
+  dots.forEach((d, i) => d.setAttribute('aria-label', `${i + 1} / ${dots.length}`));
+});
