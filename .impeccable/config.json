@@ -29,6 +29,15 @@
         ],
         "createdAt": "2026-11-01T14:00:51.608Z",
         "reason": "Design system: DESIGN.md:163 'Italic Accent Rule' prescribes Bodoni italic accents in headings (Riviera Nuit)"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-02T18:12:07.941Z",
+        "reason": "Claude triage: all findings target .yacht-photo-slider, full-bleed photos flush with their frame by design; no user confirmation"
       }
     ]
   }

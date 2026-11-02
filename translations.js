@@ -1,5 +1,6 @@
 const T = {
   fr: {
+    foot_legal:"Mentions légales", foot_privacy:"Confidentialité", foot_terms:"Conditions de location", form_notice:"Vos coordonnées servent uniquement à répondre à votre demande.",
     cc_title:"Demande de disponibilité",
     cc_step1:"Que souhaitez-vous ?",
     cc_svc_vehicle:"Véhicule",
@@ -179,6 +180,7 @@ const T = {
     dir:'ltr'
   },
   en: {
+    foot_legal:"Legal notice", foot_privacy:"Privacy", foot_terms:"Rental terms", form_notice:"Your details are used only to answer your request.",
     cc_title:"Availability request",
     cc_step1:"What are you looking for?",
     cc_svc_vehicle:"Vehicle",
@@ -358,6 +360,7 @@ const T = {
     dir:'ltr'
   },
   ar: {
+    foot_legal:"إشعار قانوني", foot_privacy:"الخصوصية", foot_terms:"شروط التأجير", form_notice:"تُستخدم بياناتك فقط للرد على طلبك.",
     cc_title:"طلب التحقق من التوفر",
     cc_step1:"ماذا تريد؟",
     cc_svc_vehicle:"سيارة",
@@ -537,6 +540,7 @@ const T = {
     dir:'rtl'
   },
   ru: {
+    foot_legal:"Правовая информация", foot_privacy:"Конфиденциальность", foot_terms:"Условия аренды", form_notice:"Ваши данные используются только для ответа на ваш запрос.",
     cc_title:"Запрос наличия",
     cc_step1:"Что вас интересует?",
     cc_svc_vehicle:"Автомобиль",
@@ -716,6 +720,7 @@ const T = {
     dir:'ltr'
   },
   zh: {
+    foot_legal:"法律声明", foot_privacy:"隐私政策", foot_terms:"租赁条款", form_notice:"您的信息仅用于回复您的请求。",
     cc_title:"可用性咨询",
     cc_step1:"您需要什么？",
     cc_svc_vehicle:"车辆",

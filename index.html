@@ -35,6 +35,7 @@
     "email": "contact@mrprestige.fr",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "2 rue Velasquez",
       "addressLocality": "Cannes",
       "postalCode": "06400",
       "addressRegion": "Provence-Alpes-Côte d'Azur",
@@ -51,10 +52,10 @@
   <link rel="preload" as="image" href="images/image_voiture.jpg" media="(min-width: 681px)" fetchpriority="high">
   <link rel="preload" as="image" href="images/G63.jpg" media="(max-width: 680px)" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=riviera-3">
-  <script src="translations.js?v=riviera-3" defer></script>
-  <script src="concierge.js?v=riviera-3" defer></script>
-  <script src="showroom.js?v=riviera-3" defer></script>
+  <link rel="stylesheet" href="style.css?v=riviera-4">
+  <script src="translations.js?v=riviera-4" defer></script>
+  <script src="concierge.js?v=riviera-4" defer></script>
+  <script src="showroom.js?v=riviera-4" defer></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -617,6 +618,7 @@
       <input type="text" name="_gotcha" style="display:none">
 
       <button type="submit" class="btn-primary" data-fs-submit-btn style="width:100%;">Envoyer la Demande</button>
+      <p class="form-notice"><span data-i18n="form_notice">Vos coordonnées servent uniquement à répondre à votre demande.</span> <a href="confidentialite.html" data-i18n="foot_privacy">Confidentialité</a></p>
     </form>
     </div><!-- /.contact-form-col -->
   </div><!-- /.contact-layout -->
@@ -633,6 +635,11 @@
       <a href="#yachts" data-i18n="nav_yachts">Yachts</a>
       <a href="#transfers" data-i18n="nav_transfers">Transferts</a>
       <a href="#contact" data-i18n="nav_book">Contact</a>
+    </div>
+    <div class="footer-links footer-legal">
+      <a href="mentions-legales.html" data-i18n="foot_legal">Mentions légales</a>
+      <a href="confidentialite.html" data-i18n="foot_privacy">Confidentialité</a>
+      <a href="conditions-location.html" data-i18n="foot_terms">Conditions de location</a>
     </div>
     <p class="footer-copy">© 2026 MR PRESTIGE. Tous droits réservés.</p>
   </div>
@@ -682,6 +689,6 @@
   </div>
 </div>
 
-<script src="script.js?v=riviera-3" defer></script>
+<script src="script.js?v=riviera-4" defer></script>
 </body>
 </html>
