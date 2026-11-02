@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-10-31T20:45:07.765Z",
         "reason": "assistant: les carrousels yacht-photo-slider affichent des photos bord à bord dans leur cadre, sans texte à protéger"
+      },
+      {
+        "rule": "italic-serif-display",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-01T14:00:51.608Z",
+        "reason": "Design system: DESIGN.md:163 'Italic Accent Rule' prescribes Bodoni italic accents in headings (Riviera Nuit)"
       }
     ]
   }
