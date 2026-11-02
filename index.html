@@ -52,10 +52,10 @@
   <link rel="preload" as="image" href="images/Defender.jpg" media="(min-width: 681px)" fetchpriority="high">
   <link rel="preload" as="image" href="images/G63.jpg" media="(max-width: 680px)" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=riviera-5">
-  <script src="translations.js?v=riviera-5" defer></script>
-  <script src="concierge.js?v=riviera-5" defer></script>
-  <script src="showroom.js?v=riviera-5" defer></script>
+  <link rel="stylesheet" href="style.css?v=riviera-7">
+  <script src="translations.js?v=riviera-7" defer></script>
+  <script src="concierge.js?v=riviera-7" defer></script>
+  <script src="showroom.js?v=riviera-7" defer></script>
   <!-- Formspree Ajax CDN -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -103,6 +103,7 @@
     <source media="(max-width: 680px)" srcset="images/G63.jpg">
     <img class="rn-hero-photo" src="images/Defender.jpg" alt="" fetchpriority="high" decoding="async">
   </picture>
+  <div class="rn-hero-light" id="heroLight" aria-hidden="true"></div>
   <div class="rn-hero-inner">
     <h1 class="rn-hero-title" data-i18n="hero_title">La Côte d'Azur,<br><em>à votre rythme.</em></h1>
     <p class="rn-hero-sub" data-i18n="hero_sub">Voitures d'exception, yachts et chauffeurs privés. Une demande, une réponse personnelle sur WhatsApp.</p>
@@ -665,7 +666,8 @@
 
     <section class="cc-step" data-step="2" hidden>
       <h3 data-i18n="cc_step2">Vos dates et détails</h3>
-      <label><span data-i18n="cc_model">Modèle ou préférence</span><input type="text" id="ccModel" maxlength="120"></label>
+      <label id="ccVehicleField" hidden><span data-i18n="cc_vehicle">Véhicule</span><select id="ccVehicle"></select></label>
+      <label id="ccModelField"><span data-i18n="cc_model">Modèle ou préférence</span><input type="text" id="ccModel" maxlength="120"></label>
       <div class="cc-row">
         <label><span data-i18n="cc_start">Du</span><input type="date" id="ccStart"></label>
         <label><span data-i18n="cc_end">Au</span><input type="date" id="ccEnd"></label>
@@ -689,6 +691,7 @@
   </div>
 </div>
 
-<script src="script.js?v=riviera-5" defer></script>
+<script src="script.js?v=riviera-7" defer></script>
+<script type="module" src="hero-light.js?v=riviera-7"></script>
 </body>
 </html>

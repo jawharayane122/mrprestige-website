@@ -184,6 +184,6 @@
     mount(readStatic());
   }
 
-  Object.assign(Showroom, { mount, relabel });
+  Object.assign(Showroom, { mount, relabel, names: () => cars.map(c => c.name) });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

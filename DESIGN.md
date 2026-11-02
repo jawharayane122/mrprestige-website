@@ -187,7 +187,7 @@ Les filets champagne sont des dérivés en transparence de `champagne` : 22 % (l
 
 ## Layout
 
-Gouttière latérale proportionnelle `max(1.25rem, 6vw)` et largeur maximale de 1440px pour les sections du monde. Le premier écran occupe `min(84svh, 820px)` : fond noir avec le Defender à côté du titre (sur mobile, G-Class derrière le contenu), contenu aligné en début de ligne (54rem max), puis une ligne de pied séparée par un filet (lieux à gauche, compteur à droite).
+Gouttière latérale proportionnelle `max(1.25rem, 6vw)` et largeur maximale de 1440px pour les sections du monde. Le premier écran occupe `min(84svh, 820px)` : fond noir avec une lumière champagne très lente et le Defender à côté du titre (sur mobile, sans lumière, G-Class derrière le contenu), contenu aligné en début de ligne (54rem max), puis une ligne de pied séparée par un filet (lieux à gauche, compteur à droite).
 
 Le showroom est une grille à deux colonnes asymétriques (scène 1.65fr, index minimum 17rem), la scène restant collante à 6rem du haut. Les services sont une liste à trois colonnes (intitulé 18rem, description, lien 9rem) alignées sur la ligne de base.
 

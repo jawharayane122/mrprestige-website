@@ -28,3 +28,5 @@ STORY: Le visiteur comprend « voitures d'exception, yachts et chauffeurs sur la
 FIRST VIEWPORT: Fond noir, le Defender à droite. À gauche, titre sur deux lignes (environ 6rem), une phrase, puis la barre de demande (service, du, au, bouton champagne) comme action principale. En bas, la ligne des lieux et « 7 voitures · 4 yachts ». Le titre du showroom affleure sous le pli.
 FORM: Riviera Nuit, imposée par l'utilisateur (direction A du dossier), prioritaire sur le tirage ; seed:e3d2b4611c0ee206. Interaction signature : liste du showroom vers photo de scène, changement en volet clip-path.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+Hero light: `hero-light.js` anime un dégradé Paper Shaders 0.0.81 (`vendor/`, licence Apache) à peine plus clair que le noir, choisi par l'utilisateur le 2026-11-02, sur ordinateur et tablette seulement (rien n'est chargé sur téléphone). Pause hors écran, immobile si le mouvement est réduit, absent si WebGL manque ou en économie de données.

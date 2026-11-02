@@ -44,7 +44,20 @@
     return { ok: true };
   }
 
-  root.Concierge = Object.assign(root.Concierge || {}, { WA_NUMBER, buildWhatsAppUrl, validateDates, todayISO });
+  // Choix « Autre » de la liste des véhicules : la demande est alors décrite à la main
+  const OTHER_VEHICLE = '__other__';
+
+  // Retrouve dans la liste le véhicule déjà demandé, sans tenir compte de la casse
+  function matchVehicle(names, model) {
+    const m = String(model || '').trim().toLowerCase();
+    return (names || []).find(n => n.toLowerCase() === m) || '';
+  }
+
+  function resolveModel(choice, text) {
+    return choice && choice !== OTHER_VEHICLE ? choice : String(text || '').trim();
+  }
+
+  root.Concierge = Object.assign(root.Concierge || {}, { WA_NUMBER, OTHER_VEHICLE, buildWhatsAppUrl, validateDates, todayISO, matchVehicle, resolveModel });
 })(typeof globalThis !== 'undefined' ? globalThis : window);
 
 // ===== Modale : 3 étapes =====
@@ -69,12 +82,45 @@
   }
 
   function readForm() {
-    state.model = $('ccModel').value.trim();
+    state.model = usesVehicleList() ? Concierge.resolveModel($('ccVehicle').value, $('ccModel').value) : $('ccModel').value.trim();
     state.start = $('ccStart').value;
     state.end = $('ccEnd').value;
     state.guests = Number($('ccGuests').value) || undefined;
     state.note = $('ccNote').value.trim();
   }
+
+  const vehicleNames = () => (window.Showroom && Showroom.names ? Showroom.names() : []);
+  const usesVehicleList = () => state.service === 'vehicle' && vehicleNames().length > 0;
+
+  // Remplit la liste avec la flotte du site et présélectionne le modèle déjà demandé
+  function fillVehicles(model) {
+    const t = tr();
+    const names = vehicleNames();
+    const select = $('ccVehicle');
+    const option = (value, label) => { const o = document.createElement('option'); o.value = value; o.textContent = label; return o; };
+    select.replaceChildren(
+      option('', t.cc_vehicle_pick || 'Choisir un véhicule'),
+      ...names.map(n => option(n, n)),
+      option(Concierge.OTHER_VEHICLE, t.cc_vehicle_other || 'Autre : je décris ma demande')
+    );
+    const match = Concierge.matchVehicle(names, model);
+    select.value = match || (model ? Concierge.OTHER_VEHICLE : '');
+    $('ccModel').value = match ? '' : (model || '');
+  }
+
+  // Liste pour un véhicule, champ libre pour les autres services ou si « Autre » est choisi
+  function syncModelField() {
+    const list = usesVehicleList();
+    $('ccVehicleField').hidden = !list;
+    $('ccModelField').hidden = list && $('ccVehicle').value !== Concierge.OTHER_VEHICLE;
+  }
+
+  function prepareModelField(model) {
+    if (usesVehicleList()) fillVehicles(model); else $('ccModel').value = model || '';
+    syncModelField();
+  }
+
+  const modelControl = () => (usesVehicleList() ? $('ccVehicle') : $('ccModel'));
 
   function renderSummary() {
     const t = tr();
@@ -118,7 +164,7 @@
     opts = opts || {};
     lastFocus = document.activeElement;
     state = { service: opts.service || '', model: opts.model || '' };
-    $('ccModel').value = state.model;
+    prepareModelField(state.model);
     $('ccStart').value = opts.start || '';
     $('ccEnd').value = opts.end || '';
     $('ccNote').value = '';
@@ -129,13 +175,17 @@
     document.body.style.overflow = 'hidden';
     show(opts.service ? 2 : 1);
     // Dates déjà saisies dans la barre d'accueil : on enchaîne sur le modèle
-    const first = !opts.service ? document.querySelector('.cc-services button') : (opts.start ? $('ccModel') : $('ccStart'));
+    const first = !opts.service ? document.querySelector('.cc-services button') : (opts.start ? modelControl() : $('ccStart'));
     if (first) first.focus();
   }
 
   function init() {
     document.querySelectorAll('.cc-services button').forEach(b => {
-      b.addEventListener('click', () => { state.service = b.dataset.svc; show(2); $('ccModel').focus(); });
+      b.addEventListener('click', () => { state.service = b.dataset.svc; prepareModelField(''); show(2); modelControl().focus(); });
+    });
+    $('ccVehicle').addEventListener('change', () => {
+      syncModelField();
+      if ($('ccVehicle').value === Concierge.OTHER_VEHICLE) $('ccModel').focus();
     });
     $('ccNext').addEventListener('click', next);
     $('ccBack').addEventListener('click', () => show(Math.max(1, step - 1)));
@@ -146,7 +196,7 @@
       if (e.key === 'Escape') close();
       if (e.key === 'Enter' && step === 2 && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); next(); }
       if (e.key === 'Tab') { // focus piégé dans la modale
-        const f = [...$('conciergeModal').querySelectorAll('button:not([hidden]), input, textarea, a[href]')].filter(el => !el.closest('[hidden]'));
+        const f = [...$('conciergeModal').querySelectorAll('button:not([hidden]), input, select, textarea, a[href]')].filter(el => !el.closest('[hidden]'));
         if (!f.length) return;
         const first = f[0], last = f[f.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }

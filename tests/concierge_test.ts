@@ -50,3 +50,15 @@ Deno.test("validateDates: début passé refusé", () => {
 Deno.test("todayISO: date locale au format AAAA-MM-JJ", () => {
   assertEquals(C.todayISO(new Date(2026, 0, 9, 23, 30)), "2026-01-09");
 });
+
+Deno.test("matchVehicle retrouve le véhicule sans tenir compte de la casse", () => {
+  assertEquals(C.matchVehicle(["Mercedes G Class", "Porsche 911"], " MERCEDES g class "), "Mercedes G Class");
+  assertEquals(C.matchVehicle(["Porsche 911"], "Ferrari"), "");
+  assertEquals(C.matchVehicle([], ""), "");
+});
+
+Deno.test("resolveModel prend le véhicule choisi, sinon le texte écrit", () => {
+  assertEquals(C.resolveModel("Porsche 911", "ignoré"), "Porsche 911");
+  assertEquals(C.resolveModel(C.OTHER_VEHICLE, "  une berline noire "), "une berline noire");
+  assertEquals(C.resolveModel("", "texte"), "texte");
+});
